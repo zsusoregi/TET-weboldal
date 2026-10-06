@@ -1,0 +1,928 @@
+<title>Tantraszex Edzésterv</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;800;900&family=Caveat:wght@600;700&family=Fraunces:ital,opsz,wght@0,9..144,300..800;1,9..144,300..700&family=Manrope:wght@400;500;600;700;800&display=swap">
+<style>
+/* Elrendezés: „edzésnapló az alkonyatban” – sötét ébenfa és világos hamu szekciók váltakoznak,
+   a márka parázsnarancsa vezeti a szemet; egy 12 cellás heti sáv kíséri végig az olvasót. */
+:root{
+  --eben:#17110D;        /* sötét alap */
+  --eben-2:#231A15;      /* sötét kiemelt felület */
+  --hamu:#EFE8DF;        /* világos alap */
+  --krem:#FFFBF4;        /* kártyák, szöveg sötéten (márka krém) */
+  --parazs:#B54E02;      /* márka narancs */
+  --parazs-feny:#E9813C; /* narancs sötét háttéren */
+  --arany:#C9A456;       /* mandala arany */
+  --fust:#8A7C71;        /* halk szöveg */
+  --tinta:#221A15;       /* szöveg világoson */
+  --vonal:#DED3C6;
+  --f-disp:'Fraunces','Iowan Old Style',Georgia,serif;
+  --f-body:'Manrope','Segoe UI',system-ui,sans-serif;
+  --f-num:'Big Shoulders Display','Arial Narrow',Impact,sans-serif;
+  --f-hand:'Caveat','Comic Sans MS',cursive;
+  --ease:cubic-bezier(.22,1,.36,1);
+  --r:18px;
+  --sh:0 22px 48px -26px rgba(34,26,21,.45);
+  --sh-lg:0 34px 70px -30px rgba(181,78,2,.55);
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--eben);color:var(--tinta);font-family:var(--f-body);font-size:17px;line-height:1.7;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{max-width:100%;display:block}
+a{color:inherit}
+p{margin:0}
+h1,h2,h3,h4{margin:0;text-wrap:balance}
+::selection{background:var(--parazs);color:var(--krem)}
+:focus-visible{outline:3px solid var(--parazs-feny);outline-offset:3px;border-radius:6px}
+
+.wrap{max-width:1120px;margin:0 auto;padding-inline:24px;position:relative;z-index:1}
+.narrow{max-width:760px;margin-inline:auto}
+.blk{position:relative;overflow:hidden;overflow:clip;padding-block:96px}
+.dark{background:var(--eben);color:var(--krem)}
+.light{background:var(--hamu);color:var(--tinta)}
+.krem{background:var(--krem);color:var(--tinta)}
+.stack{display:flex;flex-direction:column;gap:16px}
+
+/* tipográfia */
+.h-sec{font-family:var(--f-disp);font-weight:600;font-variation-settings:"opsz" 120;font-size:clamp(32px,4.4vw,54px);line-height:1.06;letter-spacing:-.02em}
+.h-sec em{font-style:italic;font-weight:400;color:var(--parazs)}
+.dark .h-sec em{color:var(--parazs-feny)}
+.lead{font-family:var(--f-disp);font-style:italic;font-weight:400;font-size:clamp(20px,2.1vw,26px);line-height:1.4;color:var(--parazs)}
+.dark .lead{color:#F3C9A6}
+.label{font-family:var(--f-num);font-weight:800;text-transform:uppercase;letter-spacing:.14em;font-size:15px;color:var(--parazs)}
+.dark .label{color:var(--parazs-feny)}
+.mark{background-image:linear-gradient(100deg,transparent 0,rgba(233,129,60,.38) 4%,rgba(233,129,60,.38) 96%,transparent 100%);background-repeat:no-repeat;background-size:100% .45em;background-position:0 88%;-webkit-box-decoration-break:clone;box-decoration-break:clone;padding:0 .06em;font-weight:700}
+.dark .mark{background-image:linear-gradient(100deg,transparent 0,rgba(233,129,60,.45) 4%,rgba(233,129,60,.45) 96%,transparent 100%);color:#fff}
+.accent{color:var(--parazs);font-weight:700}
+.dark .accent{color:var(--parazs-feny)}
+
+/* gomb */
+.btn{display:inline-flex;align-items:center;gap:12px;font-family:var(--f-body);font-weight:800;font-size:16px;letter-spacing:.02em;text-decoration:none;color:#fff;background:linear-gradient(135deg,#D0661A 0%,var(--parazs) 60%,#8F3D02 100%);padding:18px 30px;border-radius:999px;border:0;cursor:pointer;box-shadow:0 6px 0 #6B2E02,0 22px 40px -16px rgba(181,78,2,.8);transition:transform .18s var(--ease),box-shadow .18s var(--ease)}
+.btn:hover{transform:translateY(-2px);box-shadow:0 8px 0 #6B2E02,0 28px 48px -16px rgba(181,78,2,.9)}
+.btn:active{transform:translateY(4px);box-shadow:0 2px 0 #6B2E02}
+.btn svg{width:20px;height:20px;flex:none;transition:transform .25s var(--ease)}
+.btn:hover svg{transform:translateX(4px)}
+.btn.ghost{background:transparent;color:var(--krem);box-shadow:inset 0 0 0 2px rgba(255,251,244,.4)}
+.btn.ghost:hover{box-shadow:inset 0 0 0 2px var(--parazs-feny)}
+.cta-row{display:flex;justify-content:center;margin-top:48px}
+
+/* finom előtűnés: nyugalmi állapotban is látszik, csak elmozdul */
+.rv{transition:transform .9s var(--ease)}
+.js .rv:not(.in){transform:translateY(18px)}
+@media (prefers-reduced-motion:reduce){.rv,.js .rv:not(.in){transform:none!important;transition:none}*{animation:none!important}}
+
+/* ── 12 hetes sáv (felső, ragadós) ── */
+.weekbar{position:sticky;top:env(safe-area-inset-top,0px);z-index:60;background:rgba(23,17,13,.92);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);color:var(--krem);border-bottom:1px solid rgba(255,251,244,.08)}
+.weekbar .in{max-width:1120px;margin:0 auto;padding:10px 24px;display:flex;align-items:center;gap:22px}
+.weekbar .brand{font-family:var(--f-num);font-weight:900;letter-spacing:.12em;font-size:17px;white-space:nowrap}
+.weekbar .brand b{color:var(--parazs-feny);font-weight:900}
+.weeks{flex:1;display:grid;grid-template-columns:repeat(12,1fr);gap:5px;min-width:0}
+.weeks i{display:block;height:6px;border-radius:3px;background:rgba(255,251,244,.12);position:relative;overflow:hidden}
+.weeks i::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,var(--parazs),var(--parazs-feny));transform-origin:left;transform:scaleX(var(--f,0));transition:transform .2s linear}
+.weekbar .mini{font-size:13px;padding:10px 18px;box-shadow:0 3px 0 #6B2E02;white-space:nowrap}
+@media(max-width:760px){.weekbar .in{flex-wrap:wrap;gap:8px 14px;padding:8px 16px}.weeks{order:3;flex-basis:100%}.weekbar .brand{font-size:14px;flex:1}.weekbar .mini{font-size:12px;padding:8px 14px}}
+
+/* ── 1. HERO ── */
+.hero{padding-block:72px 40px;background:radial-gradient(900px 600px at 78% 40%,rgba(181,78,2,.30),transparent 62%),radial-gradient(600px 500px at 0% 100%,rgba(201,164,86,.10),transparent 60%),var(--eben)}
+.hero::before{content:"";position:absolute;inset:0;background-image:radial-gradient(rgba(255,251,244,.07) 1px,transparent 1.4px);background-size:26px 26px;-webkit-mask-image:linear-gradient(180deg,#000,transparent 85%);mask-image:linear-gradient(180deg,#000,transparent 85%);pointer-events:none}
+.hero-grid{display:grid;grid-template-columns:1.12fr .88fr;gap:40px;align-items:center}
+.hero h1{font-family:var(--f-disp);font-weight:500;font-variation-settings:"opsz" 144;font-size:clamp(32px,4.3vw,56px);line-height:1.05;letter-spacing:-.025em;color:var(--krem)}
+.hero h1 em{font-style:italic;font-weight:400;color:var(--parazs-feny)}
+.plate{margin-top:34px;display:flex;flex-direction:column;gap:6px;padding-left:20px;border-left:3px solid var(--parazs)}
+.plate h4{font-family:var(--f-num);font-weight:900;font-size:clamp(30px,3.6vw,44px);letter-spacing:.06em;line-height:1;color:var(--krem)}
+.plate .sub{font-family:var(--f-num);font-weight:800;letter-spacing:.2em;font-size:15px;color:var(--parazs-feny)}
+.hero .believe{margin-top:26px;font-family:var(--f-disp);font-style:italic;font-size:clamp(19px,1.9vw,23px);color:#F3D9C2;max-width:34ch;line-height:1.45}
+.hero .twelve{margin-top:16px;font-size:17px;color:rgba(255,251,244,.78)}
+.hero .twelve b{font-family:var(--f-num);font-size:26px;letter-spacing:.04em;color:var(--krem);font-weight:900}
+.hero .cta{margin-top:34px;display:flex}
+.hero-img{position:relative;justify-self:center;width:min(100%,460px)}
+.hero-img .glow{position:absolute;inset:8% 4% 6%;border-radius:50%;background:radial-gradient(circle,rgba(233,129,60,.55),rgba(181,78,2,.18) 45%,transparent 70%);filter:blur(24px);animation:breath 7s ease-in-out infinite}
+.hero-img img{position:relative;width:100%;height:auto;-webkit-mask-image:radial-gradient(ellipse 64% 62% at 50% 52%,#000 58%,transparent 100%);mask-image:radial-gradient(ellipse 64% 62% at 50% 52%,#000 58%,transparent 100%)}
+.hero-img .ring{position:absolute;inset:-2% 2% 4%;border:1.5px dashed rgba(201,164,86,.38);border-radius:50%;animation:spin 90s linear infinite}
+.hero-img .breath-note{position:absolute;left:-6px;bottom:12%;font-family:var(--f-num);font-weight:800;letter-spacing:.2em;font-size:12px;color:var(--arany);display:flex;align-items:center;gap:8px}
+.hero-img .breath-note::before{content:"";width:9px;height:9px;border-radius:50%;background:var(--parazs-feny);animation:pulse 7s ease-in-out infinite}
+@keyframes breath{0%,100%{transform:scale(.92);opacity:.75}50%{transform:scale(1.06);opacity:1}}
+@keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(233,129,60,.55)}50%{box-shadow:0 0 0 10px rgba(233,129,60,0)}}
+@keyframes spin{to{transform:rotate(360deg)}}
+@media(max-width:860px){.hero-grid{grid-template-columns:1fr}.hero-img{order:-1;width:min(70%,300px)}.hero{padding-block:40px 30px}}
+
+/* ── 2. Három pillér ── */
+.pillars-blk{padding-block:0 80px;background:linear-gradient(180deg,var(--eben) 0,var(--eben) 90px,var(--hamu) 90px)}
+.pillars{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;padding-top:24px}
+.pillar{background:var(--krem);border-radius:var(--r);padding:30px 28px 28px;box-shadow:var(--sh);display:flex;flex-direction:column;gap:10px;transition:transform .35s var(--ease),box-shadow .35s var(--ease)}
+.pillar:hover{transform:translateY(-6px);box-shadow:var(--sh-lg)}
+.pillar .ico{width:74px;height:74px;border-radius:50%;background:#F6E6D6;display:grid;place-items:center;margin-bottom:6px}
+.pillar .ico img{width:46px;height:46px;transition:transform .4s var(--ease)}
+.pillar:hover .ico img{transform:scale(1.12) rotate(-6deg)}
+.pillar h3{font-family:var(--f-disp);font-weight:600;font-size:22px;line-height:1.2}
+.pillar p{color:#5E5148;font-size:16px;line-height:1.55}
+@media(max-width:860px){.pillars{grid-template-columns:1fr}}
+
+/* ── 3. Miről szól ── */
+.about-grid{display:grid;grid-template-columns:.82fr 1.18fr;gap:56px;align-items:start}
+.about-img{position:sticky;top:96px}
+.about-img img{width:100%;border-radius:200px 200px 18px 18px;box-shadow:var(--sh);aspect-ratio:4/5;object-fit:cover}
+.about-img::after{content:"";position:absolute;inset:-14px 14px 14px -14px;border:1.5px solid var(--parazs);border-radius:200px 200px 18px 18px;z-index:-1;opacity:.5}
+.about-txt{display:flex;flex-direction:column;gap:22px;min-width:0}
+.about-txt .h-sec{margin-bottom:4px}
+.about-txt p{max-width:62ch}
+.ages{display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin:18px 0 6px;position:relative}
+.ages::before{content:"";position:absolute;left:0;right:0;top:44px;border-top:2px dashed rgba(181,78,2,.35)}
+.age{position:relative;padding:0 14px 0 0}
+.age .n{font-family:var(--f-num);font-weight:900;font-size:64px;line-height:1;color:var(--tinta);background:var(--hamu);padding-right:10px;display:inline-block;position:relative}
+.age.cur .n{color:var(--parazs)}
+.age p{font-size:15.5px;margin-top:10px;line-height:1.45}
+.age.cur p{font-weight:700}
+.master{font-family:var(--f-disp);font-size:clamp(24px,2.6vw,32px);font-weight:600;line-height:1.2}
+.maybe{display:flex;flex-direction:column;gap:10px;padding:26px 28px;background:var(--krem);border-radius:var(--r);box-shadow:var(--sh)}
+.maybe p{padding-left:30px;position:relative}
+.maybe p::before{content:"";position:absolute;left:0;top:.8em;width:18px;height:2px;background:var(--parazs)}
+.quietly{font-family:var(--f-disp);font-style:italic;font-size:21px;line-height:1.45}
+@media(max-width:860px){.about-grid{grid-template-columns:1fr;gap:36px}.about-img{position:relative;top:0;max-width:420px}.age .n{font-size:48px}.ages::before{top:32px}}
+
+/* ── 4. Miért pont tantra ── */
+.why{background:radial-gradient(800px 500px at 100% 0,rgba(181,78,2,.22),transparent 60%),var(--eben)}
+.why .intro{font-size:19px;max-width:60ch;margin-top:22px;color:rgba(255,251,244,.85)}
+.why h3{font-family:var(--f-disp);font-weight:500;font-style:italic;font-size:clamp(22px,2.4vw,30px);margin-top:28px;color:#F3D9C2}
+.chain{display:flex;flex-wrap:wrap;align-items:center;gap:10px;margin-top:30px}
+.chain span{font-family:var(--f-num);font-weight:800;letter-spacing:.06em;font-size:20px;text-transform:uppercase;padding:8px 16px;border-radius:999px;border:1.5px solid rgba(255,251,244,.22)}
+.chain span:last-child{background:var(--parazs);border-color:var(--parazs)}
+.chain svg{width:22px;height:22px;color:var(--parazs-feny);flex:none}
+.chain-sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+.outcome{margin-top:18px;font-family:var(--f-hand);font-size:30px;color:var(--arany);line-height:1.2}
+.why-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;margin-top:56px;align-items:center}
+.strange{display:flex;flex-direction:column;gap:14px;font-size:18px}
+.strange .big{font-family:var(--f-disp);font-size:clamp(22px,2.3vw,28px);line-height:1.3;color:#fff}
+.head{position:relative;min-height:330px}
+.head .bub{position:absolute;background:var(--eben-2);border:1px solid rgba(255,251,244,.12);color:var(--krem);font-family:var(--f-disp);font-style:italic;font-size:19px;padding:12px 20px;border-radius:22px;box-shadow:0 20px 40px -20px rgba(0,0,0,.8);white-space:nowrap;animation:float 6s ease-in-out infinite}
+.head .bub::after{content:"";position:absolute;bottom:-7px;left:26px;width:14px;height:14px;background:var(--eben-2);border-right:1px solid rgba(255,251,244,.12);border-bottom:1px solid rgba(255,251,244,.12);transform:rotate(45deg)}
+.head .lead-q{position:absolute;left:0;top:0;font-family:var(--f-num);font-weight:800;letter-spacing:.14em;font-size:14px;text-transform:uppercase;color:var(--parazs-feny)}
+.b1{left:4%;top:34px;transform:rotate(-3deg)}
+.b2{right:2%;top:84px;animation-delay:-1.2s!important;transform:rotate(2deg)}
+.b3{left:14%;top:150px;animation-delay:-2.4s!important;transform:rotate(1deg)}
+.b4{right:8%;top:212px;animation-delay:-3.6s!important;transform:rotate(-2deg);border-color:rgba(233,129,60,.5)!important}
+.b5{left:2%;top:270px;animation-delay:-4.8s!important;transform:rotate(2deg)}
+@keyframes float{0%,100%{translate:0 0}50%{translate:0 -8px}}
+.leaves{margin-top:44px;font-family:var(--f-disp);font-size:clamp(22px,2.4vw,30px);line-height:1.3;max-width:28ch}
+.leaves .arrow{display:inline-block;color:var(--parazs-feny)}
+.opposite{margin-top:70px;padding:44px 44px 40px;border-radius:28px;background:linear-gradient(135deg,rgba(255,251,244,.06),rgba(255,251,244,.02));border:1px solid rgba(255,251,244,.1);position:relative}
+.opposite > p:first-child{font-family:var(--f-num);font-weight:800;letter-spacing:.14em;text-transform:uppercase;font-size:16px;color:var(--parazs-feny)}
+.opposite ul{list-style:none;margin:18px 0 0;padding:0;display:flex;flex-direction:column;gap:8px}
+.opposite li{font-family:var(--f-disp);font-size:clamp(20px,2.2vw,27px);line-height:1.3;color:rgba(255,251,244,.6)}
+.opposite li.no{text-decoration:line-through;text-decoration-color:rgba(233,129,60,.7);text-decoration-thickness:2px}
+.opposite li:last-child{color:#fff;font-size:clamp(26px,3.2vw,40px);margin-top:10px}
+.opposite li:last-child strong{font-style:italic;font-weight:500;color:var(--parazs-feny)}
+@media(max-width:860px){.why-grid{grid-template-columns:1fr;gap:30px}.head .bub{font-size:16px;white-space:normal;max-width:70%}.opposite{padding:30px 22px}}
+
+/* ── 5. Figyelemmel kezdődik ── */
+.att{padding-block:96px 0}
+.att-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:56px;align-items:center}
+.att-img{position:relative}
+.att-img img{width:100%;max-width:460px;margin-inline:auto;filter:drop-shadow(0 30px 40px rgba(34,26,21,.25))}
+.att-list{display:flex;flex-direction:column;gap:14px;margin-top:34px}
+.att-item{display:grid;grid-template-columns:64px 1fr;gap:18px;align-items:center;padding:18px 22px;background:var(--krem);border-radius:var(--r);box-shadow:var(--sh)}
+.att-item img{width:52px;height:52px;margin:auto}
+.att-item p{font-size:17px;line-height:1.5}
+.practice{text-align:center;margin-top:90px;display:flex;flex-direction:column;align-items:center;gap:6px}
+.practice h2{font-family:var(--f-disp);font-weight:400;font-style:italic;font-size:clamp(22px,2.4vw,30px);color:#5E5148}
+.practice h2.must{font-family:var(--f-num);font-style:normal;font-weight:900;text-transform:uppercase;font-size:clamp(48px,8vw,104px);letter-spacing:.02em;line-height:1;color:var(--tinta);margin:10px 0 14px}
+.practice h2.born{color:var(--tinta);font-style:normal;font-weight:500;font-size:clamp(22px,2.6vw,32px)}
+.practice h2.born strong{font-weight:700;color:var(--parazs)}
+.practice .btn{margin-top:30px}
+.mandala-edge{display:block;width:min(560px,90%);margin:60px auto 0;opacity:.95}
+@media(max-width:860px){.att-grid{grid-template-columns:1fr;gap:20px}.att-img img{max-width:300px}}
+
+/* ── 6. Mi a TET ── */
+.what{background:radial-gradient(700px 500px at 0 100%,rgba(181,78,2,.22),transparent 60%),var(--eben)}
+.what-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center}
+.what-img img{width:100%;border-radius:22px;box-shadow:0 40px 80px -40px rgba(0,0,0,.9)}
+.what-txt{display:flex;flex-direction:column;gap:18px;min-width:0}
+.what-txt .def{font-size:20px}
+.nots{list-style:none;padding:0;margin:4px 0;display:flex;flex-direction:column;gap:8px}
+.nots li{position:relative;padding-left:36px;color:rgba(255,251,244,.72)}
+.nots li::before{content:"";position:absolute;left:0;top:5px;width:22px;height:22px;border-radius:7px;background:rgba(233,129,60,.14) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23E9813C' stroke-width='3' stroke-linecap='round'%3E%3Cpath d='M7 7l10 10M17 7L7 17'/%3E%3C/svg%3E") center/12px no-repeat}
+.twelve-big{font-family:var(--f-num);font-weight:900;font-size:clamp(40px,5vw,62px);letter-spacing:.02em;line-height:1;color:#fff;margin-top:8px}
+.calendar{display:grid;grid-template-columns:repeat(12,1fr);gap:6px;margin:6px 0 4px}
+.calendar span{aspect-ratio:1;border-radius:8px;display:grid;place-items:center;font-family:var(--f-num);font-weight:800;font-size:15px;color:rgba(255,251,244,.55);border:1px solid rgba(255,251,244,.14);transition:background .3s,color .3s}
+.calendar span:nth-child(-n+12){background:linear-gradient(180deg,rgba(181,78,2,calc(var(--k)*.075)),rgba(181,78,2,calc(var(--k)*.075)))}
+.calendar span:last-child{background:var(--parazs);color:#fff;border-color:var(--parazs)}
+.what-txt .body-note{color:rgba(255,251,244,.85)}
+.know-can{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:10px}
+.know-can p{padding:20px;border-radius:16px;font-size:16.5px;line-height:1.5}
+.know-can p:first-child{background:rgba(255,251,244,.05);border:1px solid rgba(255,251,244,.12);color:rgba(255,251,244,.75)}
+.know-can p:last-child{background:var(--parazs);color:#fff}
+.know-can strong{display:inline;font-family:var(--f-disp);font-style:italic;font-weight:500;font-size:26px;margin-top:4px}
+@media(max-width:860px){.what-grid{grid-template-columns:1fr;gap:30px}.calendar{grid-template-columns:repeat(6,1fr)}.know-can{grid-template-columns:1fr}}
+
+/* ── 7. Mit edzünk ── */
+.mods{display:flex;flex-direction:column;gap:22px;margin-top:54px;position:relative}
+.mods::before{content:"";position:absolute;left:47px;top:40px;bottom:40px;border-left:2px dashed rgba(181,78,2,.35)}
+.mod{display:grid;grid-template-columns:96px 1fr;gap:28px;align-items:start;position:relative}
+.mod .num{width:96px;height:96px;border-radius:50%;background:var(--krem);display:grid;place-items:center;box-shadow:var(--sh);position:sticky;top:96px}
+.mod .num img{width:76px;height:76px}
+.mod .card{background:var(--krem);border-radius:var(--r);padding:30px 34px;box-shadow:var(--sh);display:flex;flex-direction:column;gap:12px;min-width:0;transition:box-shadow .35s var(--ease)}
+.mod .card:hover{box-shadow:var(--sh-lg)}
+.mod h2{font-family:var(--f-num);font-weight:900;text-transform:uppercase;font-size:clamp(26px,3vw,36px);letter-spacing:.03em;line-height:1.05;color:var(--tinta)}
+.mod blockquote{margin:0;font-family:var(--f-disp);font-style:italic;font-size:20px;color:var(--parazs);line-height:1.4}
+.mod .qs{display:flex;flex-direction:column;gap:4px;padding:14px 18px;border-left:3px solid var(--parazs);background:#F6ECE1;border-radius:0 12px 12px 0;font-family:var(--f-disp);font-style:italic;font-size:18px}
+.mod .pull{font-weight:700}
+@media(max-width:700px){.mods::before{display:none}.mod{grid-template-columns:1fr;gap:0}.mod .num{position:relative;top:0;width:72px;height:72px;margin:0 0 -36px 20px;z-index:2}.mod .num img{width:56px;height:56px}.mod .card{padding:46px 22px 24px}}
+
+/* ── 8. Megalkotó ── */
+.author{background:radial-gradient(600px 600px at 20% 50%,rgba(201,164,86,.16),transparent 65%),var(--eben)}
+.author-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:60px;align-items:center}
+.author-photo{position:relative;max-width:440px;justify-self:center;width:100%}
+.author-photo::before{content:"";position:absolute;inset:-22px;border-radius:50%;border:1.5px solid rgba(201,164,86,.45);animation:spin 120s linear infinite;border-style:dashed}
+.author-photo img{width:100%;aspect-ratio:1;object-fit:cover;border-radius:50%;filter:grayscale(1) contrast(1.05);box-shadow:0 40px 80px -30px rgba(0,0,0,.8)}
+.author-txt{display:flex;flex-direction:column;gap:16px;min-width:0;color:rgba(255,251,244,.84)}
+.author-txt h3{font-family:var(--f-disp);font-weight:500;font-size:clamp(22px,2.4vw,30px);line-height:1.25;color:#fff}
+.author-txt .life{font-family:var(--f-disp);font-style:italic;font-size:clamp(24px,2.6vw,32px);line-height:1.25;color:var(--arany);padding:8px 0 8px 22px;border-left:3px solid var(--arany)}
+@media(max-width:860px){.author-grid{grid-template-columns:1fr;gap:44px}.author-photo{max-width:300px}}
+
+/* ── 9. Miért érdemes ── */
+.bens{display:grid;grid-template-columns:repeat(2,1fr);gap:22px;margin-top:50px}
+.ben{background:var(--krem);border-radius:var(--r);padding:30px 30px 28px;box-shadow:var(--sh);display:flex;flex-direction:column;gap:12px;position:relative;overflow:hidden;min-width:0}
+.ben::before{content:"";position:absolute;right:-40px;top:-40px;width:120px;height:120px;border-radius:50%;background:radial-gradient(circle,rgba(233,129,60,.18),transparent 70%)}
+.ben h2{font-family:var(--f-disp);font-weight:600;font-size:23px;line-height:1.2;display:flex;gap:12px;align-items:flex-start}
+.ben h2::before{content:"";flex:none;width:12px;height:12px;margin-top:8px;border-radius:50%;background:var(--parazs);box-shadow:0 0 0 5px rgba(181,78,2,.14)}
+.ben p{font-size:16px;color:#4B3F37}
+.ben ul{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:6px}
+.ben ul li{padding-left:28px;position:relative;font-size:16px;color:#4B3F37}
+.ben ul li::before{content:"";position:absolute;left:0;top:6px;width:18px;height:18px;border-radius:6px;background:#FBE3D9 url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23B54E02' stroke-width='3.2' stroke-linecap='round'%3E%3Cpath d='M7 7l10 10M17 7L7 17'/%3E%3C/svg%3E") center/10px no-repeat}
+.ben .warn{font-weight:700;color:var(--parazs)}
+.ben.wide{grid-column:1/-1}
+@media(max-width:760px){.bens{grid-template-columns:1fr}}
+
+/* ── 10. Kinek szól ── */
+.who-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:24px;margin-top:46px;align-items:stretch}
+.who-yes{background:var(--krem);border-radius:var(--r);padding:34px;box-shadow:var(--sh);display:flex;flex-direction:column;gap:16px;min-width:0}
+.who-yes .t{font-family:var(--f-disp);font-weight:600;font-size:22px}
+.checks{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:10px}
+.checks li{position:relative;padding-left:40px}
+.checks li::before{content:"";position:absolute;left:0;top:3px;width:26px;height:26px;border-radius:50%;background:var(--parazs) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23fff' stroke-width='3.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12l5 5L20 7'/%3E%3C/svg%3E") center/14px no-repeat}
+.who-no{background:var(--eben);color:var(--krem);border-radius:var(--r);padding:34px;display:flex;flex-direction:column;gap:14px;justify-content:center;background-image:repeating-linear-gradient(-45deg,transparent 0 16px,rgba(255,251,244,.03) 16px 18px)}
+.who-no p{font-family:var(--f-disp);font-size:20px;line-height:1.4;color:rgba(255,251,244,.8)}
+.who-no p:last-child{color:#fff;font-weight:600;font-size:24px;padding-top:16px;border-top:1px solid rgba(255,251,244,.16)}
+.who-no p:last-child::before{content:"";display:block;width:36px;height:3px;background:var(--parazs-feny);margin-bottom:14px}
+@media(max-width:860px){.who-grid{grid-template-columns:1fr}}
+
+/* ── 11. Vélemények ── */
+.tst-blk{background:radial-gradient(700px 400px at 50% 0,rgba(181,78,2,.2),transparent 70%),var(--eben)}
+.tsts{columns:2;column-gap:26px;margin-top:54px}
+.tst{break-inside:avoid;margin-bottom:26px;background:var(--eben-2);border:1px solid rgba(255,251,244,.1);border-radius:22px;padding:34px 32px 30px;position:relative;color:rgba(255,251,244,.86);display:flex;flex-direction:column;gap:12px;font-size:16.5px;transition:transform .35s var(--ease),border-color .35s}
+.tst::before{content:"„";position:absolute;right:22px;top:-14px;font-family:var(--f-disp);font-size:110px;line-height:1;color:var(--parazs-feny);opacity:.35}
+.tst:nth-child(odd){transform:rotate(-.6deg)} .tst:nth-child(even){transform:rotate(.6deg)}
+.tst:hover{transform:rotate(0) translateY(-4px);border-color:rgba(233,129,60,.5)}
+.tst p:first-child{font-family:var(--f-disp);font-style:italic;font-size:20px;line-height:1.45;color:#fff}
+.tst .em{font-family:var(--f-hand);font-size:28px;color:var(--arany);line-height:1.2}
+@media(max-width:760px){.tsts{columns:1}}
+
+/* ── 12. Ajándékok ── */
+.gift-head{display:flex;flex-direction:column;align-items:center;text-align:center;gap:16px}
+.gift-head p{max-width:56ch;font-size:19px}
+.gifts{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:50px}
+.gift{background:var(--krem);border-radius:var(--r);overflow:hidden;box-shadow:var(--sh);display:flex;flex-direction:column;transition:transform .35s var(--ease),box-shadow .35s var(--ease);position:relative}
+.gift:hover{transform:translateY(-6px);box-shadow:var(--sh-lg)}
+.gift img{width:100%;aspect-ratio:16/9;object-fit:cover}
+.gift .bow{position:absolute;top:12px;right:12px;width:44px;height:44px;border-radius:50%;background:var(--parazs);display:grid;place-items:center;box-shadow:0 10px 20px -8px rgba(0,0,0,.5)}
+.gift .bow svg{width:24px;height:24px;color:#fff}
+.gift .bd{padding:24px 26px 28px;display:flex;flex-direction:column;gap:8px}
+.gift h3{font-family:var(--f-disp);font-weight:600;font-size:21px;line-height:1.25}
+.gift p{font-size:15.5px;color:#5E5148;line-height:1.55}
+@media(max-width:860px){.gifts{grid-template-columns:1fr;max-width:480px;margin-inline:auto}}
+
+/* ── 13. Garanciák ── */
+.guar{display:grid;grid-template-columns:1fr 1fr;gap:28px;margin-top:50px}
+.voucher{position:relative;background:var(--krem);border-radius:22px;padding:40px 34px 34px;box-shadow:var(--sh);display:flex;flex-direction:column;gap:12px;min-width:0}
+.voucher::after{content:"";position:absolute;inset:10px;border:1.5px dashed rgba(181,78,2,.35);border-radius:16px;pointer-events:none}
+.seal{position:absolute;right:24px;top:-34px;width:96px;height:96px;border-radius:50%;background:var(--parazs);color:#fff;display:grid;place-items:center;font-family:var(--f-num);font-weight:900;font-size:40px;line-height:1;box-shadow:0 0 0 6px var(--hamu),0 16px 30px -10px rgba(181,78,2,.7);transform:rotate(-8deg)}
+.seal::before{content:"";position:absolute;inset:7px;border-radius:50%;border:1.5px dashed rgba(255,255,255,.55)}
+.voucher h2{font-family:var(--f-num);font-weight:900;font-size:clamp(26px,2.8vw,34px);letter-spacing:.03em;line-height:1.05;padding-right:100px}
+.voucher .promise{font-family:var(--f-disp);font-style:italic;font-size:21px;color:var(--parazs);line-height:1.35}
+.voucher p{font-size:16px}
+.voucher .q{font-family:var(--f-disp);font-style:italic;font-size:19px;padding:10px 0 10px 18px;border-left:3px solid var(--parazs)}
+.voucher .small{font-size:14px;color:var(--fust)}
+.voucher .sign{font-family:var(--f-hand);font-size:26px;color:var(--parazs);line-height:1.2}
+@media(max-width:860px){.guar{grid-template-columns:1fr;gap:56px}}
+
+/* ── 14. Miért most ── */
+.now{background:var(--eben);text-align:center;padding-block:120px}
+.now::before{content:"12";position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);font-family:var(--f-num);font-weight:900;font-size:min(62vw,620px);line-height:.8;color:rgba(233,129,60,.06);pointer-events:none}
+.now .hourglass{width:64px;margin:0 auto 18px;animation:tip 9s ease-in-out infinite}
+@keyframes tip{0%,42%{transform:rotate(0)}50%,92%{transform:rotate(180deg)}100%{transform:rotate(360deg)}}
+.now h2.older{font-family:var(--f-disp);font-weight:500;font-size:clamp(30px,4.6vw,58px);line-height:1.1;letter-spacing:-.02em;color:#fff;max-width:20ch;margin:18px auto 0}
+.now .lines{display:flex;flex-direction:column;gap:12px;margin:40px auto 0;max-width:46ch;font-size:19px;color:rgba(255,251,244,.8)}
+.now .lines .q{font-family:var(--f-disp);font-style:italic;font-size:24px;color:#F3D9C2}
+.now .lines .last{font-family:var(--f-num);font-weight:900;text-transform:uppercase;letter-spacing:.06em;font-size:28px;color:var(--parazs-feny);margin-top:12px}
+
+/* ── 15. Csomagok ── */
+.prices{display:grid;grid-template-columns:1fr 1fr;gap:28px;margin-top:56px;max-width:940px;margin-inline:auto;align-items:stretch}
+.pcard{border-radius:26px;padding:40px 36px 36px;display:flex;flex-direction:column;gap:18px;position:relative;min-width:0}
+.pcard.basic{background:var(--krem);box-shadow:var(--sh)}
+.pcard.prem{background:var(--eben);color:var(--krem);box-shadow:0 40px 80px -30px rgba(181,78,2,.65);border:1.5px solid rgba(233,129,60,.45)}
+.pcard.prem::before{content:"";position:absolute;inset:0;border-radius:26px;background:radial-gradient(500px 300px at 100% 0,rgba(181,78,2,.35),transparent 60%);pointer-events:none}
+.pcard > *{position:relative}
+.pcard .tier{font-family:var(--f-num);font-weight:900;font-size:16px;letter-spacing:.14em;text-transform:uppercase;color:var(--parazs)}
+.pcard.prem .tier{color:var(--parazs-feny)}
+.pcard h2.name{font-family:var(--f-disp);font-weight:600;font-size:clamp(24px,2.6vw,30px);line-height:1.15}
+.pcard ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:10px;flex:1}
+.pcard li{position:relative;padding-left:34px}
+.pcard li::before{content:"";position:absolute;left:0;top:4px;width:22px;height:22px;border-radius:50%;background:rgba(181,78,2,.13) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23B54E02' stroke-width='3.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12l5 5L20 7'/%3E%3C/svg%3E") center/12px no-repeat}
+.pcard.prem li::before{background:rgba(233,129,60,.2) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23E9813C' stroke-width='3.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12l5 5L20 7'/%3E%3C/svg%3E") center/12px no-repeat}
+.pcard .more{font-weight:700;font-size:15px;color:#F3D9C2}
+.pcard .price{font-family:var(--f-num);font-weight:900;font-size:clamp(46px,5vw,60px);line-height:1;letter-spacing:.01em;font-variant-numeric:tabular-nums;padding-top:18px;border-top:1px dashed rgba(181,78,2,.35)}
+.pcard.prem .price{color:#fff;border-top-color:rgba(233,129,60,.4)}
+.pcard .btn{justify-content:center}
+.pcard.basic .btn{order:5}
+.pcard.prem .btn{order:5;background:linear-gradient(135deg,#F09653,var(--parazs-feny) 50%,var(--parazs))}
+@media(max-width:820px){.prices{grid-template-columns:1fr}}
+
+/* ── 16. GYIK ── */
+.faq{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:50px}
+.qa{background:var(--krem);border-radius:var(--r);padding:26px 28px;display:flex;flex-direction:column;gap:10px;border:1px solid var(--vonal);min-width:0}
+.qa .q{font-family:var(--f-disp);font-weight:600;font-size:20px;line-height:1.3;display:grid;grid-template-columns:auto 1fr;gap:12px}
+.qa .q b{font-family:var(--f-num);font-weight:900;font-size:22px;color:var(--parazs);line-height:1.15}
+.qa .a{font-size:16px;color:#4B3F37;padding-left:28px}
+@media(max-width:760px){.faq{grid-template-columns:1fr}}
+
+/* ── 17. Záró CTA ── */
+.final{background:radial-gradient(800px 500px at 85% 0,#E9813C 0,transparent 60%),linear-gradient(135deg,#7A3302 0,var(--parazs) 55%,#D0661A 100%);text-align:center;padding-block:110px}
+.final::before{content:"";position:absolute;left:50%;bottom:-200px;width:620px;height:620px;margin-left:-310px;border-radius:50%;border:1.5px dashed rgba(255,251,244,.25);animation:spin 100s linear infinite}
+.final .btn{background:var(--krem);color:var(--parazs);font-size:clamp(17px,2vw,21px);padding:22px 38px;box-shadow:0 7px 0 #5C2702,0 30px 60px -20px rgba(0,0,0,.6)}
+.final .btn:hover{box-shadow:0 9px 0 #5C2702,0 34px 64px -20px rgba(0,0,0,.6)}
+.final .btn svg{width:24px;height:24px}
+
+/* ════ VISSZAJELZÉS (review) felület ════ */
+.fb-pin{position:absolute;top:14px;right:14px;z-index:40;display:flex;flex-direction:column;align-items:flex-end;gap:8px;max-width:calc(100% - 28px);font-family:var(--f-body)}
+.fb-tab{display:inline-flex;align-items:center;gap:8px;border:0;cursor:pointer;font:700 13px/1 var(--f-body);letter-spacing:.02em;padding:9px 14px 9px 10px;border-radius:999px;background:#FFFFFF;color:#2A201A;box-shadow:0 0 0 1px rgba(0,0,0,.08),0 10px 24px -10px rgba(0,0,0,.45);max-width:100%}
+.fb-tab .no{font-family:var(--f-num);font-weight:900;font-size:13px;background:#2A201A;color:#fff;border-radius:999px;padding:4px 8px;letter-spacing:.06em}
+.fb-tab .nm{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:240px}
+.fb-tab svg{width:16px;height:16px;flex:none}
+.fb-tab.has{background:#2F6BFF;color:#fff}
+.fb-tab.has .no{background:#fff;color:#2F6BFF}
+.fb-panel{width:min(380px,calc(100vw - 32px));background:#FFFFFF;color:#2A201A;border-radius:16px;box-shadow:0 0 0 1px rgba(0,0,0,.08),0 30px 60px -20px rgba(0,0,0,.55);padding:16px;display:flex;flex-direction:column;gap:10px}
+.fb-panel .hd{display:flex;justify-content:space-between;align-items:center;gap:10px;font-size:13px;font-weight:800}
+.fb-panel .hd span{color:#6B7280;font-weight:600}
+.fb-panel textarea{width:100%;min-height:120px;resize:vertical;border:1.5px solid #D6DAE1;border-radius:12px;padding:12px;font:500 15px/1.5 var(--f-body);color:#1F2430;background:#FAFBFC}
+.fb-panel textarea:focus{outline:none;border-color:#2F6BFF;box-shadow:0 0 0 3px rgba(47,107,255,.18)}
+.fb-panel .ft{display:flex;justify-content:space-between;align-items:center;gap:10px}
+.fb-panel .st{font-size:12.5px;color:#6B7280}
+.fb-panel .st.ok{color:#15803D}
+.fb-panel .st.err{color:#B91C1C}
+.fb-panel .acts{display:flex;gap:8px}
+.fb-panel button{border:0;cursor:pointer;font:700 13px/1 var(--f-body);padding:9px 14px;border-radius:10px}
+.fb-panel .save{background:#2F6BFF;color:#fff}
+.fb-panel .close{background:#EEF0F4;color:#2A201A}
+.fb-panel .hist{font-size:13px;background:#F3F5F9;border-radius:10px;padding:10px 12px;color:#374151;display:flex;flex-direction:column;gap:6px}
+.fb-panel .hist b{font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;color:#6B7280}
+.fb-panel .hist .rep{border-left:3px solid #2F6BFF;padding-left:8px}
+.fb-off .fb-pin{display:none}
+.fb-dock{position:fixed;left:16px;bottom:calc(16px + env(safe-area-inset-bottom,0px));z-index:70;display:flex;align-items:center;gap:6px;background:#FFFFFF;color:#2A201A;border-radius:999px;padding:6px;box-shadow:0 0 0 1px rgba(0,0,0,.08),0 18px 40px -14px rgba(0,0,0,.55);font:600 13px/1 var(--f-body);max-width:calc(100vw - 32px);flex-wrap:wrap}
+.fb-dock .ver{font-family:var(--f-num);font-weight:900;letter-spacing:.08em;background:#2F6BFF;color:#fff;border-radius:999px;padding:8px 12px}
+.fb-dock .cnt{padding:0 8px;color:#374151}
+.fb-dock button{border:0;cursor:pointer;background:#EEF0F4;color:#2A201A;font:700 12.5px/1 var(--f-body);padding:9px 12px;border-radius:999px}
+.fb-dock button[aria-pressed="true"]{background:#2A201A;color:#fff}
+.fb-gen{position:fixed;left:16px;bottom:calc(72px + env(safe-area-inset-bottom,0px));z-index:71}
+</style>
+
+<div class="weekbar" aria-label="Haladás a 12 héten">
+  <div class="in">
+    <div class="brand">TANTRASZEX <b>EDZÉSTERV</b></div>
+    <div class="weeks" id="weeks" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+    <a class="btn mini" href="#ajanlat">Megnézem az ajánlatot</a>
+  </div>
+</div>
+
+<!-- 01 HERO -->
+<section class="blk dark hero" data-fb="b01" data-name="Nyitó (hero)">
+  <div class="wrap hero-grid">
+    <div class="rv">
+      <h1>Legyél <em>magabiztos szerető</em>, és fedezz fel különleges élményeket, tökéletes kapcsolódásokat a szexben, néhány új képesség megszerzése révén!</h1>
+      <div class="plate">
+        <h4>TANTRASZEX EDZÉSTERV</h4>
+        <p class="sub">ONLINE GYAKORLÓPROGRAM 45+ FÉRFIAKNAK</p>
+      </div>
+      <p class="believe">Nem kell hinned a Tantrában, csak próbáld ki, mit csinál a testeddel!</p>
+      <p class="twelve"><b>12 hét.</b> <b>12 gyakorlat.</b> Egy új szint a szexualitásodban.</p>
+      <div class="cta"><a class="btn" href="https://sf.soregizsuzsa.hu/t/r/tantraszex-edzesterv" target="_blank" rel="noopener">Megnézem, hogy működik <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
+    </div>
+    <div class="hero-img rv">
+      <div class="glow"></div>
+      <div class="ring"></div>
+      <img src="img/hero-ferfi.webp" alt="Meditáló férfi, kezét a mellkasán tartva" width="1100" height="1317">
+    </div>
+  </div>
+</section>
+
+<!-- 02 PILLÉREK -->
+<section class="blk pillars-blk" data-fb="b02" data-name="Három pillér (ikonok)">
+  <div class="wrap">
+    <div class="pillars">
+      <div class="pillar rv"><div class="ico"><img src="img/ikon-szem.webp" alt=""></div><h3>Figyelem, légzés, tudatos érintés</h3><p>A test jelzéseinek érzékelése és a jelenlét gyakorlása.</p></div>
+      <div class="pillar rv"><div class="ico"><img src="img/ikon-meditacio.webp" alt=""></div><h3>Az izgalom tudatos irányítása</h3><p>Nem siettetve, hanem érzékelve, mi történik.</p></div>
+      <div class="pillar rv"><div class="ico"><img src="img/ikon-homokora.webp" alt=""></div><h3>Gyakorlati útmutatók saját tempóban</h3><p>Visszanézhető anyagokkal, lépésről lépésre.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- 03 MIRŐL SZÓL -->
+<section class="blk light" data-fb="b03" data-name="Miről szól a tantraszex edzésterv?">
+  <div class="wrap about-grid">
+    <div class="about-img rv"><img src="img/ferfi-tenger.webp" alt="Férfi ül a sziklán, a tenger fölött lemenő napot nézi" loading="lazy"></div>
+    <div class="about-txt">
+      <h1 class="h-sec rv">Miről szól a <em>tantraszex edzésterv?</em></h1>
+      <h2 class="lead rv">Nem azt tanulod újra, amit már harminc (vagy több) éve csinálsz. Olyan képességeket edzünk, amelyeket valószínűleg soha senki nem tanított meg neked.</h2>
+      <p>Vannak képességeid, melyek csodálatos, és teljesen magabiztos szeretővé tesznek, aki soha nem okoz csalódást sem fizikailag, sem érzelmileg a partnerének (és magának sem!).</p>
+      <p><span class="mark">Ezeket a képességeket épp úgy edzeni kell, mint az izmaidat.</span></p>
+      <p>Soha nem lesz több kellemetlen szeretkezésed, vagy borzalmas randid! Soha nem kell félned, hogy cserbenhagy a tested!</p>
+      <p>És ahogy múlnak az évek, nem csak szexuális potenciálod őrzöd meg, de irigylésre méltóan erős és egészséges, kiegyensúlyozott férfi maradsz.</p>
+      <div class="ages rv">
+        <div class="age"><span class="n">15+</span><p>felfedezted a szexet.</p></div>
+        <div class="age"><span class="n">25+</span><p>felfedezted a női testet</p></div>
+        <div class="age cur"><span class="n">45</span><p>felett fedezd fel a saját tested még kiaknázatlan lehetőségeit!</p></div>
+      </div>
+      <p class="master rv">És válj ezáltal a <span class="accent">szeretkezés mesterévé!</span></p>
+      <div class="maybe rv">
+        <p>Talán egy hosszú kapcsolat után újra egyedül vagy.</p>
+        <p>Talán már megjelent valaki, akivel most másképp szeretnéd.</p>
+        <p>Talán egyszerűen azt érzed, hogy a következő húsz éved szexualitását nem ugyanúgy akarod megélni, mint az előző húszat.</p>
+      </div>
+      <p class="quietly">Nem több teljesítményt szeretnél, hanem több nyugalmat, több élvezetet.</p>
+      <p class="quietly">És sokkal kevesebb megfelelést.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 04 MIÉRT PONT TANTRA -->
+<section class="blk dark why" data-fb="b04" data-name="Miért pont tantra?">
+  <div class="wrap">
+    <h1 class="h-sec rv">Miért pont <em>tantra?</em></h1>
+    <p class="intro rv">A nyugati ember szeret célokat kitűzni. Elindulunk valahonnan, és igyekszünk minél gyorsabban megérkezni.</p>
+    <h3 class="rv">Ezt a gondolkodást bevittük a szexualitásunkba is.</h3>
+    <p class="chain-sr">Izgalom. Erekció. Egyre nagyobb izgalom. Orgazmus.</p>
+    <div class="chain rv" aria-hidden="true">
+      <span>Izgalom.</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      <span>Erekció.</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      <span>Egyre nagyobb izgalom.</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      <span>Orgazmus.</span>
+    </div>
+    <p class="outcome rv">Sikerült…. Vagy nem sikerült….</p>
+
+    <div class="why-grid">
+      <div class="strange rv">
+        <p>És minél fontosabbá válik a cél, annál könnyebben történik valami furcsa:</p>
+        <p class="big">elfelejtjük érezni azt, ami közben történik.</p>
+      </div>
+      <div class="head rv" role="list">
+        <span class="lead-q">Figyelni kezdjük magunkat;</span>
+        <span class="bub b1" role="listitem">Elég jó vagyok?</span>
+        <span class="bub b2" role="listitem">Elég sokáig bírom?</span>
+        <span class="bub b3" role="listitem">Élvezi a partnerem?</span>
+        <span class="bub b4" role="listitem">Működni fog?</span>
+        <span class="bub b5" role="listitem">Mikor kellene továbblépnem?</span>
+      </div>
+    </div>
+
+    <p class="leaves rv">A figyelem lassan kiköltözik a testből, és beköltözik a fejbe.</p>
+
+    <div class="opposite rv">
+      <p>A tantra ennek szinte az ellenkezőjét tanítja.</p>
+      <ul>
+        <li class="no">Nem azt, hogyan juss gyorsabban a csúcsra.</li>
+        <li class="no">Nem is azt, hogy hogyan juttasd a partneredet oda.</li>
+        <li>Hanem azt, hogy <strong>hogyan maradj benne abban, ami jó</strong>.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- 05 FIGYELEMMEL KEZDŐDIK -->
+<section class="blk light att" data-fb="b05" data-name="A tantrikus szex figyelemmel kezdődik">
+  <div class="wrap">
+    <div class="att-grid">
+      <div class="att-img rv"><img src="img/ferfi-mandala.webp" alt="Meditáló férfi, mögötte narancs mandala, gerincén végigfutó energiavonal" loading="lazy"></div>
+      <div>
+        <h1 class="h-sec rv">A tantrikus szex nem technikával kezdődik, hanem <em>figyelemmel</em></h1>
+        <div class="att-list">
+          <div class="att-item rv"><img src="img/ikon-hang.webp" alt=""><p>Azzal a képességgel, hogy észrevedd, mi történik a testedben.</p></div>
+          <div class="att-item rv"><img src="img/ikon-meditacio2.webp" alt=""><p>Megtanulod felépíteni, megtartani és szabályozni a szexuális izgalmat.</p></div>
+          <div class="att-item rv"><img src="img/ikon-homokora2.webp" alt=""><p>És közben ott maradni, a testedben, a másik emberrel, a pillanatban.</p></div>
+        </div>
+      </div>
+    </div>
+    <div class="practice rv">
+      <h2>Ezt azonban nem lehet pusztán megérteni.</h2>
+      <h2 class="must">Gyakorolni kell.</h2>
+      <h2 class="born">Ezért született meg a <strong>Tantraszex Edzésterv</strong>.</h2>
+      <a class="btn" href="#miert-erdemes">Érdekel, mit kapok a programban <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M6 13l6 6 6-6"/></svg></a>
+    </div>
+    <img class="mandala-edge" src="img/mandala-fel.webp" alt="" loading="lazy">
+  </div>
+</section>
+
+<!-- 06 MI A TET -->
+<section class="blk dark what" data-fb="b06" data-name="Mi a Tantraszex Edzésterv?">
+  <div class="wrap what-grid">
+    <div class="what-img rv"><img src="img/kovek.webp" alt="Kéz egy sor sima kő végére egy narancsszínű követ helyez" loading="lazy"></div>
+    <div class="what-txt">
+      <h1 class="h-sec rv">Mi a <em>Tantraszex Edzésterv?</em></h1>
+      <p class="def rv">Egy <span class="mark">12 hetes online gyakorlóprogram 45+ férfiaknak</span>.</p>
+      <ul class="nots rv">
+        <li>Nem 40 órányi videó.</li>
+        <li>Nem tantrikus filozófiák gyűjteménye.</li>
+        <li>És nem száz új póz vagy szex-kütyü.</li>
+      </ul>
+      <p class="twelve-big rv">12 gyakorlat. 12 hét.</p>
+      <div class="calendar rv" aria-hidden="true">
+        <span style="--k:1">1</span><span style="--k:2">2</span><span style="--k:3">3</span><span style="--k:4">4</span><span style="--k:5">5</span><span style="--k:6">6</span><span style="--k:7">7</span><span style="--k:8">8</span><span style="--k:9">9</span><span style="--k:10">10</span><span style="--k:11">11</span><span style="--k:12">12</span>
+      </div>
+      <p class="body-note">Minden héten kapsz egy új gyakorlatot, amely az előzőre épül.</p>
+      <p class="body-note">Ahogy egy sportedzésben sem attól leszel erősebb, hogy elolvasod a gyakorlatokat, itt sem az információ mennyisége számít.</p>
+      <p class="body-note"><span class="accent">Hanem az, amit a tested megtanul.</span></p>
+      <div class="know-can rv">
+        <p>A cél az, hogy a 12 hét végére a tantraszex-technika ne valami legyen, <strong>amit tudsz</strong>.</p>
+        <p>Hanem valami, <strong>amire képes vagy</strong>.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 07 MIT EDZÜNK -->
+<section class="blk light" data-fb="b07" data-name="Mit edzünk 12 héten keresztül?">
+  <div class="wrap narrow" style="max-width:900px">
+    <h1 class="h-sec rv" style="text-align:center">Mit edzünk <em>12 héten keresztül?</em></h1>
+    <div class="mods">
+      <div class="mod rv"><div class="num"><img src="img/szam-1.webp" alt="1."></div>
+        <div class="card">
+          <h2>FIGYELEM ÉS JELENLÉT</h2>
+          <blockquote>“Ahol a figyelem, ott az energia” tanítja a Tantra.</blockquote>
+          <p>Megtanulsz hosszan benne maradni egy érintésben, egy érzésben, egy orgazmus-hullámvasútban. Megtanulod a figyelmeddel irányítani a testedben a szexuális energiát, és pusztán a figyelmeddel fokozni vagy csökkenteni azt.</p>
+        </div></div>
+      <div class="mod rv"><div class="num"><img src="img/szam-2.webp" alt="2."></div>
+        <div class="card">
+          <h2>légzés</h2>
+          <p>A légzés az egyik legegyszerűbb eszköz, amit mindig magaddal viszel.</p>
+          <p class="pull">És mégis kevesen használják tudatosan a szexualitásban.</p>
+          <p>Megtanulod azokat az alapvető légzéstechnikákat, amelyek segítségével változtatni tudsz a testi állapotodon, mélyítheted a gyönyörérzeteket és jobban érzékelheted, illetve irányíthatod a benned megjelenő szexuális energiát.</p>
+        </div></div>
+      <div class="mod rv"><div class="num"><img src="img/szam-3.webp" alt="3."></div>
+        <div class="card">
+          <h2>TUDATOS ÉRINTÉS</h2>
+          <p class="qs">Te is úgy érintesz, hogy közben már azon jár az eszed, hogy hová akarsz eljutni?</p>
+          <p>A tudatos érintésben nincs agyalás.</p>
+          <p>Megtanulod érzékelni az érintést adó kézben és az érintett testben történő változásokat, és úgy érinteni, ahogy ott és akkor a legtökéletesebb.</p>
+          <p class="pull">Figyelni.</p>
+          <p>Nem azért érinteni, hogy történjen valami. Hanem azért, hogy <span class="mark">érezd, ami történik</span>.</p>
+          <p>És ettől az érintés minősége egészen más lesz.</p>
+        </div></div>
+      <div class="mod rv"><div class="num"><img src="img/szam-4.webp" alt="4."></div>
+        <div class="card">
+          <h2>A SZEXUÁLIS IZGALOM IRÁNYÍTÁSA</h2>
+          <p>A legtöbb férfi két állapotot ismer igazán jól: nincs izgalom – és sok izgalom.</p>
+          <p class="pull">Pedig a kettő között rengeteg fokozat van.</p>
+          <p>A tantraszex edzések során megtanulod felismerni az izgalmi állapotod különböző szintjeit, és egyre tudatosabban bánni velük.</p>
+          <div class="qs"><p>Mikor gyorsul fel túlságosan?</p><p>Mitől csillapodik?</p><p>Hogyan tudsz benne maradni egy kellemesen magas izgalmi állapotban anélkül, hogy rögtön a végpont felé rohannál?</p></div>
+          <p>Nem elnyomni tanulod az izgalmat. Hanem <span class="mark">elbírni egyre többet az élvezetből.</span></p>
+        </div></div>
+      <div class="mod rv"><div class="num"><img src="img/szam-5.webp" alt="5."></div>
+        <div class="card">
+          <h2>AZ EJAKULÁCIÓ TUDATOSABB SZABÁLYOZÁSA</h2>
+          <p>Az ejakuláció feletti nagyobb kontroll nem pusztán azt jelenti, hogy „tovább bírod”.</p>
+          <p class="pull">Ez túl kevés lenne.</p>
+          <p>A cél az, hogy egyre korábban felismerd a tested jelzéseit, és megtanulj tudatosabban bánni az izgalmi állapotoddal.</p>
+          <p>Nem harcolni a testeddel. Nem görcsösen visszatartani valamit.</p>
+          <p>Hanem együttműködni vele, és élvezni az izgalmi energia áramlását, hullámzását</p>
+          <p>Megtapasztalod, hogy a magmegtartás nem önmegtartóztatás. Hanem <span class="mark">egy képesség, mely újabb és újabb kapukat nyit meg a hihetetlen szexuális élmények felé.</span></p>
+        </div></div>
+    </div>
+    <div class="cta-row"><a class="btn" href="https://sf.soregizsuzsa.hu/t/r/tantraszex-edzesterv" target="_blank" rel="noopener">Szeretném ezt megtapasztalni <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
+  </div>
+</section>
+
+<!-- 08 MEGALKOTÓ -->
+<section class="blk dark author" data-fb="b08" data-name="A megalkotó (Sőregi Zsuzsa)">
+  <div class="wrap">
+    <h1 class="h-sec rv" style="margin-bottom:56px">A Tantraszex Edzésterv <em>megalkotója</em></h1>
+    <div class="author-grid">
+      <div class="author-photo rv"><img src="img/zsuzsa.webp" alt="Sőregi Zsuzsa (Kirana) portréja" loading="lazy"></div>
+      <div class="author-txt">
+        <h3 class="rv">Sőregi Zsuzsa (Kirana) vagyok - tantraoktató és szexuális önismereti tréner.</h3>
+        <p>Az elmúlt évtizedben több ezer férfi és nő bízta rám magát, hogy új dolgokat fedezzen fel a szexualitásában, tantrát, tantrikus szexualitást tanuljon. Közülük sokakat kifejezetten a lingam masszázs elméletére és gyakorlatára oktattam.</p>
+        <p>Ezt megelőzően és eközben persze én is tanultam több tantra iskolában, elmentem rengeteg workshopra, jártam szakrális női körökbe, együtt dolgoztam (a tanulás céljából), szinte valamennyi magyar és több külföldi tantra oktatóval.</p>
+        <p>Elvégeztem az International School of Temple Arts (nemzetközi szinten a legelismertebb és felkészültebb szexuális önismereti iskola) Szexuális önismeret 1-2 és Szexuális Gyógyító kurzusait, de talán a legfontosabb a saját út, a saját tapasztalás: én magam is a Tantra útját járom. Így élek, így szeretek.</p>
+        <p class="life rv">A Tantra nem csupán hivatás számomra, hanem az életem.</p>
+        <p>Sok mindenre nem tudom a választ, de a tapasztalat és az intuíció a felülről kért vezetettség segít, hogy úgy kísérjelek, mentoráljalak az utadon, ahogy Neked jó.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 09 MIÉRT ÉRDEMES -->
+<section class="blk light" id="miert-erdemes" data-fb="b09" data-name="Miért érdemes megvásárolnod?">
+  <div class="wrap">
+    <h1 class="h-sec rv" style="max-width:20ch">Miért érdemes megvásárolnod a <em>tantraszex edzéstervet?</em></h1>
+    <div class="bens">
+      <div class="ben rv"><h2>Megtanulod kezelni a szexuális izgalmad</h2><p>Két lehetőség van. Hagyod, hogy a farkad irányítson téged, vagy te irányítod a farkad, és megtanulod kezelni a szexuális energiád. Vagy éppen azt a helyzetet, amikor nem jelenik meg az izgalmi energia.</p></div>
+      <div class="ben rv"><h2>Felhagysz a leggyakoribb hibákkal</h2>
+        <p>Ha fogalmad sincs, hol tart a partnered,</p>
+        <ul><li>Elkezdesz csak a magad folyamatára figyelni</li><li>Elkezded kérdezgetni “ jó-e neki?”</li><li>Elkezdesz valamit elképzelni róla, esetleg hagyod magad becsapni</li></ul>
+        <p class="warn">Mindhárom óriási hiba, és tönkrevágja a szeretkezést, sokszor nem csak egy alkalomra, hanem örökre</p>
+        <p>Az edzésprogramban megtanulod érzékelni a szexuális energiát nem csak magadban, de a partneredben is. Tudod hol jársz, és tudod hol jár a partnered a gyönyör útján.</p></div>
+      <div class="ben rv"><h2>Teljesen biztos leszel a dolgodban</h2><p>Nem lesz soha többé kétséged, hogy egy randi vagy szeretkezés jól sikerül-e.</p><p>Elegendő elméleti tudásod és gyakorlati tapasztalatod lesz ahhoz, hogy minden szeretkezést művészként megalkoss.</p><p>Megtanulod tökéletesen érzékelni magadat és a másikat, így biztosan fogod tudni mi az, ami fokozza a gyönyört, mi az, ami kevésbé, és mi az, ami egyáltalán nem jó az adott pillanatban.</p></div>
+      <div class="ben rv"><h2>Laza, természetes önbizalmad lesz a nőkkel</h2><p>Minden nő teste máshogy működik. Ha abból indulsz ki, mi működött a korábbi kapcsolataidban, könnyen zsákutcába kerülsz.</p><p>Ebben az edzésprogramban megtanulsz egy szemléletváltást, ennek köszönhetően csodálatos kísérőjévé válsz bármely nőnek, valamennyi partnerednek abban, hogy életük legszebb szexuális élményeit tapasztalják meg.</p></div>
+      <div class="ben rv"><h2>Újabb és újabb élményeket szerzel</h2><p>A tantraszex edzés során elsajátított képességeid lehetővé teszik, hogy felfedezz olyan dolgokat a szexben, amelyekről korábban álmodni sem mertél</p></div>
+      <div class="ben rv"><h2>Mellékhatások: fiatalság, erő, egészség</h2><p>A kielégítő, energiamegtartó szex egy egészen új életminőséget is hoz számodra:</p><p>Tudatosabb lesz az életed, tudatosabb lesz a teremtésed.</p><p>Gazdálkodni tudsz az élet-energiáddal, megtapasztalod, hogy az elgyengülés, betegség és potencia-, vagy libidó zavar egyáltalán nem szükségszerű velejárója az évek múlásának</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- 10 KINEK SZÓL -->
+<section class="blk krem" data-fb="b10" data-name="Kinek szól?">
+  <div class="wrap">
+    <h1 class="h-sec rv">Kinek szól a <em>Tantraszex Edzésterv?</em></h1>
+    <div class="who-grid">
+      <div class="who-yes rv">
+        <p class="t">Neked szól, ha 45 feletti férfiként:</p>
+        <ul class="checks">
+          <li>egy hosszabb kapcsolat után új életszakaszba érkeztél;</li>
+          <li>egyedülállóként szeretnél magabiztosabban belépni egy következő kapcsolatba,</li>
+          <li>vagy egy új kapcsolatban most szeretnéd más alapokra helyezni a szexualitásodat.</li>
+        </ul>
+        <p>Akkor is neked szólhat, ha nincs különösebb „problémád”. Egyszerűen érzed, hogy <span class="mark">ennél több van a szexben</span>, és kíváncsi vagy arra, mire képes a tested, ha megtanulsz valóban figyelni rá.</p>
+      </div>
+      <div class="who-no rv">
+        <p>Ez a program viszont nem egy évtizedek óta ellaposodott kapcsolat „megjavítására” készült.</p>
+        <p>És nem gyors szexuális trükköket tanít.</p>
+        <p>Annak szól, aki hajlandó rendszeresen gyakorolni.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 11 VÉLEMÉNYEK -->
+<section class="blk dark tst-blk" data-fb="b11" data-name="Mások így élték meg (vélemények)">
+  <div class="wrap">
+    <h1 class="h-sec rv" style="text-align:center">Mások <em>így élték meg</em></h1>
+    <div class="tsts">
+      <div class="tst rv"><p>“Mikor találkoztam a Tantraszex edzéssel, éreztem, - még ha nem is volt rá tapasztalatom- hogy van realitása annak, hogy sokkal jobb lehet, ha "nem pukkad ki a lufi".</p><p>De arra, amit most magmegtartóként megélek a szexben, legvadabb szexuális álmomban sem gondoltam volna…”</p></div>
+      <div class="tst rv"><p>“Eleinte egy kicsit sajnáltam az időt a gyakorlásra, mert mindig rengeteg dolgom volt, a gimnázium óta időhiányban szenvedtem.</p><p>Durva, hogy a Tantraszex Edzés nem csak a szexualitásomat forradalmasította, de sokkal összeszedettebbé, energikusabbá tett a munkában, a hétköznapokban is. Egyszer csak azt vettem észre, hogy valahogy több időm van. A 12 . héten több, mint két óra elteltével is csak azért hagytam abba a gyakorlást, mert másnap munka volt és pihenni is kellett. “</p></div>
+      <div class="tst rv"><p>“Volt, hogy a tudatos és irányított légzés óvott meg attól, hogy "átessek". Jó volt azokat az új érzeteket megtapasztalni. Előfordult, hogy sikerült a formálódó "energiacsomagot" szétoszlatni az egész medencémben.</p><p class="em">De nem ért itt véget az élmény!</p><p>Két óra alvás után, éjjel felébredtem és a "határ" alatti érzet még mindig megvolt. Ráadásul olyan intenzíven, hogy folytatnom kellett a "gyakorlást". Folyamatosan feszegettem a határokat, közben tanulva a testem jelzéseit, egyre jobban, sokszor és sűrűbben megtapasztalva a "robbanás előtti kegyelmi pillanatot".</p></div>
+      <div class="tst rv"><p>“Egyszerre volt hihetetlen, de ugyanakkor valós, természetes és transzcendentális. Megdöbbentően "Uramisten!" érzés. Hogy tényleg van ilyen? Ekkora és ennyire elnyújtható élvezet? Pedig még csak a tanulás elején vagyok!</p><p class="em">És milyen érzés lesz majd másnak is megadni mindezt!?”</p></div>
+    </div>
+    <div class="cta-row"><a class="btn" href="#ajanlat">Megnézem az ajánlatot <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M6 13l6 6 6-6"/></svg></a></div>
+  </div>
+</section>
+
+<!-- 12 AJÁNDÉKOK -->
+<section class="blk light" data-fb="b12" data-name="Ajándékok">
+  <div class="wrap">
+    <div class="gift-head">
+      <h1 class="h-sec rv"><em>Ajándékok</em></h1>
+      <p class="rv">Az edzésterv mellé most ajándékba adjuk neked a következő bónusz anyagokat, amelyek értéke <span class="mark">39.000 Ft</span></p>
+    </div>
+    <div class="gifts">
+      <div class="gift rv"><img src="img/bonusz-1.webp" alt="Test + Lélek Kiegészítő borító" loading="lazy"><span class="bow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="8" width="18" height="4" rx="1"/><path d="M12 8v13M19 12v7a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2v-7M7.5 8a2.5 2.5 0 0 1 0-5C11 3 12 8 12 8s1-5 4.5-5a2.5 2.5 0 0 1 0 5"/></svg></span>
+        <div class="bd"><h3>Test + Lélek Kiegészítő:</h3><p>A fizikai gyakorlás kiegészítése mentális gyakorlatokkal egy tökéletesebb és harmónikusabb eredményért</p></div></div>
+      <div class="gift rv"><img src="img/bonusz-2.webp" alt="A Nő Szerepe a Férfi Szexualitásában borító" loading="lazy"><span class="bow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="8" width="18" height="4" rx="1"/><path d="M12 8v13M19 12v7a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2v-7M7.5 8a2.5 2.5 0 0 1 0-5C11 3 12 8 12 8s1-5 4.5-5a2.5 2.5 0 0 1 0 5"/></svg></span>
+        <div class="bd"><h3>A Nő Szerepe a Férfi Szexualitásában (video):</h3><p>Kerekasztal beszélgetés a tantrikus szexről és ebben a női partner szerepéről, két tantra oktató és egy szex coach részvételével</p></div></div>
+      <div class="gift rv"><img src="img/bonusz-3.webp" alt="Tantra Gyakorlók konzultációs csoport borító" loading="lazy"><span class="bow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="8" width="18" height="4" rx="1"/><path d="M12 8v13M19 12v7a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2v-7M7.5 8a2.5 2.5 0 0 1 0-5C11 3 12 8 12 8s1-5 4.5-5a2.5 2.5 0 0 1 0 5"/></svg></span>
+        <div class="bd"><h3>Tagság a konzultációs csoportban:</h3><p>Havi 1 alkalommal online beszélgetés a tapasztalatokról, és válasz a kérdésekre tantra oktatók vezetésével</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- 13 GARANCIÁK -->
+<section class="blk light" style="padding-top:20px" data-fb="b13" data-name="Garanciák">
+  <div class="wrap">
+    <h1 class="h-sec rv" style="text-align:center;margin-bottom:30px"><em>Garanciák</em></h1>
+    <div class="guar">
+      <div class="voucher rv">
+        <div class="seal" aria-hidden="true">24</div>
+        <h2>1. „ELSŐ RANDI” GARANCIA</h2>
+        <p class="promise">24 órád van eldönteni, akarsz-e másodikat!</p>
+        <p>Van, amikor már az első találkozásnál érzed: ebből nem lesz szerelem.</p>
+        <p>A kurzussal sem kell összekötnöd az életedet csak azért, mert egyszer igent mondtál rá.</p>
+        <p>Vásárlás után nézz bele a Tantraszex Edzéstervbe, ismerkedj meg a felépítésével és kezdd el az első gyakorlatot!</p>
+        <p>Ha elsőre úgy érzed, hogy „Köszönöm, ez nem az én világom”, jelezd nekem <span class="accent">24 órán belül</span> és visszakapod a kurzus árát.</p>
+        <p>Nincs sértődés. Nincs kínos magyarázkodás.</p>
+        <p class="sign">Nem minden első randiból lesz 12 hetes kapcsolat.</p>
+      </div>
+      <div class="voucher rv">
+        <div class="seal" aria-hidden="true">12</div>
+        <h2>2. „IZOMLÁZ” GARANCIA</h2>
+        <p class="promise">Ha végigcsináltad az edzést, de semmi hatást nem érzel, visszakapod a pénzed!</p>
+        <p>A Tantraszex Edzésterv nem attól működik, hogy ott van a gépeden.</p>
+        <p><span class="accent">Gyakorolni kell.</span></p>
+        <p>Végezd el a 12 hét 12 gyakorlatát az útmutatás szerint. Ha mindezt becsülettel végigcsináltad, és 12 hét után azt mondod:</p>
+        <p class="q">„Megcsináltam. De nem érzek érdemi változást.”</p>
+        <p>akkor visszaadom a kurzus árát, a vásárlás napjától számított 13. héten</p>
+        <p class="small">(nem előbb és nem később)</p>
+        <p class="sign">Ha te beleteszed a 12 hetet, én vállalom a garanciát.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 14 MIÉRT MOST -->
+<section class="blk dark now" data-fb="b14" data-name="Miért most?">
+  <div class="wrap">
+    <img class="hourglass" src="img/ikon-homokora.webp" alt="">
+    <h1 class="label rv" style="font-size:18px">Miért most?</h1>
+    <h2 class="older rv">12 hét múlva mindenképpen 12 héttel idősebb leszel.</h2>
+    <div class="lines rv">
+      <p class="q">A kérdés csak az, hogy közben változik-e valami.</p>
+      <p>Továbbra is ugyanúgy használhatod a testedet, ahogy az elmúlt húsz-harminc évben.</p>
+      <p>Vagy adhatsz neki 12 hetet, hogy megtanuljon valami újat.</p>
+      <p>Nem kell sietned.</p>
+      <p class="last">De a halogatás is egy döntés.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 15 CSOMAGOK -->
+<section class="blk light" id="ajanlat" data-fb="b15" data-name="Csomagok (árak)">
+  <div class="wrap">
+    <h1 class="h-sec rv" style="text-align:center"><em>Csomagok</em></h1>
+    <div class="prices">
+      <div class="pcard basic rv">
+        <span class="tier">1.</span>
+        <h2 class="name">Tantraszex Edzésterv</h2>
+        <ul><li>12 hét, 12 gyakorlat</li><li>Online kurzus</li><li>Otthon, a saját tempódban</li></ul>
+        <h2 class="price">38.900 Ft</h2>
+        <a class="btn" href="https://sf.soregizsuzsa.hu/t/r/tantraszex-edzesterv" target="_blank" rel="noopener">Ezt választom <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      </div>
+      <div class="pcard prem rv">
+        <span class="tier">2.</span>
+        <h2 class="name">Tantraszex Edzésterv Prémium</h2>
+        <ul><li>12 hetes program</li><li>Online kurzus</li><li>Otthon, a saját tempódban</li><li>A gyakorlatok személyre szabása</li><li>Személyre szabott időbeosztás</li><li>Tapasztalatok megosztása személyesen</li><li>Problémakezelés személyesen</li></ul>
+        <p class="more">Részletesebb információért a prémium csomagról</p>
+        <h2 class="price">99.800 Ft</h2>
+        <a class="btn" role="button" tabindex="0">Kezdje el most <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 16 GYIK -->
+<section class="blk krem" data-fb="b16" data-name="Gyakran Intézett Kérdések">
+  <div class="wrap">
+    <h1 class="h-sec rv">Gyakran <em>Intézett</em> Kérdések</h1>
+    <div class="faq">
+      <div class="qa rv"><p class="q"><b>1.</b><span>Mi történik, miután kitöltöttem a megrendelőlapot?</span></p><p class="a">Ez az oldalad normál szöveg kinézete. Az egész oldal 80%-a ebben íródik és csak a kiemelések és a figyelem felkeltő tartalmak lesznek máshogy formázva. Ide jól és könnyen olvasható betűtípus kell.</p></div>
+      <div class="qa rv"><p class="q"><b>2.</b><span>Kapok számlát?</span></p><p class="a">Természetesen</p></div>
+      <div class="qa rv"><p class="q"><b>3.</b><span>Mit tud nekem újat mondani a szexről ennyi idős koromban?</span></p><p class="a">Nem azt tanulod újra, amit már harminc éve csinálsz. Olyan képességeket edzünk, amelyeket valószínűleg soha senki nem tanított meg neked.</p></div>
+      <div class="qa rv"><p class="q"><b>4.</b><span>Akkor is működik, ha nem vagyok “spiri”?</span></p><p class="a">Nem hinni kell benne. Csinálni kell.</p></div>
+      <div class="qa rv"><p class="q"><b>5.</b><span>Egyedül hogyan gyakoroljak szexet?</span></p><p class="a">Nem kell megvárnod a következő kapcsolatodat ahhoz, hogy más férfiként érkezz bele.</p></div>
+      <div class="qa rv"><p class="q"><b>6.</b><span>„Mi van, ha elkezdem, aztán nem csinálom?”</span></p><p class="a">Nem kell megtanulnod a tantrát. Ezen a héten csak ezt az egy gyakorlatot kell elvégezned.<br>A fiók megmarad, hónapok múlva újra előveheted.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- 17 ZÁRÓ CTA -->
+<section class="blk final" data-fb="b17" data-name="Záró gomb">
+  <div class="wrap">
+    <a class="btn rv" href="https://sf.soregizsuzsa.hu/t/r/tantraszex-edzesterv" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3c2 4 6 5 6 10a6 6 0 0 1-12 0c0-3 2-4 2-7 2 1 3 3 3 5 1-2 1-5 1-8z"/></svg> Belevágok a Tantraszex Edzéstervbe!</a>
+  </div>
+</section>
+
+<!-- Visszajelzés dokk -->
+<div class="fb-dock" id="fbDock" role="toolbar" aria-label="Visszajelzés">
+  <span class="ver" id="fbVer">V1</span>
+  <span class="cnt" id="fbCount">0 / 17 blokkhoz írtál</span>
+  <button type="button" id="fbGeneralBtn">Általános megjegyzés</button>
+  <button type="button" id="fbToggle" aria-pressed="false">Megjegyzések elrejtése</button>
+</div>
+<div class="fb-gen fb-pin" id="fbGeneral" hidden style="position:fixed;top:auto;right:auto"></div>
+
+<script>
+document.documentElement.classList.add('js');
+(function(){
+  /* ── finom előtűnés ── */
+  const els=document.querySelectorAll('.rv');
+  if('IntersectionObserver' in window){
+    const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{rootMargin:'0px 0px -8% 0px'});
+    els.forEach(el=>{const r=el.getBoundingClientRect();if(r.top<innerHeight)el.classList.add('in');else io.observe(el)});
+  } else els.forEach(el=>el.classList.add('in'));
+
+  /* ── 12 hetes sáv: görgetés szerint töltődik ── */
+  const cells=[...document.querySelectorAll('#weeks i')];
+  let raf=0;
+  function prog(){raf=0;const h=document.documentElement;const max=h.scrollHeight-innerHeight;const p=max>0?Math.min(1,Math.max(0,scrollY/max)):0;const w=p*12;cells.forEach((c,i)=>c.style.setProperty('--f',Math.min(1,Math.max(0,w-i)).toFixed(3)))}
+  addEventListener('scroll',()=>{if(!raf)raf=requestAnimationFrame(prog)},{passive:true});prog();
+})();
+
+/* ════ Visszajelzés: blokkonkénti megjegyzések az artifact adatbázisában ════ */
+(function(){
+  const ROUND=1;                  /* aktuális változat */
+  const COL='feedback';
+  const LS='tet-fb-v'+ROUND;
+  const blocks=[...document.querySelectorAll('[data-fb]')];
+  const all=new Map();            /* docId -> data */
+  let db=null, dbState='pending';
+  const ui={};                    /* blockId -> {tab,panel,ta,st} */
+
+  const pencil='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4z"/></svg>';
+  const docId=(b,r)=>'v'+(r||ROUND)+'--'+b;
+  const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+
+  function localAll(){try{return JSON.parse(localStorage.getItem(LS)||'{}')}catch(e){return {}}}
+  function localSet(b,t){try{const o=localAll();o[b]=t;localStorage.setItem(LS,JSON.stringify(o))}catch(e){}}
+
+  function build(id,name,host,idx){
+    const pin=host.classList.contains('fb-gen')?host:document.createElement('div');
+    if(pin!==host){pin.className='fb-pin';host.appendChild(pin)}
+    const label=idx?String(idx).padStart(2,'0'):'ÁLT';
+    pin.innerHTML='<button type="button" class="fb-tab" aria-expanded="false"><span class="no">'+label+'</span>'+pencil+'<span class="nm">Megjegyzés · '+esc(name)+'</span></button>'+
+      '<div class="fb-panel" hidden><div class="hd">'+esc(name)+'<span>V'+ROUND+'</span></div>'+
+      '<div class="hist" hidden></div>'+
+      '<textarea id="fb-ta-'+id+'" placeholder="Mit változtassak ezen a blokkon? (szöveg, kép, szín, elrendezés…)"></textarea>'+
+      '<div class="ft"><span class="st" aria-live="polite"></span><div class="acts"><button type="button" class="close">Bezár</button><button type="button" class="save">Mentés</button></div></div></div>';
+    const o={pin,tab:pin.querySelector('.fb-tab'),panel:pin.querySelector('.fb-panel'),ta:pin.querySelector('textarea'),st:pin.querySelector('.st'),hist:pin.querySelector('.hist'),name,saved:'',timer:0,busy:false,queued:false};
+    ui[id]=o;
+    o.tab.addEventListener('click',()=>toggle(id));
+    o.panel.querySelector('.close').addEventListener('click',()=>toggle(id,false));
+    o.panel.querySelector('.save').addEventListener('click',()=>save(id));
+    o.ta.addEventListener('input',()=>{o.st.textContent='Mentésre vár…';o.st.className='st';clearTimeout(o.timer);o.timer=setTimeout(()=>save(id),1500)});
+    o.ta.addEventListener('blur',()=>{if(o.ta.value!==o.saved)save(id)});
+  }
+  function toggle(id,force){
+    const o=ui[id];const open=force===undefined?o.panel.hidden:force;
+    o.panel.hidden=!open;o.tab.setAttribute('aria-expanded',String(open));
+    if(open)setTimeout(()=>o.ta.focus(),30);
+  }
+  function stamp(iso){try{return new Date(iso).toLocaleTimeString('hu-HU',{hour:'2-digit',minute:'2-digit'})}catch(e){return ''}}
+  async function save(id){
+    const o=ui[id];clearTimeout(o.timer);
+    const text=o.ta.value;
+    if(text===o.saved){o.st.textContent=text?'Mentve':'';o.st.className='st ok';return}
+    if(o.busy){o.queued=true;return}
+    o.busy=true;o.st.textContent='Mentés…';o.st.className='st';
+    try{
+      if(db){
+        await db.collection(COL).doc(docId(id)).set({round:ROUND,block:id,name:o.name,text:text,updatedAt:new Date().toISOString()});
+        o.saved=text;o.st.textContent='Mentve '+stamp(new Date().toISOString())+' · Claude látja';o.st.className='st ok';
+      } else {
+        localSet(id,text);o.saved=text;
+        o.st.textContent=dbState==='pending'?'Kapcsolódás… (addig csak ebben a böngészőben)':'Csak ebben a böngészőben mentve – Claude így nem látja';o.st.className='st err';
+      }
+    }catch(e){
+      localSet(id,text);
+      o.st.textContent=(e&&e.code==='invalid_argument')?'Nincs jogosultságod menteni (csak megtekintés).':'Nem sikerült menteni, próbáld újra a Mentés gombbal.';o.st.className='st err';
+    }
+    o.busy=false;refresh();
+    if(o.queued){o.queued=false;if(o.ta.value!==o.saved)save(id)}
+  }
+  function refresh(){
+    let n=0;
+    for(const id in ui){
+      const o=ui[id];const has=!!(o.saved&&o.saved.trim());
+      if(has&&id!=='general')n++;
+      o.tab.classList.toggle('has',has);
+      /* előző körök + Claude válaszai */
+      const prev=[];
+      for(let r=ROUND-1;r>=1;r--){const d=all.get(docId(id,r));if(d&&(d.text||d.reply))prev.push('<div><b>V'+r+' – a te megjegyzésed</b><div>'+esc(d.text||'—')+'</div>'+(d.reply?'<div class="rep"><b>Claude</b><div>'+esc(d.reply)+'</div></div>':'')+'</div>')}
+      const cur=all.get(docId(id));
+      if(cur&&cur.reply)prev.push('<div class="rep"><b>Claude</b><div>'+esc(cur.reply)+'</div></div>');
+      o.hist.hidden=!prev.length;o.hist.innerHTML=prev.join('');
+    }
+    document.getElementById('fbCount').textContent=n+' / '+blocks.length+' blokkhoz írtál';
+  }
+
+  blocks.forEach((s,i)=>build(s.dataset.fb,s.dataset.name,s,i+1));
+  const gen=document.getElementById('fbGeneral');gen.hidden=false;gen.classList.add('fb-gen');
+  build('general','Általános megjegyzés az egész oldalhoz',gen,0);
+  ui.general.tab.style.display='none';
+  document.getElementById('fbGeneralBtn').addEventListener('click',()=>toggle('general'));
+  document.getElementById('fbVer').textContent='V'+ROUND;
+
+  /* helyi piszkozatok, amíg az adatbázis válaszol */
+  const loc=localAll();
+  for(const id in loc){if(ui[id]&&loc[id]){ui[id].ta.value=loc[id]}}
+
+  const tg=document.getElementById('fbToggle');
+  tg.addEventListener('click',()=>{const off=document.body.classList.toggle('fb-off');tg.setAttribute('aria-pressed',String(off));tg.textContent=off?'Megjegyzések mutatása':'Megjegyzések elrejtése'});
+
+  refresh();
+
+  (async()=>{
+    try{db=window.claude&&claude.use?await claude.use('db'):null}catch(e){db=null}
+    dbState=db?'ok':'none';
+    if(!db){for(const id in ui){const o=ui[id];if(o.ta.value){o.st.textContent='Csak ebben a böngészőben mentve – Claude így nem látja';o.st.className='st err'}}return}
+    let first=true;
+    db.collection(COL).onSnapshot(snap=>{
+      all.clear();snap.docs.forEach(d=>{if(d.exists)all.set(d.id,d.data())});
+      for(const id in ui){
+        const o=ui[id];const d=all.get(docId(id));const remote=d&&typeof d.text==='string'?d.text:'';
+        const editing=document.activeElement===o.ta||o.busy||o.ta.value!==o.saved;
+        if(first){
+          /* helyi, még nem mentett piszkozat feltöltése */
+          if(o.ta.value&&o.ta.value!==remote){o.saved=remote;save(id)}else{o.ta.value=remote;o.saved=remote;if(remote){o.st.textContent='Mentve '+stamp(d.updatedAt)+' · Claude látja';o.st.className='st ok'}}
+        } else if(!editing){o.ta.value=remote;o.saved=remote}
+      }
+      first=false;refresh();
+    },err=>{dbState='none';for(const id in ui){ui[id].st.textContent='A mentés most nem érhető el.';ui[id].st.className='st err'}});
+  })();
+})();
+</script>
