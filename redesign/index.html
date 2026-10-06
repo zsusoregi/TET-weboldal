@@ -128,9 +128,10 @@ h1,h2,h3,h4{margin:0;text-wrap:balance}
 .about-txt{display:flex;flex-direction:column;gap:22px;min-width:0}
 .about-txt .h-sec{margin-bottom:4px}
 .about-txt p{max-width:62ch}
-.ages{display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin:18px 0 6px;position:relative}
+.ages{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0;margin:18px 0 6px;position:relative}
 .ages::before{content:"";position:absolute;left:0;right:0;top:44px;border-top:2px dashed rgba(181,78,2,.35)}
-.age{position:relative;padding:0 14px 0 0}
+.age{position:relative;padding:0 14px 0 0;min-width:0;overflow-wrap:anywhere}
+@media(max-width:400px){.age .n{font-size:38px}.ages::before{top:24px}.age{padding-right:8px}.age p{font-size:14px}}
 .age .n{font-family:var(--f-num);font-weight:900;font-size:64px;line-height:1;color:var(--tinta);background:var(--hamu);padding-right:10px;display:inline-block;position:relative}
 .age.cur .n{color:var(--parazs)}
 .age p{font-size:15.5px;margin-top:10px;line-height:1.45}
