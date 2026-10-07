@@ -1,0 +1,20 @@
+{
+ "mappa": "ikonok",
+ "quality": "medium",
+ "szinek": {"primary": "#B54E02", "accent": "#E39A4C", "accent2": "#6F3C1E", "ink": "#2B1B12"},
+ "stilusok": [
+  {"id": "i1", "nev": "Lapos, kétszínű", "miert": "Tiszta, modern lapos ikonok a narancs és borostyán színekkel. Rendezett, jól olvasható.", "elotag": "Modern flat vector icon, calm rounded geometric shapes, bold simple solid shapes, no gradients, no outlines, no 3D. Limited palette only: {primary}, {accent}, {accent2}, with tiny {ink} details. Serene, mature, wellness mood."},
+  {"id": "i2", "nev": "Vonalas + színfolt", "miert": "A mostani oldalatok vékony narancs vonalas ikonjainak igényesebb változata, egy-egy meleg színfolttal mögöttük.", "elotag": "Minimal monoline line-art icon: uniform medium-weight {primary} strokes with rounded caps, plus one soft flat colour blob in {accent} slightly offset behind the line drawing like a misregistered print. Clean, editorial, calm, lots of white space."},
+  {"id": "i3", "nev": "Kézzel rajzolt", "miert": "Laza, kézzel rajzolt ikonok, mintha Kirana rajzolta volna a jegyzetei margójára. Személyes, meleg.", "elotag": "Hand-drawn ink brush icon drawn in {accent2}: loose, slightly imperfect organic lines, simple flat colour washes in {primary} and {accent} that slightly miss the outlines. Calm sketchbook style, mature and gentle, not childish."},
+  {"id": "i5", "nev": "Puha 3D", "miert": "Puha, matt, agyagszerű 3D formák meleg fényben. Prémium, kézzelfogható, nyugodt.", "elotag": "Soft 3D clay-style icon: rounded smooth matte shapes, warm gentle candle-like light from the top left, soft ambient occlusion, colours based on {primary}, {accent} and {accent2}. No harsh reflections, no floor. Calm, premium wellness mood."},
+  {"id": "i6", "nev": "Retró nyomat", "miert": "Kétszínű, szemcsés risograph-nyomat: karakteres, kicsit művészi, plakátos.", "elotag": "Retro two-colour risograph print icon: bold simple forms in {primary} and {accent2} inks only, visible grain texture and slight misregistration, flat, no gradients. Calm, mature mood."}
+ ],
+ "ikonok": [
+  {"nev": "figyelem", "tema": "an open eye seen from the front with a few soft radiating lines above it, symbol of attention and presence"},
+  {"nev": "legzes", "tema": "three flowing curved air waves, like a slow calm breath, symbol of breathing"},
+  {"nev": "erintes", "tema": "two open hands gently touching at the fingertips, symbol of mindful touch"},
+  {"nev": "izgalom", "tema": "a single elegant flame, symbol of inner energy"},
+  {"nev": "szabalyozas", "tema": "a smooth gentle wave line inside a circle, like a calm controlled flow of energy"},
+  {"nev": "homokora", "tema": "a classic hourglass with sand flowing, symbol of time and patience"}
+ ]
+}
