@@ -1,0 +1,782 @@
+{
+ "url": "https://tet.tantraiskola.com",
+ "host": "tet.tantraiskola.com",
+ "cim": "Tantraszex Edzésterv",
+ "leiras": "12 hetes online gyakorló program férfiaknak, a tantrikus szexualitás alapjainak elsajátításához",
+ "oldalak": [
+  {
+   "url": "https://tet.tantraiskola.com",
+   "nev": "fooldal",
+   "cimsorok": [
+    [
+     1,
+     "Legyél magabiztos szerető, és fedezz fel különleges élményeket, tökéletes kapcsolódásokat a szexben, néhány új képesség megszerzése révén!"
+    ],
+    [
+     4,
+     "TANTRASZEX EDZÉSTERV"
+    ],
+    [
+     1,
+     "Miről szól a tantraszex edzésterv?"
+    ],
+    [
+     2,
+     "Nem azt tanulod újra, amit már harminc (vagy több) éve csinálsz. Olyan képességeket edzünk, amelyeket valószínűleg soha senki nem tanított meg neked."
+    ],
+    [
+     1,
+     "Miért pont tantra?"
+    ],
+    [
+     3,
+     "Ezt a gondolkodást bevittük a szexualitásunkba is."
+    ],
+    [
+     1,
+     "A tantrikus szex nem technikával kezdődik, hanem figyelemmel"
+    ],
+    [
+     2,
+     "Ezt azonban nem lehet pusztán megérteni."
+    ],
+    [
+     2,
+     "Gyakorolni kell."
+    ],
+    [
+     2,
+     "Ezért született meg a Tantraszex Edzésterv"
+    ],
+    [
+     1,
+     "Mi a Tantraszex Edzésterv?"
+    ],
+    [
+     1,
+     "Mit edzünk 12 héten keresztül?"
+    ],
+    [
+     2,
+     "FIGYELEM ÉS JELENLÉT"
+    ],
+    [
+     2,
+     "légzés"
+    ],
+    [
+     2,
+     "TUDATOS ÉRINTÉS"
+    ],
+    [
+     2,
+     "A SZEXUÁLIS IZGALOM IRÁNYÍTÁSA"
+    ],
+    [
+     2,
+     "AZ EJAKULÁCIÓ TUDATOSABB SZABÁLYOZÁSA"
+    ],
+    [
+     1,
+     "A Tantraszex Edzésterv megalkotója"
+    ],
+    [
+     3,
+     "Sőregi Zsuzsa (Kirana) vagyok - tantraoktató és szexuális önismereti tréner."
+    ],
+    [
+     1,
+     "Miért érdemes megvásárolnod a tantraszex edzéstervet?"
+    ],
+    [
+     2,
+     "Megtanulod kezelni a szexuális izgalmad"
+    ],
+    [
+     2,
+     "Felhagysz a leggyakoribb hibákkal"
+    ],
+    [
+     2,
+     "Teljesen biztos leszel a dolgodban"
+    ],
+    [
+     2,
+     "Laza, természetes önbizalmad lesz a nőkkel"
+    ],
+    [
+     2,
+     "Újabb és újabb élményeket szerzel"
+    ],
+    [
+     2,
+     "Mellékhatások: fiatalság, erő, egészség"
+    ],
+    [
+     1,
+     "Kinek szól a Tantraszex Edzésterv?"
+    ],
+    [
+     1,
+     "Mások így élték meg"
+    ],
+    [
+     1,
+     "Ajándékok"
+    ],
+    [
+     1,
+     "Garanciák"
+    ],
+    [
+     2,
+     "1. „ELSŐ RANDI” GARANCIA"
+    ],
+    [
+     2,
+     "2. „IZOMLÁZ” GARANCIA"
+    ],
+    [
+     1,
+     "Miért most?"
+    ],
+    [
+     2,
+     "12 hét múlva mindenképpen 12 héttel idősebb leszel."
+    ],
+    [
+     1,
+     "Csomagok"
+    ],
+    [
+     2,
+     "1. Tantraszex Edzésterv"
+    ],
+    [
+     2,
+     "38.900 Ft"
+    ],
+    [
+     2,
+     "2. Tantraszex Edzésterv Prémium"
+    ],
+    [
+     2,
+     "99.800 Ft"
+    ],
+    [
+     1,
+     "Gyakran Intézett Kérdések"
+    ]
+   ],
+   "sorok": 227
+  }
+ ],
+ "szinek_css": [
+  [
+   "#fffbf4",
+   111
+  ],
+  [
+   "#b54e02",
+   84
+  ],
+  [
+   "#0000ee",
+   60
+  ],
+  [
+   "#337ab7",
+   26
+  ],
+  [
+   "#ffeed8",
+   20
+  ],
+  [
+   "#3c763d",
+   14
+  ],
+  [
+   "#8a6d3b",
+   14
+  ],
+  [
+   "#a94442",
+   14
+  ],
+  [
+   "#31708f",
+   9
+  ],
+  [
+   "#fcf8e3",
+   8
+  ],
+  [
+   "#ff9d00",
+   8
+  ],
+  [
+   "#217ded",
+   8
+  ],
+  [
+   "#3480ba",
+   8
+  ],
+  [
+   "#dff0d8",
+   7
+  ],
+  [
+   "#f2dede",
+   7
+  ],
+  [
+   "#286090",
+   6
+  ]
+ ],
+ "semleges_css": [
+  [
+   "#000000",
+   319
+  ],
+  [
+   "#ffffff",
+   187
+  ],
+  [
+   "#4c4c4c",
+   115
+  ],
+  [
+   "#777777",
+   54
+  ],
+  [
+   "#333333",
+   44
+  ],
+  [
+   "#dddddd",
+   39
+  ],
+  [
+   "#eeeeee",
+   20
+  ],
+  [
+   "#d1d1d1",
+   17
+  ]
+ ],
+ "betuk": [
+  "builder-ui-icons-plugins!important",
+  "Open Sans",
+  "FontAwesome!important",
+  "tabler-icons-all-300",
+  "Helvetica Neue",
+  "FontAwesome",
+  "Glyphicons Halflings",
+  "Menlo",
+  "builder-ui-icons-plugins",
+  "builder-ui-icons-plugins'!important"
+ ],
+ "logo_jeloltek": [
+  {
+   "url": "https://tet.tantraiskola.com/gallery_gen/f1401e7e51e32f8fcfda2cfc9b27d32d_fit.png",
+   "fajl": "kepek/f1401e7e51e32f8fcfda2cfc9b27d32d_fit.png",
+   "px": [
+    1059,
+    1350
+   ],
+   "mode": "RGBA",
+   "szinek": [
+    {
+     "hex": "#000000",
+     "arany": 0.632,
+     "semleges": true
+    },
+    {
+     "hex": "#c07d53",
+     "arany": 0.05,
+     "semleges": false
+    },
+    {
+     "hex": "#6f3c1e",
+     "arany": 0.048,
+     "semleges": false
+    },
+    {
+     "hex": "#895433",
+     "arany": 0.045,
+     "semleges": false
+    },
+    {
+     "hex": "#a8643e",
+     "arany": 0.045,
+     "semleges": false
+    },
+    {
+     "hex": "#4d260e",
+     "arany": 0.044,
+     "semleges": false
+    }
+   ]
+  },
+  {
+   "url": "https://tet.tantraiskola.com/gallery/favicons/favicon-60x60.png",
+   "fajl": "kepek/favicon-60x60.png",
+   "px": [
+    60,
+    60
+   ],
+   "mode": "RGBA",
+   "szinek": [
+    {
+     "hex": "#ffffff",
+     "arany": 0.421,
+     "semleges": true
+    },
+    {
+     "hex": "#855957",
+     "arany": 0.105,
+     "semleges": false
+    },
+    {
+     "hex": "#fefffe",
+     "arany": 0.105,
+     "semleges": false
+    },
+    {
+     "hex": "#c5acaa",
+     "arany": 0.087,
+     "semleges": false
+    },
+    {
+     "hex": "#fefefe",
+     "arany": 0.073,
+     "semleges": true
+    },
+    {
+     "hex": "#f3eeed",
+     "arany": 0.072,
+     "semleges": false
+    }
+   ]
+  },
+  {
+   "url": "https://tet.tantraiskola.com/gallery/favicons/favicon-76x76.png",
+   "fajl": "kepek/favicon-76x76.png",
+   "px": [
+    76,
+    76
+   ],
+   "mode": "RGBA",
+   "szinek": [
+    {
+     "hex": "#ffffff",
+     "arany": 0.426,
+     "semleges": true
+    },
+    {
+     "hex": "#7e504e",
+     "arany": 0.1,
+     "semleges": false
+    },
+    {
+     "hex": "#fefffe",
+     "arany": 0.1,
+     "semleges": false
+    },
+    {
+     "hex": "#cab2af",
+     "arany": 0.089,
+     "semleges": false
+    },
+    {
+     "hex": "#fefefe",
+     "arany": 0.078,
+     "semleges": true
+    },
+    {
+     "hex": "#fefefd",
+     "arany": 0.065,
+     "semleges": false
+    }
+   ]
+  },
+  {
+   "url": "https://tet.tantraiskola.com/gallery/favicons/favicon.png",
+   "fajl": "kepek/favicon.png",
+   "px": [
+    96,
+    96
+   ],
+   "mode": "RGBA",
+   "szinek": [
+    {
+     "hex": "#ffffff",
+     "arany": 0.441,
+     "semleges": true
+    },
+    {
+     "hex": "#794947",
+     "arany": 0.1,
+     "semleges": false
+    },
+    {
+     "hex": "#fefffe",
+     "arany": 0.086,
+     "semleges": false
+    },
+    {
+     "hex": "#c9b1af",
+     "arany": 0.081,
+     "semleges": false
+    },
+    {
+     "hex": "#fefefe",
+     "arany": 0.078,
+     "semleges": true
+    },
+    {
+     "hex": "#f8f4f3",
+     "arany": 0.063,
+     "semleges": false
+    }
+   ]
+  }
+ ],
+ "kepek": [
+  {
+   "url": "https://tet.tantraiskola.com/gallery_gen/9eb5b03374d8a69a83f0f3445723b4c7_1097x1313_156x350_1414x2000_crop.jpg?ts=1790957977",
+   "alt": "",
+   "class": "",
+   "w": "",
+   "h": "",
+   "nav": false,
+   "oldal": "fooldal",
+   "fajl": "kepek/9eb5b03374d8a69a83f0f3445723b4c7_1097x1313_156x350_1414x2000_crop.jpg",
+   "px": [
+    1097,
+    1313
+   ],
+   "mode": "RGB",
+   "kb": 73
+  },
+  {
+   "url": "https://tet.tantraiskola.com/gallery_gen/a7321c2cbdf25b7e8b64cb9cba518c68_308x308_fit.png?ts=1790957977",
+   "alt": "",
+   "class": "",
+   "w": "",
+   "h": "",
+   "nav": false,
+   "oldal": "fooldal",
+   "fajl": "kepek/a7321c2cbdf25b7e8b64cb9cba518c68_308x308_fit.png",
+   "px": [
+    308,
+    308
+   ],
+   "mode": "RGBA",
+   "kb": 16
+  },
+  {
+   "url": "https://tet.tantraiskola.com/gallery_gen/f0b17b90549dcc3b0c30c925b1c635e1_296x296_fit.png?ts=1790957977",
+   "alt": "",
+   "class": "",
+   "w": "",
+   "h": "",
+   "nav": false,
+   "oldal": "fooldal",
+   "fajl": "kepek/f0b17b90549dcc3b0c30c925b1c635e1_296x296_fit.png",
+   "px": [
+    296,
+    296
+   ],
+   "mode": "RGBA",
+   "kb": 19
+  },
+  {
+   "url": "https://tet.tantraiskola.com/gallery_gen/b98ba459f397abb8932d7893ee718768_290x290_fit.png?ts=1790957977",
+   "alt": "",
+   "class": "",
+   "w": "",
+   "h": "",
+   "nav": false,
+   "oldal": "fooldal",
+   "fajl": "kepek/b98ba459f397abb8932d7893ee718768_290x290_fit.png",
+   "px": [
+    290,
+    290
+   ],
+   "mode": "RGBA",
+   "kb": 14
+  },
+  {
+   "url": "https://tet.tantraiskola.com/gallery_gen/ba37c60364b83a36cb8e33f244440beb_840x1050_0x0_840x1050_crop.png?ts=1790957977",
+   "alt": "",
+   "class": "",
+   "w": "",
+   "h": "",
+   "nav": false,
+   "oldal": "fooldal",
+   "fajl": "kepek/ba37c60364b83a36cb8e33f244440beb_840x1050_0x0_840x1050_crop.png",
+   "px": [
+    840,
+    1050
+   ],
+   "mode": "RGBA",
+   "kb": 1047
+  },
+  {
+   "url": "https://tet.tantraiskola.com/gallery_gen/98d202cc6786298ec37e0c23d683e620_1024x1430_0x9_1024x1536_crop.png?ts=1790957977",
+   "alt": "",
+   "class": "",
+   "w": "",
+   "h": "",
+   "nav": false,
+   "oldal": "fooldal",
+   "fajl": "kepek/98d202cc6786298ec37e0c23d683e620_1024x1430_0x9_1024x1536_crop.png",
+   "px": [
+    1024,
+    1430
+   ],
+   "mode": "RGBA",
+   "kb": 1230
+  },
+  {
+   "url": "https://tet.tantraiskola.com/gallery/tet-ikon-hang.png?ts=1790957977",
+   "alt": "",
+   "class": "",
+   "w": "",
+   "h": "",
+   "nav": false,
+   "oldal": "fooldal",
+   "fajl": "kepek/tet-ikon-hang.png",
+   "px": [
+    1844,
+    1844
+   ],
+   "mode": "RGBA",
+   "kb": 47
+  },
+  {
+   "url": "https://tet.tantraiskola.com/gallery/gallery_gen-51a2c4ce28664693d19915a0806d5cad_634x634_fit.png?ts=1790957977",
+   "alt": "",
+   "class": "",
+   "w": "",
+   "h": "",
+   "nav": false,
+   "oldal": "fooldal",
+   "fajl": "kepek/gallery_gen-51a2c4ce28664693d19915a0806d5cad_634x634_fit.png",
+   "px": [
+    634,
+    634
+   ],
+   "mode": "RGBA",
+   "kb": 48
+  },
+  {
+   "url": "https://tet.tantraiskola.com/gallery/gallery_gen-321fc1e5035d126848bb5540a736e4f1_634x634_fit.png?ts=1790957977",
+   "alt": "",
+   "class": "",
+   "w": "",
+   "h": "",
+   "nav": false,
+   "oldal": "fooldal",
+   "fajl": "kepek/gallery_gen-321fc1e5035d126848bb5540a736e4f1_634x634_fit.png",
+   "px": [
+    634,
+    634
+   ],
+   "mode": "RGBA",
+   "kb": 35
+  },
+  {
+   "url": "https://tet.tantraiskola.com/gallery/gallery-mandala_felbevagva.png?ts=1790957977",
+   "alt": "",
+   "class": "",
+   "w": "",
+   "h": "",
+   "nav": false,
+   "oldal": "fooldal",
+   "fajl": "kepek/gallery-mandala_felbevagva.png",
+   "px": [
+    599,
+    208
+   ],
+   "mode": "RGBA",
+   "kb": 234
+  },
+  {
+   "url": "https://tet.tantraiskola.com/gallery_gen/fc38c1e888614f6382f6fb13cabb1d25_1024x987_0x369_1024x1536_crop.png?ts=1790957977",
+   "alt": "",
+   "class": "",
+   "w": "",
+   "h": "",
+   "nav": false,
+   "oldal": "fooldal",
+   "fajl": "kepek/fc38c1e888614f6382f6fb13cabb1d25_1024x987_0x369_1024x1536_crop.png",
+   "px": [
+    1024,
+    987
+   ],
+   "mode": "RGBA",
+   "kb": 1281
+  },
+  {
+   "url": "https://tet.tantraiskola.com/gallery/gallery_gen-3a2eeb35f22e5afb70e8f069eb57309c_922x922_fit.png?ts=1790957977",
+   "alt": "",
+   "class": "",
+   "w": "",
+   "h": "",
+   "nav": false,
+   "oldal": "fooldal",
+   "fajl": "kepek/gallery_gen-3a2eeb35f22e5afb70e8f069eb57309c_922x922_fit.png",
+   "px": [
+    922,
+    922
+   ],
+   "mode": "RGBA",
+   "kb": 28
+  },
+  {
+   "url": "https://tet.tantraiskola.com/gallery/gallery_gen-db0781a705a1dedd8a61e07b1276ed9a_922x922_fit.png?ts=1790957977",
+   "alt": "",
+   "class": "",
+   "w": "",
+   "h": "",
+   "nav": false,
+   "oldal": "fooldal",
+   "fajl": "kepek/gallery_gen-db0781a705a1dedd8a61e07b1276ed9a_922x922_fit.png",
+   "px": [
+    922,
+    922
+   ],
+   "mode": "RGBA",
+   "kb": 31
+  },
+  {
+   "url": "https://tet.tantraiskola.com/gallery/gallery_gen-b3c08e0e811541100ce416da5ead65b8_922x922_fit.png?ts=1790957977",
+   "alt": "",
+   "class": "",
+   "w": "",
+   "h": "",
+   "nav": false,
+   "oldal": "fooldal",
+   "fajl": "kepek/gallery_gen-b3c08e0e811541100ce416da5ead65b8_922x922_fit.png",
+   "px": [
+    922,
+    922
+   ],
+   "mode": "RGBA",
+   "kb": 32
+  },
+  {
+   "url": "https://tet.tantraiskola.com/gallery/gallery_gen-9224bea94331225e4b37f6c2ec8ac549_922x922_fit.png?ts=1790957977",
+   "alt": "",
+   "class": "",
+   "w": "",
+   "h": "",
+   "nav": false,
+   "oldal": "fooldal",
+   "fajl": "kepek/gallery_gen-9224bea94331225e4b37f6c2ec8ac549_922x922_fit.png",
+   "px": [
+    922,
+    922
+   ],
+   "mode": "RGBA",
+   "kb": 29
+  },
+  {
+   "url": "https://tet.tantraiskola.com/gallery/gallery_gen-ab6053dc41b927b244d4cba1c5819f1c_922x922_fit.png?ts=1790957977",
+   "alt": "",
+   "class": "",
+   "w": "",
+   "h": "",
+   "nav": false,
+   "oldal": "fooldal",
+   "fajl": "kepek/gallery_gen-ab6053dc41b927b244d4cba1c5819f1c_922x922_fit.png",
+   "px": [
+    922,
+    922
+   ],
+   "mode": "RGBA",
+   "kb": 30
+  },
+  {
+   "url": "https://tet.tantraiskola.com/gallery/TET-Zsuzsa.png?ts=1790957977",
+   "alt": "",
+   "class": "",
+   "w": "",
+   "h": "",
+   "nav": false,
+   "oldal": "fooldal",
+   "fajl": "kepek/TET-Zsuzsa.png",
+   "px": [
+    2000,
+    2000
+   ],
+   "mode": "RGB",
+   "kb": 1471
+  },
+  {
+   "url": "https://tet.tantraiskola.com/gallery/B1%20boritoka.jpg?ts=1790957977",
+   "alt": "",
+   "class": "",
+   "w": "",
+   "h": "",
+   "nav": false,
+   "oldal": "fooldal",
+   "fajl": "kepek/B1-boritoka.jpg",
+   "px": [
+    600,
+    338
+   ],
+   "mode": "RGB",
+   "kb": 172
+  },
+  {
+   "url": "https://tet.tantraiskola.com/gallery/Ment%C3%A1lis%20besz%C3%A9lget%C3%A9sek.jpg?ts=1790957977",
+   "alt": "",
+   "class": "",
+   "w": "",
+   "h": "",
+   "nav": false,
+   "oldal": "fooldal",
+   "fajl": "kepek/Ment-lis-besz-lget-sek.jpg",
+   "px": [
+    1920,
+    1080
+   ],
+   "mode": "RGB",
+   "kb": 288
+  },
+  {
+   "url": "https://tet.tantraiskola.com/gallery/B3boritoka.jpg?ts=1790957977",
+   "alt": "",
+   "class": "",
+   "w": "",
+   "h": "",
+   "nav": false,
+   "oldal": "fooldal",
+   "fajl": "kepek/B3boritoka.jpg",
+   "px": [
+    600,
+    338
+   ],
+   "mode": "RGB",
+   "kb": 182
+  }
+ ],
+ "kis_kepek": [],
+ "kapcsolat": {
+  "telefon": [],
+  "email": [],
+  "cim": []
+ },
+ "social": []
+}
