@@ -2,6 +2,8 @@
 """Tantraszex Edzésterv: az arculat.json alap-része (márka, tartalom, paletta, betű, motívum)."""
 
 ORDER = "https://sf.soregizsuzsa.hu/t/r/tantraszex-edzesterv"
+ORDER_PREMIUM = "https://sf.soregizsuzsa.hu/t/r/tantraszex-edzesterv-premium"
+CSOMAGOK = "#etlap"   # minden más gomb a Csomagok blokkhoz visz
 
 FORMAK = {
     "jantra": "<circle cx='50' cy='50' r='43' fill='none' stroke='#000' stroke-width='6'/>"
@@ -119,7 +121,7 @@ TARTALOM = {
                    {"ikon": "ora", "szoveg": "Saját tempóban, visszanézhető anyagokkal"}],
         "cim": "12 hét. 12 gyakorlat. Egy ==új szint== a szexualitásodban.",
         "lead": "Nem kell hinned a Tantrában, csak próbáld ki, mit csinál a testeddel!",
-        "cta1": {"szoveg": "Megnézem, hogy működik", "href": "#folyamat"},
+        "cta1": {"szoveg": "Megnézem, hogy működik", "href": CSOMAGOK},
         "cta2": {"szoveg": "Csomagok és árak", "href": "#etlap", "ikon": "nyil"},
         "jegyzet": "Legyél magabiztos szerető!",
         "statok": [["12", "hét"], ["12", "gyakorlat"], ["45+", "férfiaknak"]],
@@ -209,7 +211,7 @@ TARTALOM = {
         "lead": "A kérdés csak az, hogy közben változik-e valami. Adhatsz a testednek 12 hetet, hogy megtanuljon valami újat. "
                 "Nem kell sietned. De a halogatás is egy döntés.",
         "cta1": {"szoveg": "Megnézem az ajánlatot", "href": "#etlap"},
-        "cta2": {"szoveg": "Belevágok", "href": ORDER, "ikon": "nyil"},
+        "cta2": {"szoveg": "Belevágok", "href": CSOMAGOK, "ikon": "nyil"},
         "foto": "tenger"},
     "lablec": {"szoveg": "12 hetes online gyakorló program férfiaknak, a tantrikus szexualitás alapjainak elsajátításához.",
                "cegnev": "Tantraszex Edzésterv · Sőregi Zsuzsa (Kirana)",
@@ -246,7 +248,7 @@ MIERT = {
                "Hanem azt, hogy hogyan maradj benne abban, ami jó."],
     "zaro": "A tantrikus szex nem technikával kezdődik, hanem figyelemmel.",
     "zaro2": "Ezt azonban nem lehet pusztán megérteni. Gyakorolni kell.",
-    "cta": {"szoveg": "Érdekel, mit kapok a programban", "href": "#folyamat"},
+    "cta": {"szoveg": "Érdekel, mit kapok a programban", "href": CSOMAGOK},
 }
 KINEK = {
     "kicker": "Kinek szól a Tantraszex Edzésterv?",
@@ -303,7 +305,7 @@ GYIK = {
         ["Mi van, ha elkezdem, aztán nem csinálom?",
          "Nem kell megtanulnod a tantrát. Ezen a héten csak ezt az egy gyakorlatot kell elvégezned. A fiók megmarad, hónapok múlva újra előveheted."],
     ],
-    "cta": {"szoveg": "Belevágok a Tantraszex Edzéstervbe!", "href": ORDER},
+    "cta": {"szoveg": "Belevágok a Tantraszex Edzéstervbe!", "href": CSOMAGOK},
 }
 
 # Prémium csomag részletei: felugró ablak a Csomagok szekcióban (az ügyfél szövege, csak elírások javítva)
@@ -331,5 +333,5 @@ PREMIUM = {
     ],
     "helyszin": "A 3 alkalom online vagy személyes (Budapesten), ahogy Neked kényelmesebb.",
     "ar": "A Tantraszex Edzésterv Prémium ára 99.800 Ft",
-    "cta": {"szoveg": "Ezt választom", "href": ORDER},
+    "cta": {"szoveg": "Ezt választom", "href": ORDER_PREMIUM},
 }

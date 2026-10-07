@@ -6,7 +6,7 @@ sys.path.insert(0, "/root/.claude/skills/synced/2ef019ad-994b-4a29-ba20-0f4f0fc9
 from motor.alap import md, esc, ui
 from motor import kozos
 from motor.kozos import kick, btn, dk, hat, foto, ik, logo, gombsor, statok, chips, kezi
-from alap_gen import ROLASZOL as R, MIERT as M, KINEK as K, VELEMENYEK as V, GARANCIA as G, GYIK as Q, ORDER, TARTALOM
+from alap_gen import ROLASZOL as R, MIERT as M, KINEK as K, VELEMENYEK as V, GARANCIA as G, GYIK as Q, ORDER, ORDER_PREMIUM, CSOMAGOK, TARTALOM
 
 CTX = None
 
@@ -581,7 +581,7 @@ def ajanlat():
     bas = ["Online kurzus", "Otthon, a saját tempódban"]
     pre = bas + ["A gyakorlatok személyre szabása", "Személyre szabott időbeosztás", "Tapasztalatok megosztása személyesen", "Problémakezelés személyesen"]
     sub = ["12 hét, 12 gyakorlat", "12 hetes program"]
-    gombok = [{"szoveg": "Ezt választom", "href": ORDER}, {"szoveg": "Kezdje el most", "href": ORDER}]
+    gombok = [{"szoveg": "Ezt választom", "href": ORDER}, {"szoveg": "Kezdje el most", "href": ORDER_PREMIUM}]
 
     def lst(items):
         return "".join(f'<li>{ui("pipa")}<span>{esc(x)}</span></li>' for x in items)
@@ -683,7 +683,7 @@ def lablec():
                  html=(f'<footer class="sec v-lbx s-deep" id="lablec"><div class="wrap"><div class="jel" aria-hidden="true"></div>'
                        f'<a class="brand" href="#top">{logo(c, 64, "ko", feher=True)}</a><p class="mondat">{esc(lb["felhivas"])}</p>'
                        f'<p class="sz">{esc(lb["szoveg"])}</p><nav class="links">{links}</nav>'
-                       f'<div class="gombsor">{btn({"szoveg": "Belevágok", "href": ORDER})}</div><p class="apro">© {esc(lb["cegnev"])}</p></div></footer>'),
+                       f'<div class="gombsor">{btn({"szoveg": "Belevágok", "href": CSOMAGOK})}</div><p class="apro">© {esc(lb["cegnev"])}</p></div></footer>'),
                  css=r"""
 .v-lbx{text-align:center;padding:clamp(60px,7cqi,100px) 0 30px;overflow:hidden}
 .v-lbx .jel{position:absolute;left:50%;top:-80px;width:420px;height:420px;margin-left:-210px;background:var(--c-deep-hl);opacity:.07;-webkit-mask:var(--mjel) center/contain no-repeat;mask:var(--mjel) center/contain no-repeat;z-index:0}
