@@ -100,7 +100,7 @@ TARTALOM = {
         "szellemszavak": {"hero": "JELENLÉT", "rolaszol": "45+", "miert": "FIGYELEM", "folyamat": "12 HÉT",
                           "tortenet": "KIRANA", "tenyek": "ERŐ", "kinek": "NEKED", "velemenyek": "ÉLMÉNY",
                           "kinalat": "AJÁNDÉK", "garancia": "GARANCIA", "latogatas": "MOST", "ajanlat": "EDZÉS",
-                          "gyik": "KÉRDÉS", "galeria": "LÉGZÉS"},
+                          "gyik": "KÉRDÉS", "galeria": "LÉGZÉS", "mia": "12 × 12"},
         "ticker": ["12 hét", "12 gyakorlat", "Online, a saját tempódban", "45+ férfiaknak", "„Első randi” garancia",
                    "„Izomláz” garancia", "39.000 Ft értékű ajándék"],
         "matricak": ["12 hét · 12 gyakorlat", "45+ férfiaknak", "Saját tempóban", "Két garancia"],
@@ -335,3 +335,196 @@ PREMIUM = {
     "ar": "A Tantraszex Edzésterv Prémium ára 99.800 Ft",
     "cta": {"szoveg": "Ezt választom", "href": ORDER_PREMIUM},
 }
+
+
+# =====================================================================================================
+# AZ ÜGYFÉL EREDETI SALES-SZÖVEGE (bemenet/sales/eredeti.pdf), elírás- és helyesírás-javítással.
+# A !!...!! jelölés: az eredetiben pirossal kiemelt rész (a paletta kiemelő színét kapja).
+# =====================================================================================================
+_h = TARTALOM["hero"]
+_h.pop("badgek", None)
+_h.pop("jegyzet", None)
+_h.pop("kiemelt", None)   # ez is a régi oldal egyik ígérete volt
+_h.update({
+    "kicker": "Tantraszex Edzésterv · Online gyakorlóprogram 45+ férfiaknak",
+    "cim": "Legyél ==magabiztos szerető==, és fedezz fel különleges élményeket, tökéletes kapcsolódásokat a szexben, néhány új képesség megszerzése révén!",
+    "lead": "**12 hét. 12 gyakorlat. Egy új szint a szexualitásodban.** | Nem kell hinned a Tantrában, csak próbáld ki, mit csinál a testeddel!",
+})
+
+ROLASZOL.update({
+    "kicker": "Miről szól a tantraszex edzésterv?",
+    "cim": "Nem azt tanulod újra, amit már ==harminc (vagy több) éve== csinálsz.",
+    "lead": "Olyan képességeket edzünk, amelyeket valószínűleg soha senki nem tanított meg neked.",
+    "szoveg": "Vannak képességeid, melyek csodálatos, és teljesen magabiztos szeretővé tesznek, aki soha nem okoz csalódást "
+              "sem fizikailag, sem érzelmileg a partnerének (és magának sem!). Ezeket a képességeket épp úgy edzeni kell, mint az izmaidat. | "
+              "Soha nem lesz több kellemetlen szeretkezésed, vagy borzalmas randid! Soha nem kell félned, hogy cserbenhagy a tested! | "
+              "És ahogy múlnak az évek, nem csak szexuális potenciálod őrzöd meg, de irigylésre méltóan erős és egészséges, "
+              "kiegyensúlyozott férfi maradsz.",
+    "talan": ["Talán egy hosszú kapcsolat után újra egyedül vagy.",
+              "Talán már megjelent valaki, akivel most másképp szeretnéd.",
+              "Talán egyszerűen azt érzed, hogy **a következő húsz éved szexualitását nem ugyanúgy akarod megélni, mint az előző húszat.**",
+              "Nem több teljesítményt szeretnél, hanem több nyugalmat, több élvezetet.",
+              "És sokkal kevesebb megfelelést."],
+})
+
+MIERT.update({
+    "lead": "A nyugati ember szeret célokat kitűzni. Elindulunk valahonnan, és igyekszünk minél gyorsabban megérkezni. "
+            "**Ezt a gondolkodást bevittük a szexualitásunkba is.**",
+    "lanc_vege": "Sikerült… Vagy nem sikerült…",
+    "fontos": "És minél fontosabbá válik a cél, annál könnyebben történik valami furcsa: **elfelejtjük érezni azt, ami közben történik.**",
+    "kerdes_cim": "Figyelni kezdjük magunkat:",
+    "zaro": "A tantrikus szex nem technikával kezdődik, hanem figyelemmel.",
+    "zaro2": "Azzal a képességgel, hogy észrevedd, mi történik a testedben. | Megtanulod felépíteni, megtartani és szabályozni "
+             "a szexuális izgalmat. | És közben ott maradni, a testedben, a másik emberrel, a pillanatban. | "
+             "**Ezt azonban nem lehet pusztán megérteni.** Gyakorolni kell. | Ezért született meg a **Tantraszex Edzésterv.**",
+    "cta": {"szoveg": "Érdekel, mit kapok a programban", "href": CSOMAGOK},
+})
+
+MIA = {
+    "kicker": "A program", "cim": "Mi a ==Tantraszex Edzésterv==?",
+    "lead": "Egy **12 hetes online gyakorlóprogram 45+ férfiaknak.**",
+    "nem": ["Nem 40 órányi videó.", "Nem tantrikus filozófiák gyűjteménye.", "És nem száz új póz vagy szex-kütyü."],
+    "ritmus": "12 gyakorlat. 12 hét.",
+    "het": "Minden héten kapsz egy új gyakorlatot, amely az előzőre épül.",
+    "sport": "Ahogy egy sportedzésben sem attól leszel erősebb, hogy elolvasod a gyakorlatokat, itt sem az információ mennyisége számít. "
+             "Hanem az, amit a tested megtanul.",
+    "cel": "A cél az, hogy a 12 hét végére a tantraszex-technika ne valami legyen, **amit tudsz.** Hanem valami, **amire képes vagy.**",
+}
+
+TARTALOM["folyamat"].update({
+    "kicker": "A 12 hét", "cim": "Mit edzünk ==12 héten== keresztül?", "lead": "",
+    "lepesek": [
+        {"ikon": "figyelem", "cim": "Figyelem és jelenlét",
+         "szoveg": "„Ahol a figyelem, ott az energia” – tanítja a Tantra. Megtanulsz hosszan benne maradni egy érintésben, egy érzésben, "
+                   "egy orgazmus-hullámvasútban. Megtanulod a figyelmeddel irányítani a testedben a szexuális energiát, és pusztán "
+                   "a figyelmeddel fokozni vagy csökkenteni azt."},
+        {"ikon": "legzes", "cim": "Légzés",
+         "szoveg": "A légzés az egyik legegyszerűbb eszköz, amit mindig magaddal viszel. És mégis kevesen használják tudatosan a "
+                   "szexualitásban. | Megtanulod azokat az alapvető légzéstechnikákat, amelyek segítségével változtatni tudsz a testi "
+                   "állapotodon, mélyítheted a gyönyörérzeteket, és jobban érzékelheted, illetve irányíthatod a benned megjelenő szexuális energiát."},
+        {"ikon": "erintes", "cim": "Tudatos érintés",
+         "szoveg": "Te is úgy érintesz, hogy közben már azon jár az eszed, hogy hová akarsz eljutni? A tudatos érintésben nincs agyalás. | "
+                   "Megtanulod érzékelni az érintést adó kézben és az érintett testben történő változásokat, és úgy érinteni, ahogy ott "
+                   "és akkor a legtökéletesebb. Figyelni. | Nem azért érinteni, hogy történjen valami. Hanem azért, hogy **érezd, ami történik.** "
+                   "És ettől az érintés minősége egészen más lesz."},
+        {"ikon": "izgalom", "cim": "A szexuális izgalom irányítása",
+         "szoveg": "A legtöbb férfi két állapotot ismer igazán jól: nincs izgalom – és sok izgalom. Pedig a kettő között rengeteg fokozat van. | "
+                   "A tantraszex edzések során megtanulod felismerni az izgalmi állapotod különböző szintjeit, és egyre tudatosabban bánni velük. | "
+                   "– Mikor gyorsul fel túlságosan? | – Mitől csillapodik? | – Hogyan tudsz benne maradni egy kellemesen magas izgalmi "
+                   "állapotban anélkül, hogy rögtön a végpont felé rohannál? | **Nem elnyomni tanulod az izgalmat. Hanem elbírni egyre többet az élvezetből.**"},
+        {"ikon": "szabalyozas", "cim": "Az ejakuláció tudatosabb szabályozása",
+         "szoveg": "Az ejakuláció feletti nagyobb kontroll nem pusztán azt jelenti, hogy „tovább bírod”. Ez túl kevés lenne. | "
+                   "A cél az, hogy egyre korábban felismerd a tested jelzéseit, és megtanulj tudatosabban bánni az izgalmi állapotoddal. | "
+                   "Nem harcolni a testeddel. Nem görcsösen visszatartani valamit. Hanem együttműködni vele, és élvezni az izgalmi energia "
+                   "áramlását, hullámzását. | **Megtapasztalod, hogy a magmegtartás nem önmegtartóztatás. Hanem egy képesség, mely újabb "
+                   "és újabb kapukat nyit meg a hihetetlen szexuális élmények felé.**"},
+    ]})
+
+TARTALOM["tenyek"].update({
+    "kicker": "Hat ok", "cim": "Miért érdemes ==megvásárolnod== a tantraszex edzéstervet?",
+    "elemek": [
+        {"ikon": "izgalom", "szam": "Izgalom", "cim": "Megtanulod kezelni a szexuális izgalmad", "korszoveg": "Tantraszex Edzésterv",
+         "szoveg": "Két lehetőség van. Hagyod, hogy a farkad irányítson téged, vagy te irányítod a farkad, és megtanulod kezelni a "
+                   "szexuális energiád. Vagy éppen azt a helyzetet, amikor nem jelenik meg az izgalmi energia."},
+        {"ikon": "figyelem", "szam": "Figyelem", "cim": "Felhagysz a leggyakoribb hibákkal", "korszoveg": "Tantraszex Edzésterv",
+         "szoveg": "Ha fogalmad sincs, hol tart a partnered: | – elkezdesz csak a magad folyamatára figyelni, | – elkezded kérdezgetni: "
+                   "„jó-e neki?”, | – elkezdesz valamit elképzelni róla, esetleg hagyod magad becsapni. | Mindhárom óriási hiba, és "
+                   "tönkrevágja a szeretkezést, sokszor nem csak egy alkalomra, hanem örökre. | Az edzésprogramban megtanulod érzékelni "
+                   "a szexuális energiát nem csak magadban, de a partneredben is. Tudod, hol jársz, és tudod, hol jár a partnered a gyönyör útján."},
+        {"ikon": "legzes", "szam": "Biztonság", "cim": "Teljesen biztos leszel a dolgodban", "korszoveg": "Tantraszex Edzésterv",
+         "szoveg": "Nem lesz soha többé kétséged, hogy egy randi vagy szeretkezés jól sikerül-e. Elegendő elméleti tudásod és gyakorlati "
+                   "tapasztalatod lesz ahhoz, hogy minden szeretkezést művészként megalkoss. | Megtanulod tökéletesen érzékelni magadat és "
+                   "a másikat, így biztosan fogod tudni, mi az, ami fokozza a gyönyört, mi az, ami kevésbé, és mi az, ami egyáltalán nem jó "
+                   "az adott pillanatban."},
+        {"ikon": "erintes", "szam": "Önbizalom", "cim": "Laza, természetes önbizalmad lesz a nőkkel", "korszoveg": "Tantraszex Edzésterv",
+         "szoveg": "Minden nő teste máshogy működik. Ha abból indulsz ki, mi működött a korábbi kapcsolataidban, könnyen zsákutcába "
+                   "kerülsz. | Ebben az edzésprogramban megtanulsz egy szemléletváltást, ennek köszönhetően csodálatos kísérőjévé válsz "
+                   "bármely nőnek, valamennyi partnerednek abban, hogy életük legszebb szexuális élményeit tapasztalják meg."},
+        {"ikon": "szabalyozas", "szam": "Élmény", "cim": "Újabb és újabb élményeket szerzel", "korszoveg": "Tantraszex Edzésterv",
+         "szoveg": "A tantraszex edzés során elsajátított képességeid lehetővé teszik, hogy felfedezz olyan dolgokat a szexben, "
+                   "amelyekről korábban álmodni sem mertél."},
+        {"ikon": "homokora", "szam": "Erő", "cim": "Mellékhatások: fiatalság, erő, egészség", "korszoveg": "Tantraszex Edzésterv",
+         "szoveg": "A kielégítő, energiamegtartó szex egy egészen új életminőséget is hoz számodra: tudatosabb lesz az életed, "
+                   "tudatosabb lesz a teremtésed. | Gazdálkodni tudsz az élet-energiáddal, megtapasztalod, hogy az elgyengülés, "
+                   "betegség és potencia- vagy libidózavar egyáltalán nem szükségszerű velejárója az évek múlásának."},
+    ]})
+
+KINEK.update({
+    "is": "Akkor is neked szólhat, ha nincs különösebb „problémád”. Egyszerűen érzed, hogy **ennél több van a szexben**, és "
+          "kíváncsi vagy arra, mire képes a tested, ha megtanulsz valóban figyelni rá.",
+})
+
+VELEMENYEK.update({
+    "kicker": "Vélemények", "cim": "Mások ==így élték meg==",
+    "idezetek": [
+        "Mikor találkoztam a Tantraszex edzéssel, éreztem – még ha nem is volt rá tapasztalatom –, hogy van realitása annak, hogy "
+        "sokkal jobb lehet, ha „nem pukkad ki a lufi”. De arra, amit most magmegtartóként megélek a szexben, legvadabb szexuális "
+        "álmomban sem gondoltam volna…",
+        "Eleinte egy kicsit sajnáltam az időt a gyakorlásra, mert mindig rengeteg dolgom volt, a gimnázium óta időhiányban szenvedtem. "
+        "Durva, hogy a Tantraszex Edzés nem csak a szexualitásomat forradalmasította, de sokkal összeszedettebbé, energikusabbá tett "
+        "a munkában, a hétköznapokban is. Egyszer csak azt vettem észre, hogy valahogy több időm van. A 12. héten több mint két óra "
+        "elteltével is csak azért hagytam abba a gyakorlást, mert másnap munka volt, és pihenni is kellett.",
+        "Volt, hogy a tudatos és irányított légzés óvott meg attól, hogy „átessek”. Jó volt azokat az új érzeteket megtapasztalni. "
+        "Előfordult, hogy sikerült a formálódó „energiacsomagot” szétoszlatni az egész medencémben. De nem ért itt véget az élmény! "
+        "Két óra alvás után, éjjel felébredtem, és a „határ” alatti érzet még mindig megvolt. Ráadásul olyan intenzíven, hogy "
+        "folytatnom kellett a „gyakorlást”. Folyamatosan feszegettem a határokat, közben tanulva a testem jelzéseit, egyre jobban, "
+        "sokszor és sűrűbben megtapasztalva a „robbanás előtti kegyelmi pillanatot”.",
+        "Egyszerre volt hihetetlen, de ugyanakkor valós, természetes és transzcendentális. Megdöbbentően „Uramisten!” érzés. "
+        "Hogy tényleg van ilyen? Ekkora és ennyire elnyújtható élvezet? Pedig még csak a tanulás elején vagyok! És milyen érzés "
+        "lesz majd másnak is megadni mindezt!?",
+    ],
+    "kiemelt": ["legvadabb szexuális álmomban sem gondoltam volna", "valahogy több időm van",
+                "a tudatos és irányított légzés", "„Uramisten!” érzés"],
+})
+
+TARTALOM["tortenet"].update({
+    "kicker": "A Tantraszex Edzésterv megalkotójáról",
+    "cim": "Sőregi Zsuzsa (==Kirana==) vagyok, tantraoktató és szexuális önismereti tréner.",
+    "bekezdesek": [
+        "Az elmúlt évtizedben több ezer férfi és nő bízta rám magát, hogy új dolgokat fedezzen fel a szexualitásában, tantrát, "
+        "tantrikus szexualitást tanuljon. Közülük sokakat kifejezetten a lingam masszázs elméletére és gyakorlatára oktattam.",
+        "Ezt megelőzően és eközben persze én is tanultam több tantra iskolában, elmentem rengeteg workshopra, jártam szakrális női "
+        "körökbe, együtt dolgoztam (a tanulás céljából) szinte valamennyi magyar és több külföldi tantra oktatóval.",
+        "Elvégeztem az International School of Temple Arts (nemzetközi szinten a legelismertebb és felkészültebb szexuális "
+        "önismereti iskola) Szexuális önismeret 1-2 és Szexuális Gyógyító kurzusait, de talán a legfontosabb a saját út, a saját "
+        "tapasztalás: én magam is a Tantra útját járom. Így élek, így szeretek.",
+        "Sok mindenre nem tudom a választ, de a tapasztalat, az intuíció és a felülről kért vezetettség segít, hogy úgy kísérjelek, "
+        "mentoráljalak az utadon, ahogy Neked jó.",
+    ],
+    "idezet": "A Tantra nem csupán hivatás számomra, hanem az életem.",
+})
+
+TARTALOM["kinalat"].update({
+    "lead": "Az edzésterv mellé most ajándékba adjuk neked a következő bónusz anyagokat, amelyek értéke 39.000 Ft.",
+})
+TARTALOM["kinalat"]["elemek"][0]["leiras"] = "A fizikai gyakorlás kiegészítése mentális gyakorlatokkal egy tökéletesebb és harmonikusabb eredményért."
+
+GARANCIA.update({
+    "kicker": "Garanciák", "cim": "Két garancia, ==kockázat nélkül==",
+    "lead": "A Tantraszex Edzéstervre kétféle garanciát is vállalunk.",
+    "g": [
+        {"nev": "1. „Első randi” garancia", "fo": "24 órád van eldönteni, akarsz-e másodikat.", "ido": "24 óra",
+         "szoveg": "Van, amikor már az első találkozásnál érzed: **ebből nem lesz szerelem.** A kurzussal sem kell összekötnöd az "
+                   "életedet csak azért, mert egyszer igent mondtál rá. | Vásárlás után nézz bele a Tantraszex Edzéstervbe, ismerkedj "
+                   "meg a felépítésével, és kezdd el az első gyakorlatot! | Ha elsőre úgy érzed, hogy „Köszönöm, ez nem az én világom”, "
+                   "jelezd nekem !!24 órán belül!!, és visszakapod a kurzus árát.",
+         "zaro": "Nincs sértődés. Nincs kínos magyarázkodás. | **Nem minden első randiból lesz 12 hetes kapcsolat.**"},
+        {"nev": "2. „Izomláz” garancia", "fo": "Ha végigcsináltad az edzést, de semmi hatást nem érzel, visszakapod a pénzed.",
+         "ido": "13. hét",
+         "szoveg": "A Tantraszex Edzésterv nem attól működik, hogy ott van a gépeden. **Gyakorolni kell.** | Végezd el a 12 hét "
+                   "12 gyakorlatát az útmutatás szerint. Ha mindezt becsülettel végigcsináltad, és 12 hét után azt mondod: | "
+                   "**„Megcsináltam. De nem érzek érdemi változást.”** | akkor visszaadom a kurzus árát, !!a vásárlás napjától számított "
+                   "13. héten!! (nem előbb és nem később).",
+         "zaro": "Ha te beleteszed a 12 hetet, én vállalom a garanciát."},
+    ],
+})
+
+TARTALOM["latogatas"].update({
+    "kicker": "Miért most?", "cim": "12 hét múlva mindenképpen ==12 héttel idősebb== leszel.",
+    "lead": "A kérdés csak az, hogy közben változik-e valami. | Továbbra is ugyanúgy használhatod a testedet, ahogy az elmúlt "
+            "húsz-harminc évben. Vagy adhatsz neki 12 hetet, hogy megtanuljon valami újat. | Nem kell sietned. **De a halogatás is egy döntés.**",
+    "cta1": {"szoveg": "Elkezdem a 12 hetes edzéstervet", "href": CSOMAGOK},
+})
+TARTALOM["latogatas"].pop("cta2", None)
+
+TARTALOM["ajanlat"].pop("lab", None)

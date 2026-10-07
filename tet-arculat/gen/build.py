@@ -17,12 +17,13 @@ spec["opciok"] = {}
 spec["egyedi_szekciok"] = {
     "rolaszol": {"nev": "Miről szól?", "leiras": "A program lényege: 15+, 25+, 45 felett, és a „Talán…” helyzetek."},
     "miert": {"nev": "Miért pont tantra?", "leiras": "A cél-gondolkodás és a tantra szembeállítása."},
+    "mia": {"nev": "Mi a Tantraszex Edzésterv?", "leiras": "A program lényege: 12 gyakorlat, 12 hét, és ami nem."},
     "kinek": {"nev": "Kinek szól?", "leiras": "Kinek szól a program, és kinek nem."},
     "velemenyek": {"nev": "Vélemények", "leiras": "Mások így élték meg: a résztvevők beszámolói."},
     "garancia": {"nev": "Garanciák", "leiras": "„Első randi” és „Izomláz” garancia."},
     "gyik": {"nev": "GYIK", "leiras": "Gyakran Intézett Kérdések."},
 }
-spec["szekcio_sorrend"] = ["nav", "hero", "rolaszol", "miert", "folyamat", "tortenet", "tenyek", "kinek", "velemenyek",
+spec["szekcio_sorrend"] = ["nav", "hero", "rolaszol", "miert", "mia", "folyamat", "tortenet", "tenyek", "kinek", "velemenyek",
                            "kinalat", "garancia", "latogatas", "ajanlat", "gyik", "lablec"]
 
 # a motor ctx-e (logó-infóval), hogy az egyedi HTML ugyanazokból az építőelemekből készüljön
@@ -102,17 +103,25 @@ kat("latogatas", ["lx1", "lx2", "l1", "l5", "l3"], "lx1", {
     "lx2": "12 pötty, ami görgetésre kigyullad: a 12 hét ritmusa egy pillantásra.",
     "l1": "Narancs sáv a mondattal, mellette a program ritmusa kártyán (12 hét, hetente egy gyakorlat, online).",
     "l5": "Fotó (tengerpart) és két tiszta infóhasáb.", "l3": "Belépőjegy-forma: játékos."})
-kat("ajanlat", ["ax2", "ax1", "ax3", "a1", "a5"], "ax2", {
+kat("mia", ["mi1", "mi2", "mi3", "mi4", "mi5"], "mi1", {"mi1": "Először tisztázza, mi NEM a program (40 órányi videó, filozófia, pózok), aztán egy kártyán, hogy mi igen: 12 gyakorlat, 12 hét. A 45+ férfi rögtön tudja, mire számíthat."})
+kat("ajanlat", ["ax2", "ax1", "ax3", "ax4", "ax5"], "ax2", {
     "ax2": "A Prémium csomag sötét, gyertyafényes kártyán áll az alap mellett: a drágább ajánlat magától kiemelkedik, és a „prémium” szó tényleg látszik.",
     "ax1": "Két oszlop pipás listával, a Prémium kiemelve: a megszokott, könnyen összevethető árazás.",
     "ax3": "Két „edzésbérlet” letéphető szelvénnyel: játékos, az edzésterv világában marad.",
-    "a1": "Nyomtatott árlista-lap: klasszikus, tömör.", "a5": "Fotós kártyák árcédulával: kézzelfogható."})
+    "ax4": "Nyomtatott árlista-lap pontozott vezetővonallal: klasszikus, tömör.", "ax5": "Fotós csomagkártyák árcímkével: hangulatos, kézzelfogható."})
 kat("gyik", ["qx1", "qx4", "qx3", "qx2", "qx5"], "qx1", {"qx1": "Lenyíló lista: hat kérdés kevés helyen, a válaszok csak akkor jelennek meg, ha kell."})
 kat("lablec", ["lbx", "lb1", "lb2", "lb3", "lb4"], "lbx", {
     "lbx": "Sötét, csendes lezárás a fehér logóval egy halvány jantra előtt, egy mondattal („Adj a testednek 12 hetet.”) és egy utolsó gombbal.",
     "lb1": "Klasszikus négyhasábos sötét lábléc.", "lb2": "Óriás márkanév: magabiztos.", "lb3": "Középre zárt, minimál.", "lb4": "Színes, lekerekített: lendületes."})
 
 spec["egyedi_css"] = ("@container elo (min-width:901px){.v-p1 .racs{--oszlop:3!important}}"
+                     ".kiem{color:var(--hl);font-weight:800}"
+                     "#top .hcim{font-size:calc(clamp(1.9rem,3.4cqi,3.1rem)*var(--hero-scale,1));line-height:1.1}"
+                     ".v-f2 .krt,.v-f2 .krt *{text-align:left!important}"
+                     "#miert .fontos{margin:16px 0 8px;color:var(--c-ink-2)}#miert .fontos b{color:var(--c-head)}"
+                     "#miert .kcim{font-weight:700;color:var(--c-head);margin:0 0 10px}"
+                     "#miert .fwrap{max-width:620px;margin:0 auto 26px;text-align:center}"
+                     "#miert .fontos4{text-align:center;max-width:60ch;margin:0 auto 18px;color:var(--c-on-deep-2)}#miert .fontos4 b{color:var(--c-on-deep)}"
                      "#kinalat .krt>.krt-kep .ph,#kinalat .ft .ph{--ar:16/9}")
 # ikon-spec (OpenAI-kulcs nélkül: a motor a márka formáiból épít tartalék ikonokat)
 (MUNKA / "arculat.json").write_text(json.dumps(spec, ensure_ascii=False, indent=1), encoding="utf-8")

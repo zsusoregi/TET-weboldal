@@ -6,7 +6,7 @@ sys.path.insert(0, "/root/.claude/skills/synced/2ef019ad-994b-4a29-ba20-0f4f0fc9
 from motor.alap import md, esc, ui
 from motor import kozos
 from motor.kozos import kick, btn, dk, hat, foto, ik, logo, gombsor, statok, chips, kezi
-from alap_gen import ROLASZOL as R, MIERT as M, KINEK as K, VELEMENYEK as V, GARANCIA as G, GYIK as Q, ORDER, ORDER_PREMIUM, CSOMAGOK, TARTALOM
+from alap_gen import ROLASZOL as R, MIERT as M, KINEK as K, VELEMENYEK as V, GARANCIA as G, GYIK as Q, ORDER, ORDER_PREMIUM, CSOMAGOK, TARTALOM, MIA, PREMIUM
 
 CTX = None
 
@@ -27,6 +27,12 @@ def sec(vid, slot, felulet, belso, anchor=None, hatar=True, masod=False, tx=True
     c = ctx()
     return (f'<section class="sec v-{vid} {felulet}{" tx" if tx else ""}" id="{anchor or slot}">'
             f'{hat(c, masod) if hatar else ""}{dk(c, slot)}{belso}</section>')
+
+
+def mdk(t):
+    """md + az eredetiben pirossal kiemelt rész (!!...!!) a paletta kiemelő színével."""
+    import re as _re
+    return _re.sub(r"!!(.+?)!!", r'<strong class="kiem">\1</strong>', md(t))
 
 
 def li(lst, cls=""):
@@ -74,7 +80,7 @@ def nav_html():
 def hero_html():
     c = ctx()
     h = c["hero"]
-    b = f'<div class="chips">{chips(h["badgek"])}</div>'
+    b = f'<div class="chips">{chips(h["badgek"])}</div>' if h.get("badgek") else ""
     return (f'<section class="sec v-hx1 s-deep" id="top">{dk(c, "hero")}<div class="feny" aria-hidden="true"></div>'
             f'<div class="wrap grid"><div class="txt" data-rv>{kick(h["kicker"])}<h1 class="hcim">{md(h["cim"])}</h1>'
             f'<p class="lead">{md(h["lead"])}</p>{gombsor(h)}{b}</div>'
@@ -193,12 +199,13 @@ def miert():
     lanc = "".join(f'<span class="l" data-rv style="--i:{i}">{esc(x)}</span>' for i, x in enumerate(M["lanc"]))
     kerd = "".join(f'<li data-rv style="--i:{i}">{esc(x)}</li>' for i, x in enumerate(M["kerdesek"]))
     tantra = "".join(f'<li data-rv style="--i:{i}">{md(x)}</li>' for i, x in enumerate(M["tantra"]))
+    fontos = f'<p class="fontos" data-rv>{md(M["fontos"])}</p><p class="kcim">{esc(M["kerdes_cim"])}</p>'
     zaro = (f'<div class="zaroblokk" data-rv><p class="z1">{md(M["zaro"])}</p><p class="z2">{md(M["zaro2"])}</p>'
             f'<div class="gombsor">{btn(M["cta"])}</div></div>')
     out = [
         dict(id="mx1", nev="Fej és test, két hasáb", leiras="Balra a „cél-gondolkodás” (a lánc és a kérdések, a fejben), jobbra egy sötét panelen a tantra válasza. A szembeállítás maga a mondanivaló.",
              html=sec("mx1", "miert", "s-paper", f'<div class="wrap">{sh(M)}<div class="grid"><div class="fej"><p class="cmk">A cél-gondolkodás</p>'
-                      f'<div class="lanc">{lanc}</div><p class="lvg">{esc(M["lanc_vege"])}</p><ul class="kerd">{kerd}</ul></div>'
+                      f'<div class="lanc">{lanc}</div><p class="lvg">{esc(M["lanc_vege"])}</p>{fontos}<ul class="kerd">{kerd}</ul></div>'
                       f'<div class="test s-deep s-vilagos-nem"><p class="cmk">A tantra</p><h3>{md(M["tantra_cim"])}</h3><ul class="tl">{tantra}</ul></div></div>{zaro}</div>'),
              css=r"""
 .v-mx1 .grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(18px,3cqi,36px);align-items:stretch}
@@ -223,7 +230,7 @@ def miert():
 @container elo (max-width:820px){.v-mx1 .grid{grid-template-columns:1fr}}
 """),
         dict(id="mx2", nev="A lánc elszakad", leiras="A „siker-lánc” vízszintes lépésekben, a végén áthúzva; alatta a kérdések halványulnak, majd egy erős mondat. Plakátos, drámai ív.",
-             html=sec("mx2", "miert", "s-white", f'<div class="wrap">{sh(M)}<div class="lanc">{lanc}<span class="szakad">{esc(M["lanc_vege"])}</span></div>'
+             html=sec("mx2", "miert", "s-white", f'<div class="wrap">{sh(M)}<div class="lanc">{lanc}<span class="szakad">{esc(M["lanc_vege"])}</span></div><div class="fwrap">{fontos}</div>'
                       f'<ul class="kerd">{kerd}</ul><div class="fordulat" data-rv><h3>{md(M["tantra_cim"])}</h3><ul class="tl">{tantra}</ul></div>{zaro}</div>', masod=True),
              css=r"""
 .v-mx2 .lanc{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:0;margin-bottom:26px}
@@ -242,7 +249,7 @@ def miert():
 """),
         dict(id="mx3", nev="Fotó gondolatfelhővel", leiras="Középen a meditáló férfi a jantrával, körülötte lebegnek a fejben zakatoló kérdések. Jobbra a tantra válasza. Képszerű, azonnal érthető.",
              html=sec("mx3", "miert", "s-paper", f'<div class="wrap">{sh(M)}<div class="grid"><div class="felho" data-rv>{foto(c, "jantra", "4/5")}'
-                      f'<ul class="kerd">{kerd}</ul></div><div class="jobb"><p class="lanc">{lanc}</p><p class="lvg">{esc(M["lanc_vege"])}</p>'
+                      f'<ul class="kerd">{kerd}</ul></div><div class="jobb"><p class="lanc">{lanc}</p><p class="lvg">{esc(M["lanc_vege"])}</p>{fontos}'
                       f'<h3>{md(M["tantra_cim"])}</h3><ul class="tl">{tantra}</ul>{zaro}</div></div></div>'),
              css=r"""
 .v-mx3 .grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(30px,5cqi,80px);align-items:center}
@@ -260,8 +267,8 @@ def miert():
 @container elo (max-width:860px){.v-mx3 .grid{grid-template-columns:1fr}.v-mx3 .kerd li{font-size:.78rem}}
 """),
         dict(id="mx4", nev="Sötét kiáltvány", leiras="Sötét szekció, középen óriás betűkkel a kulcsmondat. Alatta a kérdések írógépes listaként, mellettük a tantra válasza pipákkal. Komoly, súlyos.",
-             html=sec("mx4", "miert", "s-deep", f'<div class="wrap">{sh(M)}<p class="nagy" data-rv>{md(M["zaro"])}</p><div class="grid">'
-                      f'<div><p class="cmk">Figyelni kezdjük magunkat</p><ul class="kerd">{kerd}</ul></div>'
+             html=sec("mx4", "miert", "s-deep", f'<div class="wrap">{sh(M)}<p class="fontos4" data-rv>{md(M["fontos"])}</p><p class="nagy" data-rv>{md(M["zaro"])}</p><div class="grid">'
+                      f'<div><p class="cmk">{esc(M["kerdes_cim"]).rstrip(":")}</p><ul class="kerd">{kerd}</ul></div>'
                       f'<div><p class="cmk">{md(M["tantra_cim"])}</p><ul class="tl">{tantra}</ul></div></div>'
                       f'<div class="also" data-rv><p>{md(M["zaro2"])}</p>{btn(M["cta"])}</div></div>'),
              css=r"""
@@ -280,7 +287,7 @@ def miert():
         dict(id="mx5", nev="Kérdés-kártyák legyezőben", leiras="A fejben zakatoló öt kérdés egymásra csúszó kártyákon, jobbra a tantra csendes válasza. Játékos, mégis lényegre törő.",
              html=sec("mx5", "miert", "s-tint", f'<div class="wrap"><div class="grid"><div class="legyezo" data-rv>'
                       + "".join(f'<div class="lap l{i}">{esc(x)}</div>' for i, x in enumerate(M["kerdesek"]))
-                      + f'</div><div>{sh(M, bal=True)}<p class="lanc">{" → ".join(esc(x) for x in M["lanc"])}</p>'
+                      + f'</div><div>{sh(M, bal=True)}<p class="lanc">{" → ".join(esc(x) for x in M["lanc"])}</p>{fontos}'
                       f'<h3>{md(M["tantra_cim"])}</h3><ul class="tl">{tantra}</ul>{zaro}</div></div></div>', masod=True),
              css=r"""
 .v-mx5 .grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:clamp(30px,5cqi,80px);align-items:center}
@@ -451,7 +458,7 @@ def garancia():
 
     def gk(g, i, cls="krt"):
         return (f'<article class="{cls} g{i}" data-rv style="--i:{i}"><span class="ido">{esc(g["ido"])}</span><h3>{esc(g["nev"])}</h3>'
-                f'<p class="fo">{esc(g["fo"])}</p><p class="sz">{esc(g["szoveg"])}</p><p class="zr">{esc(g["zaro"])}</p></article>')
+                f'<p class="fo">{esc(g["fo"])}</p><p class="sz">{mdk(g["szoveg"])}</p><p class="zr">{mdk(g["zaro"])}</p></article>')
     out = [
         dict(id="gx1", nev="Két pecsét", leiras="Két nagy, kerek pecsét (24 óra, 13. hét), alattuk a garancia szövege. Mint két hivatalos ígéret. Megnyugtató, kézzelfogható.",
              html=sec("gx1", "garancia", "s-paper", f'<div class="wrap">{sh(G)}<div class="racs" style="--oszlop:2">{gk(g1, 0, "gar")}{gk(g2, 1, "gar")}</div></div>'),
@@ -492,7 +499,7 @@ def garancia():
 .v-gx4 .vonal i{position:absolute;top:31px;width:12px;height:12px;border-radius:50%;background:var(--c-card);border:2px solid var(--c-line2)}
 .v-gx4 .vonal span{position:absolute;top:0;font-family:var(--f-label);font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--c-ink-2);white-space:nowrap}
 .v-gx4 .vonal span::after{content:"";position:absolute;left:50%;top:26px;width:18px;height:18px;margin-left:-9px;border-radius:50%;background:var(--c-primary);box-shadow:0 0 0 5px color-mix(in srgb,var(--c-primary) 18%,transparent)}
-.v-gx4 .p0{left:0}.v-gx4 .p1{left:6%;top:56px}.v-gx4 .p1::after{top:-24px}.v-gx4 .p2{left:83%}.v-gx4 .p3{right:0}
+.v-gx4 .vonal .p0{left:0}.v-gx4 .vonal .p1{left:6%;top:56px}.v-gx4 .vonal .p1::after{top:-24px}.v-gx4 .p2{left:83%}.v-gx4 .p3{right:0}
 .v-gx4 .p0::after{background:var(--c-ink)!important}.v-gx4 .p2::after{background:var(--c-line2)!important;box-shadow:none!important}
 .v-gx4 .ido{font-family:var(--f-label);font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--hl)}
 .v-gx4 h3{font-size:var(--t-h3)}.v-gx4 .fo{font-weight:800;color:var(--c-head);margin:0}.v-gx4 .sz{color:var(--c-ink-2);font-size:.95rem;margin:0}.v-gx4 .zr{font-style:italic;color:var(--c-ink-2);margin:0}
@@ -501,7 +508,7 @@ def garancia():
         dict(id="gx5", nev="Nagy sorszámok", leiras="Két nagy kártya óriási 1-es és 2-es sorszámmal, a garancia neve kiemelve. Egyszerű, erős, merész.",
              html=sec("gx5", "garancia", "s-tint", f'<div class="wrap">{sh(G)}<div class="racs" style="--oszlop:2">'
                       + "".join(f'<article class="krt" data-rv><b class="nagyn">{i + 1}</b><h3>{esc(g["nev"])}</h3><p class="fo">{esc(g["fo"])}</p>'
-                                f'<p class="sz">{esc(g["szoveg"])}</p><p class="zr">{esc(g["zaro"])}</p></article>' for i, g in enumerate(G["g"]))
+                                f'<p class="sz">{mdk(g["szoveg"])}</p><p class="zr">{mdk(g["zaro"])}</p></article>' for i, g in enumerate(G["g"]))
                       + "</div></div>"),
              css=r"""
 .v-gx5 .nagyn{position:absolute;right:18px;top:-10px;font-family:var(--f-display);font-weight:800;font-size:7rem;line-height:1;color:var(--c-primary);opacity:.18}
@@ -573,7 +580,139 @@ def gyik():
     return out
 
 
-# ================================================================ AJÁNLAT (csomagok, egyedi változatok)
+# ================================================================ MI A TANTRASZEX EDZÉSTERV? (egyedi)
+def mia():
+    c = ctx()
+    nem = "".join(f'<li data-rv style="--i:{i}">{esc(x)}</li>' for i, x in enumerate(MIA["nem"]))
+    het = f'<p class="het" data-rv>{md(MIA["het"])}</p>'
+    sport = f'<p class="sport" data-rv>{md(MIA["sport"])}</p>'
+    cel = f'<p class="cel" data-rv>{md(MIA["cel"])}</p>'
+    ritmus = f'<p class="ritmus" data-rv>{esc(MIA["ritmus"])}</p>'
+    return [
+        dict(id="mi1", nev="Ami nem, és ami igen", leiras="Balra áthúzva, ami nem (40 órányi videó, filozófia, pózok), jobbra egy kártyán, ami igen: 12 gyakorlat, 12 hét, hétről hétre. Tisztázza az elvárásokat.",
+             html=sec("mi1", "mia", "s-white", f'<div class="wrap">{sh(MIA)}<div class="grid"><ul class="nem">{nem}</ul>'
+                      f'<div class="igen krt" data-rv>{ritmus}{het}{sport}</div></div>{cel}</div>'),
+             css=r"""
+.v-mi1 .grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:clamp(24px,4cqi,60px);align-items:center}
+.v-mi1 .nem{display:grid;gap:14px}
+.v-mi1 .nem li{font-family:var(--f-display);font-weight:var(--w-display);font-size:clamp(1.1rem,1.9cqi,1.45rem);color:var(--c-ink-3);text-decoration:line-through;text-decoration-color:var(--c-primary);text-decoration-thickness:2px}
+.v-mi1 .ritmus{font-family:var(--f-display);font-weight:var(--w-display);font-size:clamp(1.6rem,3cqi,2.3rem);color:var(--hl);margin:0 0 6px}
+.v-mi1 .het{font-weight:700;color:var(--c-head)}.v-mi1 .sport{color:var(--c-ink-2);margin:0}
+.v-mi1 .cel{text-align:center;margin:clamp(30px,4cqi,50px) auto 0;max-width:46ch;font-family:var(--f-display);font-weight:var(--w-display);font-size:clamp(1.2rem,2.2cqi,1.7rem);line-height:1.3;color:var(--c-head)}
+.v-mi1 .cel b{color:var(--hl)}
+@container elo (max-width:760px){.v-mi1 .grid{grid-template-columns:1fr}}
+"""),
+        dict(id="mi2", nev="12 + 12", leiras="Két óriás szám egymás mellett (12 gyakorlat, 12 hét), alattuk a lényeg. Plakátos, egy pillantással érthető.",
+             html=sec("mi2", "mia", "s-tint", f'<div class="wrap">{sh(MIA)}<div class="szamok" data-rv><div><b>12</b><span>gyakorlat</span></div>'
+                      f'<i aria-hidden="true">×</i><div><b>12</b><span>hét</span></div></div>{het}<ul class="nem">{nem}</ul>{sport}{cel}</div>', masod=True),
+             css=r"""
+.v-mi2 .szamok{display:flex;justify-content:center;align-items:center;gap:clamp(18px,4cqi,50px);margin-bottom:18px}
+.v-mi2 .szamok b{display:block;font-family:var(--f-display);font-weight:800;font-size:clamp(4.5rem,13cqi,9rem);line-height:.85;color:var(--hl);text-align:center}
+.v-mi2 .szamok span{display:block;text-align:center;font-family:var(--f-label);font-size:.8rem;letter-spacing:.18em;text-transform:uppercase;color:var(--c-ink-2)}
+.v-mi2 .szamok i{font-style:normal;font-size:2.4rem;color:var(--c-ink-3)}
+.v-mi2 .het{text-align:center;font-weight:700;font-size:1.08rem;color:var(--c-head)}
+.v-mi2 .nem{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin:18px 0 26px}
+.v-mi2 .nem li{padding:6px 14px;border-radius:999px;border:1px dashed var(--c-line2);color:var(--c-ink-3);font-size:.92rem}
+.v-mi2 .nem li::before{content:"✕ ";color:var(--c-primary)}
+.v-mi2 .sport{max-width:60ch;margin:0 auto 14px;text-align:center;color:var(--c-ink-2)}
+.v-mi2 .cel{max-width:52ch;margin:0 auto;text-align:center;font-family:var(--f-display);font-weight:var(--w-display);font-size:clamp(1.15rem,2cqi,1.5rem);color:var(--c-head)}
+.v-mi2 .cel b{color:var(--hl)}
+"""),
+        dict(id="mi3", nev="Edzésterv-lap", leiras="Egy edzésterv-lap 12 hetes rácsa: az oszlopok a hetek, mindegyikben egy gyakorlat-pötty. Mellette a szöveg. Az edzés metaforája szó szerint.",
+             html=sec("mi3", "mia", "s-paper", f'<div class="wrap grid"><div>{sh(MIA, bal=True)}{het}{sport}<ul class="nem">{nem}</ul></div>'
+                      f'<div class="lap krt" data-rv><p class="mono fej">Edzésterv · 12 hét · 12 gyakorlat</p><div class="hetek">'
+                      + "".join(f'<span><i></i><small>{i + 1}.</small></span>' for i in range(12))
+                      + f'</div>{cel}</div></div>'),
+             css=r"""
+.v-mi3 .grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(28px,5cqi,80px);align-items:center}
+.v-mi3 .shead{margin-bottom:18px}.v-mi3 .het{font-weight:700;color:var(--c-head)}.v-mi3 .sport{color:var(--c-ink-2)}
+.v-mi3 .nem{display:grid;gap:6px;margin-top:14px}.v-mi3 .nem li{color:var(--c-ink-3);padding-left:22px;position:relative}
+.v-mi3 .nem li::before{content:"✕";position:absolute;left:0;color:var(--c-primary)}
+.v-mi3 .fej{font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--c-ink-3);margin:0 0 14px}
+.v-mi3 .hetek{display:grid;grid-template-columns:repeat(6,1fr);gap:14px 8px;margin-bottom:20px}
+.v-mi3 .hetek span{display:flex;flex-direction:column;align-items:center;gap:6px}
+.v-mi3 .hetek i{width:30px;height:30px;border-radius:50%;border:2px solid var(--c-primary);background:color-mix(in srgb,var(--c-primary) 14%,transparent)}
+.v-mi3 .hetek small{font-family:var(--f-label);font-size:.7rem;color:var(--c-ink-3)}
+.v-mi3 .cel{margin:0;font-weight:600;color:var(--c-head)}.v-mi3 .cel b{color:var(--hl)}
+@container elo (max-width:820px){.v-mi3 .grid{grid-template-columns:1fr}}
+"""),
+        dict(id="mi4", nev="Tudás → képesség", leiras="Sötét szekció, középen nagy betűkkel a cél: ne valami legyen, amit tudsz, hanem amire képes vagy. Alatta a program lényege. Erős, kiáltványszerű.",
+             html=sec("mi4", "mia", "s-deep", f'<div class="wrap szuk">{sh(MIA)}<div class="valt" data-rv><span class="tud">amit tudsz</span>'
+                      f'<span class="nyil" aria-hidden="true">→</span><span class="kep">amire képes vagy</span></div>{cel}{ritmus}{het}<ul class="nem">{nem}</ul>{sport}</div>'),
+             css=r"""
+.v-mi4 .valt{display:flex;justify-content:center;align-items:center;flex-wrap:wrap;gap:10px 22px;margin:6px 0 18px}
+.v-mi4 .valt span{font-family:var(--f-display);font-weight:var(--w-display);font-size:clamp(1.6rem,4cqi,3rem);line-height:1}
+.v-mi4 .tud{color:var(--c-on-deep-2);text-decoration:line-through;text-decoration-thickness:2px}
+.v-mi4 .kep{color:var(--c-deep-hl)}.v-mi4 .nyil{color:var(--c-on-deep-2)}
+.v-mi4 .cel{text-align:center;color:var(--c-on-deep-2);margin-bottom:34px}
+.v-mi4 .ritmus{text-align:center;font-family:var(--f-label);letter-spacing:.16em;text-transform:uppercase;color:var(--c-deep-hl);margin:0 0 6px}
+.v-mi4 .het{text-align:center;font-weight:700;color:var(--c-on-deep)}
+.v-mi4 .nem{display:flex;flex-wrap:wrap;justify-content:center;gap:8px 24px;margin:16px 0}
+.v-mi4 .nem li{color:var(--c-on-deep-2);font-size:.92rem}.v-mi4 .nem li::before{content:"✕ ";color:var(--c-deep-hl)}
+.v-mi4 .sport{text-align:center;color:var(--c-on-deep-2);max-width:60ch;margin:0 auto}
+"""),
+        dict(id="mi5", nev="Kavicsok fotóval", leiras="A sorba rendezett kavicsok fotója (lépésről lépésre) mellett a szöveg, alul kiemelve a cél. Nyugodt, képszerű.",
+             html=sec("mi5", "mia", "s-sand", f'<div class="wrap grid"><div class="kep" data-rv>{foto(c, "kovek", "4/5")}</div><div>{sh(MIA, bal=True)}'
+                      f'{ritmus}{het}<ul class="nem">{nem}</ul>{sport}{cel}</div></div>', masod=True),
+             css=r"""
+.v-mi5 .grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:clamp(30px,5cqi,80px);align-items:center}
+.v-mi5 .shead{margin-bottom:16px}
+.v-mi5 .ritmus{font-family:var(--f-display);font-weight:var(--w-display);font-size:1.5rem;color:var(--hl);margin:0 0 4px}
+.v-mi5 .het{font-weight:700;color:var(--c-head)}
+.v-mi5 .nem{display:grid;gap:6px;margin:12px 0 16px}.v-mi5 .nem li{padding-left:22px;position:relative;color:var(--c-ink-2)}
+.v-mi5 .nem li::before{content:"✕";position:absolute;left:0;color:var(--c-primary)}
+.v-mi5 .sport{color:var(--c-ink-2)}
+.v-mi5 .cel{border-left:3px solid var(--c-primary);padding-left:16px;font-weight:600;color:var(--c-head);margin:0}.v-mi5 .cel b{color:var(--hl)}
+@container elo (max-width:860px){.v-mi5 .grid{grid-template-columns:1fr}.v-mi5 .kep{max-width:420px}}
+"""),
+    ]
+
+
+# ================================================================ AJÁNLAT (csomagok) + PRÉMIUM FELUGRÓ ABLAK
+NYIT = "this.closest('section').querySelector('dialog.prem').showModal()"
+
+
+def premium_ablak():
+    p = PREMIUM
+    bev = "".join(f'<p>{md(x)}</p>' for x in p["bevezeto"])
+    alk = "".join(f'<div class="alk"><p class="ah"><b>{esc(a["cim"])}</b><span>{esc(a["ido"])}</span></p><p class="am">{esc(a["mikor"])}</p>'
+                  f'<ul>{"".join(f"<li>{esc(x)}</li>" for x in a["pontok"])}</ul></div>' for a in p["alkalmak"])
+    return (f'<dialog class="prem s-vilagos" aria-label="{esc(p["cim"])}" onclick="if(event.target===this)this.close()">'
+            f'<div class="pin"><form method="dialog"><button class="zar" aria-label="Bezárás">×</button></form>'
+            f'<p class="pk">Részletek</p><h3 class="pc">{esc(p["cim"])}</h3>{bev}<div class="alkalmak">{alk}</div>'
+            f'<p class="hely">{esc(p["helyszin"])}</p><p class="par">{esc(p["ar"])}</p><div class="gombsor">{btn(p["cta"])}</div></div></dialog>')
+
+
+def prem_link():
+    return f'<button type="button" class="prem-link" onclick="{NYIT}">{esc(PREMIUM["link"])}{ui("nyil")}</button>'
+
+
+PREM_CSS = r"""
+.prem-link{background:none;border:0;padding:0;margin:4px 0 18px;cursor:pointer;display:inline-flex;align-items:center;gap:6px;font-weight:800;font-size:.95rem;color:var(--hl);text-decoration:underline;text-underline-offset:.22em;text-align:left}
+.prem-link .ui{width:16px;height:16px;flex:none}
+dialog.prem{width:min(760px,calc(100vw - 28px));max-height:calc(100vh - 40px);padding:0;border:0;border-radius:var(--r);background:var(--c0-card,#fff);color:var(--c0-ink,#222);box-shadow:0 40px 90px -30px rgba(0,0,0,.55)}
+dialog.prem::backdrop{background:rgba(12,8,6,.62);-webkit-backdrop-filter:blur(3px);backdrop-filter:blur(3px)}
+dialog.prem .pin{padding:clamp(24px,4vw,44px);position:relative}
+dialog.prem .zar{position:absolute;right:14px;top:12px;width:40px;height:40px;border-radius:50%;border:1px solid var(--c0-line2,#ccc);background:transparent;font-size:1.5rem;line-height:1;cursor:pointer;color:inherit}
+dialog.prem .pk{font-family:var(--f-label);font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:var(--c0-primary-text,var(--c-primary));margin:0 0 8px}
+dialog.prem .pc{font-family:var(--f-display);font-weight:var(--w-display);font-size:clamp(1.4rem,3vw,2rem);line-height:1.1;margin:0 0 18px;color:var(--c0-head,#111);padding-right:40px}
+dialog.prem p{margin:0 0 12px;line-height:1.6}
+dialog.prem b{color:var(--c0-primary-text,var(--c-primary))}
+dialog.prem .alkalmak{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:22px 0}
+dialog.prem .alk{background:var(--c0-tint,#f6eee6);border-radius:14px;padding:16px}
+dialog.prem .ah{display:flex;justify-content:space-between;align-items:baseline;gap:8px;margin:0 0 6px}
+dialog.prem .ah b{font-family:var(--f-display);font-weight:var(--w-display);font-size:1.1rem}
+dialog.prem .ah span{font-family:var(--f-label);font-size:.78rem;color:var(--c0-ink-2,#555);white-space:nowrap}
+dialog.prem .am{font-weight:700;font-size:.92rem;margin:0 0 6px}
+dialog.prem ul{display:grid;gap:6px;margin:0;padding:0;list-style:none}
+dialog.prem li{font-size:.9rem;padding-left:16px;position:relative;line-height:1.45}
+dialog.prem li::before{content:"";position:absolute;left:0;top:.55em;width:7px;height:7px;border-radius:50%;background:var(--c-accent)}
+dialog.prem .hely{font-weight:600}
+dialog.prem .par{font-family:var(--f-display);font-weight:var(--w-display);font-size:1.35rem;color:var(--c0-head,#111)}
+@media (max-width:640px){dialog.prem .alkalmak{grid-template-columns:1fr}}
+"""
+
+
 def ajanlat():
     c = ctx()
     a = c["ajanlat"]
@@ -581,7 +720,8 @@ def ajanlat():
     bas = ["Online kurzus", "Otthon, a saját tempódban"]
     pre = bas + ["A gyakorlatok személyre szabása", "Személyre szabott időbeosztás", "Tapasztalatok megosztása személyesen", "Problémakezelés személyesen"]
     sub = ["12 hét, 12 gyakorlat", "12 hetes program"]
-    gombok = [{"szoveg": "Ezt választom", "href": ORDER}, {"szoveg": "Kezdje el most", "href": ORDER_PREMIUM}]
+    gombok = [{"szoveg": "Ezt választom", "href": ORDER}, {"szoveg": "Ezt választom", "href": ORDER_PREMIUM}]
+    ablak = premium_ablak()
 
     def lst(items):
         return "".join(f'<li>{ui("pipa")}<span>{esc(x)}</span></li>' for x in items)
@@ -589,50 +729,78 @@ def ajanlat():
     def csomag(i, cls="cs"):
         e = el[i]
         return (f'<article class="{cls} c{i}" data-rv style="--i:{i}"><p class="al">{esc(sub[i])}</p><h3>{esc(e["nev"])}</h3>'
-                f'<p class="ar">{esc(e["ar"])}</p><ul>{lst([bas, pre][i])}</ul>{btn(gombok[i], alt=(i == 0 and cls == "cs"))}</article>')
-    lab = f'<p class="alja" data-rv>{esc(a["lab"])}</p>'
+                f'<p class="ar">{esc(e["ar"])}</p><ul>{lst([bas, pre][i])}</ul>{prem_link() if i == 1 else ""}'
+                f'{btn(gombok[i], alt=(i == 0 and cls == "cs"))}</article>')
     out = [
-        dict(id="ax1", nev="Két csomag-oszlop", leiras="Két egymás melletti csomag pipás listával; a Prémium kiemelve, enyhén megemelve. A megszokott, könnyen összevethető árazás.",
-             html=sec("ax1", "ajanlat", "s-tint", f'<div class="wrap">{sh(a)}<div class="ket">{csomag(0)}{csomag(1)}</div>{lab}</div>', anchor="etlap"),
-             css=r"""
+        dict(id="ax1", nev="Két csomag-oszlop", leiras="Két egymás melletti csomag pipás listával; a Prémium kiemelve, enyhén megemelve, alatta a „Mit tartalmaz?” link a felugró ablakhoz. A megszokott, könnyen összevethető árazás.",
+             html=sec("ax1", "ajanlat", "s-tint", f'<div class="wrap">{sh(a)}<div class="ket">{csomag(0)}{csomag(1)}</div></div>{ablak}', anchor="etlap"),
+             css=PREM_CSS + r"""
 .v-ax1 .ket{display:grid;grid-template-columns:1fr 1fr;gap:var(--gap);max-width:900px;margin:0 auto;align-items:center}
 .v-ax1 .cs{background:var(--c-card);border-radius:var(--r);padding:clamp(26px,3.6cqi,40px);box-shadow:var(--sh-2);display:flex;flex-direction:column;gap:6px}
 .v-ax1 .c1{box-shadow:0 0 0 2px var(--c-primary),var(--sh-3);padding-top:clamp(34px,4.4cqi,52px);padding-bottom:clamp(34px,4.4cqi,52px)}
 .v-ax1 .al{font-family:var(--f-label);font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--c-ink-3);margin:0}
 .v-ax1 h3{font-size:var(--t-h3)}.v-ax1 .ar{font-family:var(--f-display);font-weight:var(--w-display);font-size:clamp(2rem,3.6cqi,2.8rem);color:var(--hl);margin:6px 0 10px;line-height:1}
-.v-ax1 ul{display:grid;gap:8px;margin-bottom:22px}.v-ax1 li{display:flex;gap:10px;align-items:flex-start;font-size:.96rem}.v-ax1 li .ui{color:var(--c-primary);margin-top:2px}
-.v-ax1 .btn{align-self:stretch}.v-ax1 .alja{text-align:center;color:var(--c-ink-3);font-size:.9rem;margin-top:24px}
+.v-ax1 ul{display:grid;gap:8px;margin-bottom:18px}.v-ax1 li{display:flex;gap:10px;align-items:flex-start;font-size:.96rem}.v-ax1 li .ui{color:var(--c-primary);margin-top:2px}
+.v-ax1 .btn{align-self:stretch;margin-top:auto}
 @container elo (max-width:720px){.v-ax1 .ket{grid-template-columns:1fr}}
 """),
-        dict(id="ax2", nev="A Prémium sötétben", leiras="Az alapcsomag világos lapon, a Prémium sötét, gyertyafényes kártyán, narancs árral. A drágább csomag így magától kiemelkedik. Prémium, magabiztos.",
-             html=sec("ax2", "ajanlat", "s-paper", f'<div class="wrap">{sh(a)}<div class="ket">{csomag(0, "cs")}{csomag(1, "cs sotet s-deep")}</div>{lab}</div>', anchor="etlap"),
-             css=r"""
+        dict(id="ax2", nev="A Prémium sötétben", leiras="Az alapcsomag világos lapon, a Prémium sötét, gyertyafényes kártyán, narancs árral és a „Mit tartalmaz?” linkkel. A drágább csomag magától kiemelkedik.",
+             html=sec("ax2", "ajanlat", "s-paper", f'<div class="wrap">{sh(a)}<div class="ket">{csomag(0, "cs")}{csomag(1, "cs sotet s-deep")}</div></div>{ablak}', anchor="etlap"),
+             css=PREM_CSS + r"""
 .v-ax2 .ket{display:grid;grid-template-columns:.9fr 1.1fr;gap:0;max-width:960px;margin:0 auto;align-items:stretch;border-radius:var(--r);overflow:hidden;box-shadow:var(--sh-3)}
 .v-ax2 .cs{background:var(--c-card);padding:clamp(28px,4cqi,48px);display:flex;flex-direction:column;gap:6px}
 .v-ax2 .sotet{color:var(--c-ink);background:radial-gradient(circle at 85% 0%,color-mix(in srgb,var(--c-primary) 38%,transparent),transparent 55%),var(--c-deep)}
 .v-ax2 .al{font-family:var(--f-label);font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--c-ink-3);margin:0}
 .v-ax2 h3{font-size:var(--t-h3)}.v-ax2 .ar{font-family:var(--f-display);font-weight:var(--w-display);font-size:clamp(2rem,3.8cqi,3rem);color:var(--hl);margin:6px 0 12px;line-height:1}
-.v-ax2 ul{display:grid;gap:8px;margin-bottom:24px}.v-ax2 li{display:flex;gap:10px;font-size:.96rem}.v-ax2 li .ui{color:var(--hl);margin-top:2px}
-.v-ax2 .btn{align-self:flex-start;margin-top:auto}.v-ax2 .alja{text-align:center;color:var(--c-ink-3);font-size:.9rem;margin-top:26px}
+.v-ax2 ul{display:grid;gap:8px;margin-bottom:18px}.v-ax2 li{display:flex;gap:10px;font-size:.96rem}.v-ax2 li .ui{color:var(--hl);margin-top:2px}
+.v-ax2 .btn{align-self:flex-start;margin-top:auto}
 @container elo (max-width:760px){.v-ax2 .ket{grid-template-columns:1fr}}
 """),
         dict(id="ax3", nev="Két edzésbérlet", leiras="A csomagok perforált bérletjegyként: a fő részen a tartalom, a letéphető szelvényen az ár és a gomb. Az „edzésterv” metaforája. Játékos, egyedi.",
              html=sec("ax3", "ajanlat", "s-sand", f'<div class="wrap">{sh(a)}<div class="jegyek">'
-                      + "".join(f'<article class="jegy j{i}" data-rv style="--i:{i}"><div class="fo"><p class="al">{esc(sub[i])}</p><h3>{esc(el[i]["nev"])}</h3><ul>{lst([bas, pre][i])}</ul></div>'
+                      + "".join(f'<article class="jegy j{i}" data-rv style="--i:{i}"><div class="fo"><p class="al">{esc(sub[i])}</p><h3>{esc(el[i]["nev"])}</h3><ul>{lst([bas, pre][i])}</ul>{prem_link() if i == 1 else ""}</div>'
                                 f'<div class="szelveny"><span class="mono">Bérlet · 12 hét</span><b>{esc(el[i]["ar"])}</b>{btn(gombok[i])}</div></article>' for i in range(2))
-                      + f'</div>{lab}</div>', anchor="etlap", masod=True),
-             css=r"""
+                      + f'</div></div>{ablak}', anchor="etlap", masod=True),
+             css=PREM_CSS + r"""
 .v-ax3 .jegyek{display:grid;gap:var(--gap);max-width:940px;margin:0 auto}
 .v-ax3 .jegy{display:grid;grid-template-columns:1fr 250px;background:var(--c-card);border-radius:18px;box-shadow:var(--sh-2);-webkit-mask:radial-gradient(circle 13px at calc(100% - 250px) 0,#0000 98%,#000) top/100% 51% no-repeat,radial-gradient(circle 13px at calc(100% - 250px) 100%,#0000 98%,#000) bottom/100% 51% no-repeat;mask:radial-gradient(circle 13px at calc(100% - 250px) 0,#0000 98%,#000) top/100% 51% no-repeat,radial-gradient(circle 13px at calc(100% - 250px) 100%,#0000 98%,#000) bottom/100% 51% no-repeat}
 .v-ax3 .fo{padding:clamp(22px,3cqi,34px)}
 .v-ax3 .al{font-family:var(--f-label);font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--c-ink-3);margin:0 0 4px}
 .v-ax3 h3{font-size:var(--t-h3);margin-bottom:12px}.v-ax3 ul{display:grid;grid-template-columns:1fr 1fr;gap:6px 16px}.v-ax3 li{display:flex;gap:8px;font-size:.92rem}.v-ax3 li .ui{color:var(--c-primary);width:17px;height:17px;margin-top:3px}
+.v-ax3 .prem-link{margin:14px 0 0}
 .v-ax3 .szelveny{border-left:2px dashed var(--c-line2);padding:22px;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:8px;text-align:center;background:var(--c-tint)}
 .v-ax3 .j1 .szelveny{background:var(--c-primary);color:var(--c-on-primary);--b-bg:var(--c-card);--b-ink:var(--c-primary-d);--b-deep:var(--c-primary-dd)}
 .v-ax3 .szelveny .mono{font-size:.68rem;text-transform:uppercase;opacity:.75}
 .v-ax3 .szelveny b{font-family:var(--f-display);font-weight:var(--w-display);font-size:2rem;line-height:1}
-.v-ax3 .alja{text-align:center;color:var(--c-ink-3);font-size:.9rem;margin-top:24px}
 @container elo (max-width:700px){.v-ax3 .jegy{grid-template-columns:1fr;-webkit-mask:none;mask:none}.v-ax3 .szelveny{border-left:0;border-top:2px dashed var(--c-line2)}.v-ax3 ul{grid-template-columns:1fr}}
+"""),
+        dict(id="ax4", nev="Árlista-lap", leiras="A két csomag egy nyomtatott árlista-lapon, pontozott vezetővonallal az árig; alattuk a tartalom és a gombok. Klasszikus, tömör.",
+             html=sec("ax4", "ajanlat", "s-white", f'<div class="wrap szuk">{sh(a)}<div class="lap" data-rv>'
+                      + "".join(f'<div class="tetel"><p class="sor"><b>{esc(el[i]["nev"])}</b><i></i><span>{esc(el[i]["ar"])}</span></p>'
+                                f'<p class="al">{esc(sub[i])} · {" · ".join(esc(x) for x in [bas, pre][i])}</p>{prem_link() if i == 1 else ""}{btn(gombok[i], alt=(i == 0))}</div>' for i in range(2))
+                      + f'</div></div>{ablak}', anchor="etlap"),
+             css=PREM_CSS + r"""
+.v-ax4 .lap{background:var(--c-card);border:1px solid var(--c-line2);outline:1px solid var(--c-line2);outline-offset:-8px;padding:clamp(26px,4cqi,48px);border-radius:4px;box-shadow:var(--sh-2)}
+.v-ax4 .tetel+.tetel{margin-top:30px;padding-top:30px;border-top:1px solid var(--c-line)}
+.v-ax4 .sor{display:flex;align-items:baseline;gap:10px;margin:0 0 8px}
+.v-ax4 .sor b{font-family:var(--f-display);font-weight:var(--w-display);font-size:clamp(1.1rem,2cqi,1.45rem);color:var(--c-head)}
+.v-ax4 .sor i{flex:1;border-bottom:2px dotted var(--c-line2);transform:translateY(-4px)}
+.v-ax4 .sor span{font-family:var(--f-display);font-weight:var(--w-display);font-size:clamp(1.2rem,2.2cqi,1.6rem);color:var(--hl);white-space:nowrap}
+.v-ax4 .al{color:var(--c-ink-2);font-size:.94rem;margin:0 0 14px}
+.v-ax4 .prem-link{display:flex;margin:-4px 0 14px}
+"""),
+        dict(id="ax5", nev="Fotós csomagkártyák", leiras="Két kártya a saját fotójával (a szívére tett kéz, a tengerpart), rajta az ár címkén; alattuk a tartalom és a gomb. Hangulatos, képszerű.",
+             html=sec("ax5", "ajanlat", "s-sand", f'<div class="wrap">{sh(a)}<div class="racs" style="--oszlop:2">'
+                      + "".join(f'<article class="krt c{i}" data-rv style="--i:{i}">{foto(c, el[i].get("foto"), "16/10", "krt-kep")}'
+                                f'<span class="arc">{esc(el[i]["ar"])}</span><p class="al">{esc(sub[i])}</p><h3 class="krt-h">{esc(el[i]["nev"])}</h3>'
+                                f'<ul>{lst([bas, pre][i])}</ul>{prem_link() if i == 1 else ""}{btn(gombok[i])}</article>' for i in range(2))
+                      + f'</div></div>{ablak}', anchor="etlap", masod=True),
+             css=PREM_CSS + r"""
+.v-ax5 .racs{max-width:940px;margin:0 auto;align-items:start}
+.v-ax5 .arc{position:absolute;right:16px;top:16px;z-index:4;background:var(--c-primary);color:var(--c-on-primary);font-family:var(--f-display);font-weight:var(--w-display);font-size:1.25rem;padding:6px 14px;border-radius:999px;box-shadow:var(--sh-2)}
+.v-ax5 .al{font-family:var(--f-label);font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--c-ink-3);margin:0}
+.v-ax5 ul{display:grid;gap:6px;margin:6px 0 10px}.v-ax5 li{display:flex;gap:8px;font-size:.94rem}.v-ax5 li .ui{color:var(--c-primary);width:17px;height:17px;margin-top:3px}
+.v-ax5 .btn{align-self:flex-start;margin-top:6px}.v-ax5 .prem-link{margin:0 0 6px}
 """),
     ]
     return out
@@ -703,5 +871,5 @@ def mind(context):
     nav_html()
     HERO[0]["html"] = hero_html()
     return {"nav": NAV, "hero": HERO, "rolaszol": rolaszol(), "miert": miert(), "kinek": kinek(),
-            "velemenyek": velemenyek(), "garancia": garancia(), "gyik": gyik(), "ajanlat": ajanlat(),
+            "velemenyek": velemenyek(), "garancia": garancia(), "gyik": gyik(), "ajanlat": ajanlat(), "mia": mia(),
             "latogatas": latogatas(), "lablec": lablec()}
