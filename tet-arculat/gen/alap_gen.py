@@ -305,3 +305,31 @@ GYIK = {
     ],
     "cta": {"szoveg": "Belevágok a Tantraszex Edzéstervbe!", "href": ORDER},
 }
+
+# Prémium csomag részletei: felugró ablak a Csomagok szekcióban (az ügyfél szövege, csak elírások javítva)
+PREMIUM = {
+    "link": "Mit tartalmaz a prémium csomag? Kattints ide!",
+    "cim": "TANTRASZEX EDZÉSTERV PRÉMIUM",
+    "bevezeto": [
+        "A sportolási célú edzésben is vannak általános edzéstervek, melyek mindenkinél működnek, és mindenki számára hasznosak. "
+        "De általában hatékonyabb a személyi edzővel való munka, mert ha az edző csak rád fókuszál, figyelembe tudja venni a Te "
+        "egyéni adottságaidat, körülményeidet, szól, ha valamit rosszul csinálsz, stb.",
+        "Ugyanígy, a Tantraszex Edzésterv is mindenkinél működik, mindenki megélhet általa csodálatos változásokat a testében és "
+        "a szexuális életében.",
+        "De a Tantraszex Edzésterv Prémium tartalmaz **3 alkalmat, mely csak Rólad szól!**",
+    ],
+    "alkalmak": [
+        {"cim": "1. alkalom", "ido": "90 perc", "mikor": "Még a gyakorlás megkezdése előtt:",
+         "pontok": ["a gyakorlatokat hozzáalakítjuk a Te jelenlegi szexualitásodhoz és szándékaidhoz",
+                    "az edzéstervet hozzáalakítjuk a Te személyes napirendedhez, életviteledhez"]},
+        {"cim": "2. alkalom", "ido": "60 perc", "mikor": "„Félidős” konzultáció:",
+         "pontok": ["melyben átnézzük a gyakorlatok helyes végrehajtását", "megbeszéljük az addigi tapasztalataid",
+                    "megoldást találunk az esetleges nehézségekre, kihívásokra"]},
+        {"cim": "3. alkalom", "ido": "60 perc", "mikor": "Az edzésterv vége felé:",
+         "pontok": ["megbeszéljük a tapasztalataid", "ha szükséges, megbeszéljük, hogyan vonhatod be a partnered",
+                    "tervet készítünk a folytatásra, a Te egyéni utadon"]},
+    ],
+    "helyszin": "A 3 alkalom online vagy személyes (Budapesten), ahogy Neked kényelmesebb.",
+    "ar": "A Tantraszex Edzésterv Prémium ára 99.800 Ft",
+    "cta": {"szoveg": "Ezt választom", "href": ORDER},
+}
