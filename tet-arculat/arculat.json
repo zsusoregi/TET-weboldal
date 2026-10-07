@@ -589,7 +589,10 @@
    ]
   },
   "ikon": {
-   "ajanlott": "iT2"
+   "ajanlott": "i2",
+   "miert": {
+    "i2": "A mostani oldalatok vékony, narancs vonalas ikonjainak igényesebb változata: ugyanaz a nyelv, egy meleg borostyán színfolttal mögötte. Az ismerős látogató rögtön otthon érzi magát."
+   }
   },
   "cim": {
    "lista": [

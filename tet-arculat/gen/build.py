@@ -43,7 +43,7 @@ spec["egyedi_opciok"] = eo
 O = spec["opciok"]
 O["paletta"] = {"ajanlott": "p1", "lista": A.PALETTAK}
 O["betu"] = {"ajanlott": "b1", "lista": A.BETUK}
-O["ikon"] = {"ajanlott": "iT2"}
+O["ikon"] = {"ajanlott": "i2", "miert": {"i2": "A mostani oldalatok vékony, narancs vonalas ikonjainak igényesebb változata: ugyanaz a nyelv, egy meleg borostyán színfolttal mögötte. Az ismerős látogató rögtön otthon érzi magát."}}
 
 
 def kat(nev, ids, aj, miert=None):
