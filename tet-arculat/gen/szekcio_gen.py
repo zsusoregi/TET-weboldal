@@ -227,7 +227,7 @@ def miert():
 .v-%s .tl li{padding-left:26px;position:relative}
 .v-%s .tl li::before{content:"";position:absolute;left:2px;top:.5em;width:12px;height:7px;border-left:2px solid var(--hl);border-bottom:2px solid var(--hl);transform:rotate(-45deg)}
 .v-%s .tl b{color:var(--hl)}
-.v-%s .kiemelt{font-family:var(--f-display);font-weight:var(--w-display);font-size:clamp(1.7rem,3.8cqi,3rem);line-height:1.12;color:var(--c-head);margin:clamp(34px,5cqi,60px) 0 22px}
+.v-%s .kiemelt{font-family:var(--f-display);font-weight:var(--w-display);font-size:clamp(1.45rem,3.4cqi,2.6rem);line-height:1.15;color:var(--c-head);margin:clamp(34px,5cqi,60px) 0 22px;max-width:100%;overflow-wrap:break-word;hyphens:manual;text-wrap:balance}
 .v-%s .kiemelt b{color:inherit}
 .v-%s .zaro{color:var(--c-ink-2)}.v-%s .zaro b{color:var(--c-head)}
 .v-%s .mcta{margin-top:24px}
@@ -258,7 +258,7 @@ def miert():
 .v-mx2 .kerd li:nth-child(2){opacity:.85}.v-mx2 .kerd li:nth-child(3){opacity:.7}.v-mx2 .kerd li:nth-child(4){opacity:.55}.v-mx2 .kerd li:nth-child(5){opacity:.42}
 .v-mx2 .tl{justify-items:center}.v-mx2 .tl li{padding:0}.v-mx2 .tl li::before{display:none}
 .v-mx2 .tcim{margin-top:22px}
-.v-mx2 .kiemelt{font-size:clamp(2rem,4.6cqi,3.5rem);padding:28px 0;border-top:1px solid var(--c-line2);border-bottom:1px solid var(--c-line2)}
+.v-mx2 .kiemelt{font-size:clamp(1.55rem,4cqi,2.9rem);padding:28px 0;border-top:1px solid var(--c-line2);border-bottom:1px solid var(--c-line2)}
 .v-mx2 .mcta{justify-content:center}
 """),
         dict(id="mx3", nev="Szöveg a jantrás fotó mellett", leiras="Balra sorban a teljes szöveg, jobbra a meditáló férfi a jantrával, görgetéskor a helyén marad. Alul teljes szélességben a kiemelt mondat. Képszerű, nyugodt.",
@@ -278,7 +278,7 @@ def miert():
              css=kozos("mx4") + r"""
 .v-mx4 .egy{max-width:680px;margin:0 auto}
 .v-mx4 .lanc{color:var(--c-deep-hl)}
-.v-mx4 .kiemelt{text-align:center;font-size:clamp(2rem,5cqi,3.8rem);color:#fff;text-shadow:0 0 40px color-mix(in srgb,var(--c-primary) 70%,transparent);margin:clamp(44px,6cqi,80px) -6% 30px}
+.v-mx4 .kiemelt{text-align:center;font-size:clamp(1.6rem,4.2cqi,3rem);color:#fff;text-shadow:0 0 40px color-mix(in srgb,var(--c-primary) 70%,transparent);margin:clamp(44px,6cqi,80px) 0 30px}
 .v-mx4 .zaro{text-align:center}.v-mx4 .mcta{justify-content:center}
 """),
         dict(id="mx5", nev="Kérdés-kártyák", leiras="Bal hasábban a szöveg, a fejben zakatoló öt kérdés egymásra csúszó kártyákon; jobb hasábban a folytatás: a figyelem kiköltözik, a tantra válasza, majd a kiemelt mondat. Balról jobbra, sorrendben.",
