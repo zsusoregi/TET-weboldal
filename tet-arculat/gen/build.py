@@ -87,10 +87,12 @@ kat("tortenet", ["t1", "t4", "t2", "t3", "t5"], "t1", {
     "t1": "Kirana portréja, mellette a története, kiemelve a mondata („A Tantra nem csupán hivatás számomra, hanem az életem.”) és kézírásos aláírás. Személyes, bizalmat épít: ez kell egy ilyen kényes témánál.",
     "t4": "Nagy idézet kerek portréval: erős, emberi.", "t2": "Szórt fotókollázs: emlékalbumos, meleg.",
     "t3": "Mérföldkövek (évtized, ISTA, saját út): tárgyilagos, hiteles.", "t5": "Levélpapír, felragasztott fotóval: nagyon személyes."})
-kat("tenyek", ["p1", "p5", "p4", "p3", "p6"], "p1", {
-    "p1": "Hat kártya a hat előnnyel, mindegyik élén egy kulcsszó (Izgalom, Figyelem, Biztonság, Önbizalom, Élmény, Erő). Gyorsan átfutható.",
-    "p5": "Szerkesztőségi rács nagy kulcsszavakkal: magabiztos, magazinos.", "p4": "Kerek pecsétek: „garancia” hatás.",
-    "p3": "Egyetlen tiszta sor ikonokkal: levegős.", "p6": "Chip-felhő: kompakt."})
+kat("tenyek", ["tx1", "tx3", "tx2", "tx4", "tx5"], "tx1", {
+    "tx1": "Hat kártya hármasával, mind a hat előny teljes szöveggel, balra zárva. Gyorsan átfutható, és a kártyastílus az egész oldalon egységes.",
+    "tx3": "Teljes szélességű, váltakozó hátterű sávok: a hosszabb szövegek itt olvashatók a legkényelmesebben.",
+    "tx2": "Számozott, kártya nélküli lista két hasábban: szerkesztőségi, levegős.",
+    "tx4": "Sötét háttér, nagy kulcsszavak: erős, férfias hangulat.",
+    "tx5": "Oldalcím és egymás alatti ikonos lista: rendezett, mint egy jól szerkesztett cikk."})
 kat("kinek", ["kx1", "kx2", "kx3", "kx4", "kx5"], "kx1", {"kx1": "Igen és nem egymás mellett: a 45+ férfi egy pillantással eldönti, róla szól-e. Az őszinte „kinek nem” növeli a bizalmat."})
 kat("velemenyek", ["vx3", "vx1", "vx2", "vx4", "vx5"], "vx3", {"vx3": "Ezek a beszámolók intimek. A sötét, gyertyafényes háttér előtt úgy olvashatók, mint egy esti, bizalmas beszélgetés, a kiemelt mondatok meleg fényben."})
 kat("kinalat", ["k2", "k5", "k3", "k1", "k6"], "k2", {

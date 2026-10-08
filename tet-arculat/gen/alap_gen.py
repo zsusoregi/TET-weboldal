@@ -444,7 +444,7 @@ TARTALOM["tenyek"].update({
          "szoveg": "A tantraszex edzés során elsajátított képességeid lehetővé teszik, hogy felfedezz olyan dolgokat a szexben, "
                    "amelyekről korábban álmodni sem mertél."},
         {"ikon": "homokora", "szam": "Erő", "cim": "Mellékhatások: fiatalság, erő, egészség", "korszoveg": "Tantraszex Edzésterv",
-         "szoveg": "A kielégítő, energiamegtartó szex egy egészen új életminőséget is hoz számodra: tudatosabb lesz az életed, "
+         "szoveg": "A kielégítő, energiamegtartó szex egy egészen új életminőséget is hoz számodra: | Tudatosabb lesz az életed, "
                    "tudatosabb lesz a teremtésed. | Gazdálkodni tudsz az élet-energiáddal, megtapasztalod, hogy az elgyengülés, "
                    "betegség és potencia- vagy libidózavar egyáltalán nem szükségszerű velejárója az évek múlásának."},
     ]})

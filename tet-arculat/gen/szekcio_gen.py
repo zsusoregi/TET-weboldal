@@ -298,6 +298,84 @@ def miert():
     return out
 
 
+# ================================================================ MIÉRT ÉRDEMES (20. blokk): mind a 6 kártya, balra zárt szöveggel
+def tenyek():
+    c = ctx()
+    t = c["tenyek"]
+    el = t["elemek"]
+
+    def kartya(e, i, cls="krt"):
+        return (f'<article class="{cls}" data-rv style="--i:{i}"><div class="krt-fej">{ik(e.get("ikon"))}<span class="kulcs">{esc(e["szam"])}</span></div>'
+                f'<h3 class="krt-h">{md(e["cim"])}</h3><p class="krt-p">{md(e["szoveg"])}</p></article>')
+    BAL = r"""
+.v-%s,.v-%s .shead{text-align:left}
+.v-%s .krt,.v-%s .krt *{text-align:left}
+.v-%s .kulcs{font-family:var(--f-label);font-size:.72rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--hl)}
+.v-%s .krt-h{font-size:var(--t-h3);margin:2px 0 4px}
+.v-%s .krt-p{line-height:1.6}
+"""
+
+    def bal(v):
+        return BAL.replace("%s", v)
+    return [
+        dict(id="tx1", nev="Kártyarács, 3 × 2", leiras="Hat kártya két sorban, hármasával: ikon, kulcsszó, cím és a teljes szöveg balra zárva. A kártyák a választott kártyastílust kapják.",
+             html=sec("tx1", "tenyek", "s-white", f'<div class="wrap">{sh(t)}<div class="racs" style="--oszlop:3">'
+                      + "".join(kartya(e, i) for i, e in enumerate(el)) + "</div></div>"),
+             css=bal("tx1") + ".v-tx1 .shead{text-align:center}.v-tx1 .racs{align-items:stretch}"),
+        dict(id="tx2", nev="Számozott, két hasábban", leiras="Szerkesztőségi lista: nagy sorszám (01–06), mellette a cím és a szöveg, két hasábban, vékony elválasztó vonalakkal. Kártya nélkül, levegős.",
+             html=sec("tx2", "tenyek", "s-paper", f'<div class="wrap">{sh(t, bal=True)}<ol class="lista">'
+                      + "".join(f'<li data-rv style="--i:{i}"><b class="n">{i + 1:02d}</b><div><span class="kulcs">{esc(e["szam"])}</span>'
+                                f'<h3 class="krt-h">{md(e["cim"])}</h3><p class="krt-p">{md(e["szoveg"])}</p></div></li>' for i, e in enumerate(el))
+                      + "</ol></div>", masod=True),
+             css=bal("tx2") + r"""
+.v-tx2 .lista{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:30px clamp(30px,5cqi,70px)}
+.v-tx2 li{display:flex;gap:18px;padding-top:18px;border-top:1px solid var(--c-line2)}
+.v-tx2 .n{font-family:var(--f-display);font-weight:var(--w-display);font-size:2.2rem;line-height:1;color:var(--hl);flex:none;min-width:2.2ch}
+.v-tx2 .krt-p{color:var(--c-ink-2);margin:0}
+@container elo (max-width:760px){.v-tx2 .lista{grid-template-columns:1fr}}
+"""),
+        dict(id="tx3", nev="Váltakozó sávok", leiras="Minden előny egy teljes szélességű sáv: balra nagy ikon és kulcsszó, jobbra a cím és a szöveg; a sávok háttere váltakozik. Nyugodt, jól olvasható hosszú szövegnél is.",
+             html=sec("tx3", "tenyek", "s-paper", f'<div class="wrap">{sh(t)}<div class="savok">'
+                      + "".join(f'<div class="sav" data-rv><div class="bal">{ik(e.get("ikon"))}<span class="kulcs">{esc(e["szam"])}</span></div>'
+                                f'<div class="jobb"><h3 class="krt-h">{md(e["cim"])}</h3><p class="krt-p">{md(e["szoveg"])}</p></div></div>' for e in el)
+                      + "</div></div>"),
+             css=bal("tx3") + r"""
+.v-tx3 .shead{text-align:center}
+.v-tx3 .savok{display:grid;gap:10px;max-width:960px;margin:0 auto}
+.v-tx3 .sav{display:grid;grid-template-columns:180px 1fr;gap:clamp(18px,3cqi,40px);align-items:start;padding:clamp(20px,3cqi,32px);border-radius:var(--r)}
+.v-tx3 .sav:nth-child(odd){background:var(--c-tint)}.v-tx3 .sav:nth-child(even){background:var(--c-card)}
+.v-tx3 .bal{display:flex;flex-direction:column;gap:10px}.v-tx3 .bal .ik{--ik:64px}
+.v-tx3 .krt-p{color:var(--c-ink-2);margin:0}
+@container elo (max-width:640px){.v-tx3 .sav{grid-template-columns:1fr}.v-tx3 .bal{flex-direction:row;align-items:center}}
+"""),
+        dict(id="tx4", nev="Sötét, kulcsszavas", leiras="Sötét szekció, a kártyák fölött nagy kulcsszavak (Izgalom, Figyelem, Biztonság…) a kiemelő színnel, alattuk a cím és a szöveg. Erős, férfias.",
+             html=sec("tx4", "tenyek", "s-deep", f'<div class="wrap">{sh(t)}<div class="racs" style="--oszlop:3">'
+                      + "".join(f'<article class="elem" data-rv style="--i:{i}"><div class="fej">{ik(e.get("ikon"))}<b class="nagy">{esc(e["szam"])}</b></div>'
+                                f'<h3 class="krt-h">{md(e["cim"])}</h3><p class="krt-p">{md(e["szoveg"])}</p></article>' for i, e in enumerate(el))
+                      + "</div></div>"),
+             css=bal("tx4") + r"""
+.v-tx4 .shead{text-align:center}
+.v-tx4 .elem{border-top:1px solid var(--c-line2);padding-top:20px}
+.v-tx4 .fej{display:flex;align-items:center;gap:12px;margin-bottom:8px}.v-tx4 .fej .ik{--ik:44px}
+.v-tx4 .nagy{font-family:var(--f-display);font-weight:var(--w-display);font-size:clamp(1.6rem,2.6cqi,2.1rem);line-height:1;color:var(--c-deep-hl)}
+.v-tx4 .krt-h{color:var(--c-on-deep)}.v-tx4 .krt-p{color:var(--c-on-deep-2);margin:0}
+"""),
+        dict(id="tx5", nev="Ikonos lista oldalcímmel", leiras="Balra a szakasz címe (görgetéskor a helyén marad), jobbra egymás alatt a hat előny: ikon, cím, szöveg, vékony vonalakkal elválasztva. Rendezett, szerkesztőségi.",
+             html=sec("tx5", "tenyek", "s-sand", f'<div class="wrap grid"><div class="oldal">{sh(t, bal=True)}</div><div class="lista">'
+                      + "".join(f'<div class="sor" data-rv>{ik(e.get("ikon"))}<div><span class="kulcs">{esc(e["szam"])}</span>'
+                                f'<h3 class="krt-h">{md(e["cim"])}</h3><p class="krt-p">{md(e["szoveg"])}</p></div></div>' for e in el)
+                      + "</div></div>", masod=True),
+             css=bal("tx5") + r"""
+.v-tx5 .grid{display:grid;grid-template-columns:.75fr 1.25fr;gap:clamp(30px,5cqi,80px);align-items:start}
+.v-tx5 .oldal{position:sticky;top:30px}
+.v-tx5 .sor{display:grid;grid-template-columns:56px 1fr;gap:18px;padding:22px 0;border-bottom:1px solid var(--c-line2)}
+.v-tx5 .sor:first-child{padding-top:0}.v-tx5 .sor .ik{--ik:52px}
+.v-tx5 .krt-p{color:var(--c-ink-2);margin:0}
+@container elo (max-width:820px){.v-tx5 .grid{grid-template-columns:1fr}.v-tx5 .oldal{position:relative;top:0}}
+"""),
+    ]
+
+
 # ================================================================ KINEK SZÓL (egyedi)
 def kinek():
     c = ctx()
@@ -863,5 +941,5 @@ def mind(context):
     nav_html()
     HERO[0]["html"] = hero_html()
     return {"nav": NAV, "hero": HERO, "rolaszol": rolaszol(), "miert": miert(), "kinek": kinek(),
-            "velemenyek": velemenyek(), "garancia": garancia(), "gyik": gyik(), "ajanlat": ajanlat(), "mia": mia(),
+            "velemenyek": velemenyek(), "garancia": garancia(), "gyik": gyik(), "ajanlat": ajanlat(), "mia": mia(), "tenyek": tenyek(),
             "latogatas": latogatas(), "lablec": lablec()}
