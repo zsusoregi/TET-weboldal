@@ -427,8 +427,8 @@ TARTALOM["tenyek"].update({
          "szoveg": "Két lehetőség van. Hagyod, hogy a farkad irányítson téged, vagy te irányítod a farkad, és megtanulod kezelni a "
                    "szexuális energiád. Vagy éppen azt a helyzetet, amikor nem jelenik meg az izgalmi energia."},
         {"ikon": "figyelem", "szam": "Figyelem", "cim": "Felhagysz a leggyakoribb hibákkal", "korszoveg": "Tantraszex Edzésterv",
-         "szoveg": "Ha fogalmad sincs, hol tart a partnered: | – elkezdesz csak a magad folyamatára figyelni, | – elkezded kérdezgetni: "
-                   "„jó-e neki?”, | – elkezdesz valamit elképzelni róla, esetleg hagyod magad becsapni. | Mindhárom óriási hiba, és "
+         "szoveg": "Ha fogalmad sincs, hol tart a partnered: | 1. elkezdesz csak a magad folyamatára figyelni, | 2. elkezded kérdezgetni: "
+                   "„jó-e neki?”, | 3. elkezdesz valamit elképzelni róla, esetleg hagyod magad becsapni. | Mindhárom óriási hiba, és "
                    "tönkrevágja a szeretkezést, sokszor nem csak egy alkalomra, hanem örökre. | Az edzésprogramban megtanulod érzékelni "
                    "a szexuális energiát nem csak magadban, de a partneredben is. Tudod, hol jársz, és tudod, hol jár a partnered a gyönyör útján."},
         {"ikon": "legzes", "szam": "Biztonság", "cim": "Teljesen biztos leszel a dolgodban", "korszoveg": "Tantraszex Edzésterv",
