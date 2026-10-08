@@ -529,3 +529,25 @@ TARTALOM["latogatas"].update({
 TARTALOM["latogatas"].pop("cta2", None)
 
 TARTALOM["ajanlat"].pop("lab", None)
+
+# 16. blokk (Miért pont tantra?): az ügyfél által megadott pontos szöveg és sorrend (2026-10-08).
+# Csak a gépelési hibák javítva: szóköz a pont után, „….” → „…”, „oda.,” → „oda.”, „magunkat;” → „magunkat:”.
+MIERT.update({
+    "cim": "Miért pont tantra?", "kicker": None, "lead": None,
+    "p1": "A nyugati ember szeret célokat kitűzni. Elindulunk valahonnan, és igyekszünk minél gyorsabban megérkezni.",
+    "p2": "**Ezt a gondolkodást bevittük a szexualitásunkba is.**",
+    "lanc_sor": "Izgalom. Erekció. Egyre nagyobb izgalom. Orgazmus.",
+    "lanc_vege": "Sikerült… Vagy nem sikerült…",
+    "fontos": "És minél fontosabbá válik a cél, annál könnyebben történik valami furcsa: | **elfelejtjük érezni azt, ami közben történik.**",
+    "kerdes_cim": "Figyelni kezdjük magunkat:",
+    "kikoltozik": "A figyelem lassan kiköltözik a testből, és beköltözik a fejbe.",
+    "tantra_cim": "**A tantra ennek szinte az ellenkezőjét tanítja.**",
+    "tantra": ["Nem azt, hogyan juss gyorsabban a csúcsra.", "Nem is azt, hogy hogyan juttasd a partneredet oda.",
+               "Hanem azt, hogy **hogyan maradj benne abban, ami jó.**"],
+    "kiemelt": ["A tantrikus szex nem technikával kezdődik", "Hanem figyelemmel."],
+    "zaro_sorok": ["Azzal a képességgel, hogy észrevedd, mi történik a testedben.",
+                   "Megtanulod felépíteni, megtartani és szabályozni a szexuális izgalmat.",
+                   "És közben ott maradni, a testedben, a másik emberrel, a pillanatban.",
+                   "**Ezt azonban nem lehet pusztán megérteni.**", "Gyakorolni kell.",
+                   "Ezért született meg a **Tantraszex Edzésterv.**"],
+})

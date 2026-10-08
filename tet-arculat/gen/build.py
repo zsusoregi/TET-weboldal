@@ -118,10 +118,6 @@ spec["egyedi_css"] = ("@container elo (min-width:901px){.v-p1 .racs{--oszlop:3!i
                      ".kiem{color:var(--hl);font-weight:800}"
                      "#top .hcim{font-size:calc(clamp(1.9rem,3.4cqi,3.1rem)*var(--hero-scale,1));line-height:1.1}"
                      ".v-f2 .krt,.v-f2 .krt *{text-align:left!important}"
-                     "#miert .fontos{margin:16px 0 8px;color:var(--c-ink-2)}#miert .fontos b{color:var(--c-head)}"
-                     "#miert .kcim{font-weight:700;color:var(--c-head);margin:0 0 10px}"
-                     "#miert .fwrap{max-width:620px;margin:0 auto 26px;text-align:center}"
-                     "#miert .fontos4{text-align:center;max-width:60ch;margin:0 auto 18px;color:var(--c-on-deep-2)}#miert .fontos4 b{color:var(--c-on-deep)}"
                      "#kinalat .krt>.krt-kep .ph,#kinalat .ft .ph{--ar:16/9}")
 # ikon-spec (OpenAI-kulcs nélkül: a motor a márka formáiból épít tartalék ikonokat)
 (MUNKA / "arculat.json").write_text(json.dumps(spec, ensure_ascii=False, indent=1), encoding="utf-8")

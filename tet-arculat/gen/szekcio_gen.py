@@ -195,112 +195,104 @@ def rolaszol():
 
 # ================================================================ MIÉRT TANTRA (egyedi)
 def miert():
+    """16. blokk: minden változat PONTOSAN az ügyfél sorrendjében olvasható (fentről le, balról jobbra)."""
     c = ctx()
-    lanc = "".join(f'<span class="l" data-rv style="--i:{i}">{esc(x)}</span>' for i, x in enumerate(M["lanc"]))
-    kerd = "".join(f'<li data-rv style="--i:{i}">{esc(x)}</li>' for i, x in enumerate(M["kerdesek"]))
-    tantra = "".join(f'<li data-rv style="--i:{i}">{md(x)}</li>' for i, x in enumerate(M["tantra"]))
-    fontos = f'<p class="fontos" data-rv>{md(M["fontos"])}</p><p class="kcim">{esc(M["kerdes_cim"])}</p>'
-    zaro = (f'<div class="zaroblokk" data-rv><p class="z1">{md(M["zaro"])}</p><p class="z2">{md(M["zaro2"])}</p>'
-            f'<div class="gombsor">{btn(M["cta"])}</div></div>')
+    fej = f'<header class="shead" data-rv><h2 class="cim">{md(M["cim"])}</h2></header>'
+    p1 = f'<p class="mp1" data-rv>{md(M["p1"])}</p><p class="mp2" data-rv>{md(M["p2"])}</p>'
+    lanc = f'<p class="lanc" data-rv>{esc(M["lanc_sor"])}</p><p class="siker" data-rv>{esc(M["lanc_vege"])}</p>'
+    fontos = f'<p class="fontos" data-rv>{md(M["fontos"])}</p><p class="kcim" data-rv>{esc(M["kerdes_cim"])}</p>'
+    kerd = '<ul class="kerd">' + "".join(f'<li data-rv style="--i:{i}">{esc(x)}</li>' for i, x in enumerate(M["kerdesek"])) + "</ul>"
+    kik = f'<p class="kik" data-rv>{md(M["kikoltozik"])}</p>'
+    tantra = (f'<p class="tcim" data-rv>{md(M["tantra_cim"])}</p><ul class="tl">'
+              + "".join(f'<li data-rv style="--i:{i}">{md(x)}</li>' for i, x in enumerate(M["tantra"])) + "</ul>")
+    kiem = f'<p class="kiemelt" data-rv>{"<br>".join(md(x) for x in M["kiemelt"])}</p>'
+    zaro = ('<div class="zaro" data-rv>' + "".join(f'<p>{md(x)}</p>' for x in M["zaro_sorok"])
+            + f'</div><div class="gombsor mcta" data-rv>{btn(M["cta"])}</div>')
+    elso = p1 + lanc + fontos + kerd + kik          # a „cél-gondolkodás” rész
+    masodik = tantra                                 # a tantra válasza
+    vege = kiem + zaro                               # a kiemelt mondat és a zárás
+
+    KOZOS = r"""
+.v-%s .mp1,.v-%s .mp2,.v-%s .fontos,.v-%s .kik,.v-%s .zaro p{margin:0 0 10px}
+.v-%s .mp2 b,.v-%s .fontos b{color:var(--c-head)}
+.v-%s .lanc{font-family:var(--f-display);font-weight:var(--w-display);font-size:clamp(1.1rem,1.9cqi,1.4rem);color:var(--c-head);margin:18px 0 4px}
+.v-%s .siker{font-style:italic;color:var(--c-ink-2);margin:0 0 16px}
+.v-%s .kcim{font-weight:700;color:var(--c-head);margin:6px 0 10px}
+.v-%s .kerd{display:grid;gap:6px;margin:0 0 16px}
+.v-%s .kerd li{padding-left:22px;position:relative;font-style:italic;color:var(--c-ink-2)}
+.v-%s .kerd li::before{content:"?";position:absolute;left:2px;top:0;font-style:normal;font-weight:800;color:var(--hl)}
+.v-%s .kik{font-weight:600;color:var(--c-head)}
+.v-%s .tcim{margin:0 0 10px}.v-%s .tcim b{color:var(--c-head)}
+.v-%s .tl{display:grid;gap:8px;margin:0}
+.v-%s .tl li{padding-left:26px;position:relative}
+.v-%s .tl li::before{content:"";position:absolute;left:2px;top:.5em;width:12px;height:7px;border-left:2px solid var(--hl);border-bottom:2px solid var(--hl);transform:rotate(-45deg)}
+.v-%s .tl b{color:var(--hl)}
+.v-%s .kiemelt{font-family:var(--f-display);font-weight:var(--w-display);font-size:clamp(1.7rem,3.8cqi,3rem);line-height:1.12;color:var(--c-head);margin:clamp(34px,5cqi,60px) 0 22px}
+.v-%s .kiemelt b{color:inherit}
+.v-%s .zaro{color:var(--c-ink-2)}.v-%s .zaro b{color:var(--c-head)}
+.v-%s .mcta{margin-top:24px}
+"""
+
+    def kozos(v):
+        return KOZOS.replace("%s", v)
     out = [
-        dict(id="mx1", nev="Fej és test, két hasáb", leiras="Balra a „cél-gondolkodás” (a lánc és a kérdések, a fejben), jobbra egy sötét panelen a tantra válasza. A szembeállítás maga a mondanivaló.",
-             html=sec("mx1", "miert", "s-paper", f'<div class="wrap">{sh(M)}<div class="grid"><div class="fej"><p class="cmk">A cél-gondolkodás</p>'
-                      f'<div class="lanc">{lanc}</div><p class="lvg">{esc(M["lanc_vege"])}</p>{fontos}<ul class="kerd">{kerd}</ul></div>'
-                      f'<div class="test s-deep s-vilagos-nem"><p class="cmk">A tantra</p><h3>{md(M["tantra_cim"])}</h3><ul class="tl">{tantra}</ul></div></div>{zaro}</div>'),
-             css=r"""
-.v-mx1 .grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(18px,3cqi,36px);align-items:stretch}
+        dict(id="mx1", nev="Fej és test, két panel", leiras="Balra egy szaggatott keretes panelen a „cél-gondolkodás” (a lánc, a kérdések, a fejbe költöző figyelem), jobbra egy sötét panelen a tantra válasza. Alattuk, középen, nagyban a kiemelt mondat. Sorrendben olvasható, balról jobbra.",
+             html=sec("mx1", "miert", "s-paper", f'<div class="wrap">{fej}<div class="grid"><div class="fej">{elso}</div>'
+                      f'<div class="test s-deep">{masodik}</div></div><div class="also">{vege}</div></div>'),
+             css=kozos("mx1") + r"""
+.v-mx1 .grid{display:grid;grid-template-columns:1.25fr .75fr;gap:clamp(18px,3cqi,36px);align-items:start}
 .v-mx1 .fej,.v-mx1 .test{border-radius:var(--r);padding:clamp(24px,3.6cqi,44px)}
 .v-mx1 .fej{background:var(--c-card);border:1px dashed var(--c-line2)}
-.v-mx1 .test{background:var(--c-deep);color:var(--c-on-deep)}
-.v-mx1 .test h3{color:var(--c-on-deep);font-size:var(--t-h3);margin-bottom:16px}
-.v-mx1 .cmk{font-family:var(--f-label);font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:var(--c-ink-3);margin-bottom:16px}
-.v-mx1 .test .cmk{color:var(--c-deep-hl)}
-.v-mx1 .lanc{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
-.v-mx1 .lanc .l{padding:6px 12px;border-radius:999px;background:var(--c-tint);font-weight:700;font-size:.9rem}
-.v-mx1 .lanc .l+.l::before{content:"→";margin-right:8px;color:var(--c-ink-3)}
-.v-mx1 .lvg{margin:12px 0 18px;font-style:italic;color:var(--c-ink-2)}
-.v-mx1 .kerd{display:flex;flex-wrap:wrap;gap:8px}
-.v-mx1 .kerd li{font-family:var(--f-hand);font-size:calc(var(--fs-hand)*1.05rem);color:var(--c-ink-2);background:var(--c-paper);padding:4px 12px;border-radius:14px 14px 14px 2px}
-.v-mx1 .tl{display:grid;gap:12px}.v-mx1 .tl li{padding-left:28px;position:relative;color:var(--c-on-deep)}
-.v-mx1 .tl li::before{content:"";position:absolute;left:0;top:.5em;width:14px;height:14px;border-radius:50%;border:2px solid var(--c-deep-hl)}
-.v-mx1 .tl li:last-child{font-weight:800}.v-mx1 .tl li:last-child::before{background:var(--c-deep-hl)}
-.v-mx1 .zaroblokk{text-align:center;margin-top:clamp(34px,5cqi,60px)}
-.v-mx1 .z1{font-family:var(--f-display);font-weight:var(--w-display);font-size:clamp(1.3rem,2.4cqi,1.9rem);color:var(--c-head);line-height:1.2;max-width:28ch;margin:0 auto 10px}
-.v-mx1 .z2{color:var(--c-ink-2);margin-bottom:22px}.v-mx1 .gombsor{justify-content:center}
-@container elo (max-width:820px){.v-mx1 .grid{grid-template-columns:1fr}}
+.v-mx1 .test{background:var(--c-deep);color:var(--c-ink);position:sticky;top:20px}
+.v-mx1 .also{text-align:center;max-width:760px;margin:0 auto}.v-mx1 .mcta{justify-content:center}
+.v-mx1 .kiemelt{position:relative;padding-top:26px}
+.v-mx1 .kiemelt::before{content:"";position:absolute;left:50%;top:0;width:60px;height:3px;margin-left:-30px;background:var(--c-primary)}
+@container elo (max-width:820px){.v-mx1 .grid{grid-template-columns:1fr}.v-mx1 .test{position:relative;top:0}}
 """),
-        dict(id="mx2", nev="A lánc elszakad", leiras="A „siker-lánc” vízszintes lépésekben, a végén áthúzva; alatta a kérdések halványulnak, majd egy erős mondat. Plakátos, drámai ív.",
-             html=sec("mx2", "miert", "s-white", f'<div class="wrap">{sh(M)}<div class="lanc">{lanc}<span class="szakad">{esc(M["lanc_vege"])}</span></div><div class="fwrap">{fontos}</div>'
-                      f'<ul class="kerd">{kerd}</ul><div class="fordulat" data-rv><h3>{md(M["tantra_cim"])}</h3><ul class="tl">{tantra}</ul></div>{zaro}</div>', masod=True),
-             css=r"""
-.v-mx2 .lanc{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:0;margin-bottom:26px}
-.v-mx2 .lanc .l{font-family:var(--f-display);font-weight:var(--w-display);font-size:clamp(1.05rem,2cqi,1.5rem);color:var(--c-head);padding:10px 18px;border:2px solid var(--c-ink);margin:4px -1px}
-.v-mx2 .lanc .l:nth-child(4){background:var(--c-ink);color:var(--c-paper)}
-.v-mx2 .szakad{display:block;width:100%;text-align:center;margin-top:12px;font-family:var(--f-hand);font-size:calc(var(--fs-hand)*1.25rem);color:var(--c-primary)}
-.v-mx2 .kerd{display:flex;flex-wrap:wrap;justify-content:center;gap:10px 26px;margin-bottom:40px}
-.v-mx2 .kerd li{font-size:1.05rem;color:var(--c-ink-3);font-style:italic}
-.v-mx2 .kerd li:nth-child(2){opacity:.8}.v-mx2 .kerd li:nth-child(3){opacity:.65}.v-mx2 .kerd li:nth-child(4){opacity:.5}.v-mx2 .kerd li:nth-child(5){opacity:.38}
-.v-mx2 .fordulat{max-width:680px;margin:0 auto;background:var(--c-tint);border-radius:var(--r);padding:clamp(24px,4cqi,44px);text-align:center}
-.v-mx2 .fordulat h3{font-size:var(--t-h3);margin-bottom:16px}
-.v-mx2 .tl{display:grid;gap:8px}.v-mx2 .tl li:last-child{font-weight:800;color:var(--hl);font-size:1.1rem}
-.v-mx2 .zaroblokk{text-align:center;margin-top:44px}
-.v-mx2 .z1{font-family:var(--f-display);font-weight:var(--w-display);font-size:clamp(1.3rem,2.4cqi,1.9rem);color:var(--c-head);line-height:1.2;max-width:30ch;margin:0 auto 10px}
-.v-mx2 .z2{color:var(--c-ink-2);margin-bottom:22px}.v-mx2 .gombsor{justify-content:center}
+        dict(id="mx2", nev="Egy hasáb, felolvasásra", leiras="Egyetlen keskeny, középre zárt hasáb, mint egy felolvasott szöveg: a lánc kiemelt sorként, a kérdések egyre halványabban, a végén óriás betűkkel a kiemelt mondat. A legjobban követhető.",
+             html=sec("mx2", "miert", "s-white", f'<div class="wrap szuk">{fej}<div class="egy">{elso}{masodik}{vege}</div></div>', masod=True),
+             css=kozos("mx2") + r"""
+.v-mx2 .egy{text-align:center}
+.v-mx2 .lanc{font-size:clamp(1.3rem,2.6cqi,1.9rem);letter-spacing:.01em}
+.v-mx2 .kerd{justify-items:center}.v-mx2 .kerd li{padding:0}.v-mx2 .kerd li::before{display:none}
+.v-mx2 .kerd li:nth-child(2){opacity:.85}.v-mx2 .kerd li:nth-child(3){opacity:.7}.v-mx2 .kerd li:nth-child(4){opacity:.55}.v-mx2 .kerd li:nth-child(5){opacity:.42}
+.v-mx2 .tl{justify-items:center}.v-mx2 .tl li{padding:0}.v-mx2 .tl li::before{display:none}
+.v-mx2 .tcim{margin-top:22px}
+.v-mx2 .kiemelt{font-size:clamp(2rem,4.6cqi,3.5rem);padding:28px 0;border-top:1px solid var(--c-line2);border-bottom:1px solid var(--c-line2)}
+.v-mx2 .mcta{justify-content:center}
 """),
-        dict(id="mx3", nev="Fotó gondolatfelhővel", leiras="Középen a meditáló férfi a jantrával, körülötte lebegnek a fejben zakatoló kérdések. Jobbra a tantra válasza. Képszerű, azonnal érthető.",
-             html=sec("mx3", "miert", "s-paper", f'<div class="wrap">{sh(M)}<div class="grid"><div class="felho" data-rv>{foto(c, "jantra", "4/5")}'
-                      f'<ul class="kerd">{kerd}</ul></div><div class="jobb"><p class="lanc">{lanc}</p><p class="lvg">{esc(M["lanc_vege"])}</p>{fontos}'
-                      f'<h3>{md(M["tantra_cim"])}</h3><ul class="tl">{tantra}</ul>{zaro}</div></div></div>'),
-             css=r"""
-.v-mx3 .grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(30px,5cqi,80px);align-items:center}
-.v-mx3 .felho{position:relative;max-width:440px;margin:0 auto;width:100%}
-.v-mx3 .kerd li{position:absolute;background:var(--c-card);box-shadow:var(--sh-2);padding:7px 14px;border-radius:16px 16px 16px 3px;font-weight:700;font-size:.88rem;white-space:nowrap;z-index:3}
-.v-mx3 .kerd li:nth-child(1){left:-6%;top:6%}.v-mx3 .kerd li:nth-child(2){right:-8%;top:18%}.v-mx3 .kerd li:nth-child(3){left:-10%;top:44%}
-.v-mx3 .kerd li:nth-child(4){right:-4%;top:58%}.v-mx3 .kerd li:nth-child(5){left:4%;bottom:6%}
-.v-mx3 .lanc{display:flex;flex-wrap:wrap;gap:4px 10px;font-weight:700;color:var(--c-ink-2)}.v-mx3 .lanc .l+.l::before{content:"→ ";color:var(--c-ink-3)}
-.v-mx3 .lvg{font-style:italic;color:var(--c-ink-3);margin-bottom:24px}
-.v-mx3 h3{font-size:var(--t-h3);margin-bottom:14px}
-.v-mx3 .tl{display:grid;gap:10px;margin-bottom:26px}.v-mx3 .tl li{padding-left:26px;position:relative}
-.v-mx3 .tl li::before{content:"";position:absolute;left:0;top:.6em;width:14px;height:2px;background:var(--c-primary)}.v-mx3 .tl li:last-child{font-weight:800;color:var(--hl)}
-.v-mx3 .z1{font-family:var(--f-display);font-weight:var(--w-display);font-size:clamp(1.2rem,2cqi,1.6rem);color:var(--c-head);line-height:1.2;margin-bottom:8px}
-.v-mx3 .z2{color:var(--c-ink-2);margin-bottom:20px}
-@container elo (max-width:860px){.v-mx3 .grid{grid-template-columns:1fr}.v-mx3 .kerd li{font-size:.78rem}}
+        dict(id="mx3", nev="Szöveg a jantrás fotó mellett", leiras="Balra sorban a teljes szöveg, jobbra a meditáló férfi a jantrával, görgetéskor a helyén marad. Alul teljes szélességben a kiemelt mondat. Képszerű, nyugodt.",
+             html=sec("mx3", "miert", "s-paper", f'<div class="wrap">{fej}<div class="grid"><div class="txt">{elso}{masodik}</div>'
+                      f'<div class="kep" data-rv>{foto(c, "jantra", "4/5")}</div></div><div class="also">{vege}</div></div>'),
+             css=kozos("mx3") + r"""
+.v-mx3 .shead{text-align:left;margin-left:0}
+.v-mx3 .grid{display:grid;grid-template-columns:1.1fr .9fr;gap:clamp(30px,5cqi,80px);align-items:start}
+.v-mx3 .kep{position:sticky;top:24px}
+.v-mx3 .tcim{margin-top:20px}
+.v-mx3 .also{max-width:820px}
+.v-mx3 .kiemelt{border-left:4px solid var(--c-primary);padding-left:22px}
+@container elo (max-width:860px){.v-mx3 .grid{grid-template-columns:1fr}.v-mx3 .kep{position:relative;top:0;max-width:420px}}
 """),
-        dict(id="mx4", nev="Sötét kiáltvány", leiras="Sötét szekció, középen óriás betűkkel a kulcsmondat. Alatta a kérdések írógépes listaként, mellettük a tantra válasza pipákkal. Komoly, súlyos.",
-             html=sec("mx4", "miert", "s-deep", f'<div class="wrap">{sh(M)}<p class="fontos4" data-rv>{md(M["fontos"])}</p><p class="nagy" data-rv>{md(M["zaro"])}</p><div class="grid">'
-                      f'<div><p class="cmk">{esc(M["kerdes_cim"]).rstrip(":")}</p><ul class="kerd">{kerd}</ul></div>'
-                      f'<div><p class="cmk">{md(M["tantra_cim"])}</p><ul class="tl">{tantra}</ul></div></div>'
-                      f'<div class="also" data-rv><p>{md(M["zaro2"])}</p>{btn(M["cta"])}</div></div>'),
-             css=r"""
-.v-mx4 .nagy{font-family:var(--f-display);font-weight:var(--w-display);font-size:clamp(1.7rem,4cqi,3.2rem);line-height:1.12;text-align:center;max-width:22ch;margin:0 auto clamp(34px,5cqi,60px);color:var(--c-on-deep)}
-.v-mx4 .grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,4cqi,60px);max-width:900px;margin:0 auto}
-.v-mx4 .cmk{font-family:var(--f-label);font-size:.74rem;letter-spacing:.14em;text-transform:uppercase;color:var(--c-deep-hl);margin-bottom:14px;padding-bottom:10px;border-bottom:1px solid var(--c-line2)}
-.v-mx4 .kerd li{font-family:var(--f-label);font-size:.95rem;padding:7px 0;color:var(--c-on-deep-2);border-bottom:1px dashed var(--c-line)}
-.v-mx4 .kerd li::before{content:"? ";color:var(--c-deep-hl)}
-.v-mx4 .tl li{padding:8px 0 8px 30px;position:relative;border-bottom:1px dashed var(--c-line)}
-.v-mx4 .tl li::before{content:"";position:absolute;left:2px;top:.85em;width:12px;height:7px;border-left:2px solid var(--c-deep-hl);border-bottom:2px solid var(--c-deep-hl);transform:rotate(-45deg)}
-.v-mx4 .tl li:last-child{font-weight:800;color:#fff}
-.v-mx4 .also{display:flex;align-items:center;justify-content:center;gap:24px;flex-wrap:wrap;margin-top:clamp(34px,5cqi,56px);text-align:center}
-.v-mx4 .also p{margin:0;font-size:1.1rem;color:var(--c-on-deep)}
-@container elo (max-width:760px){.v-mx4 .grid{grid-template-columns:1fr}}
+        dict(id="mx4", nev="Sötét kiáltvány", leiras="Sötét szekció, egy hasábban: a szöveg nyugodtan halad, majd a kiemelt mondat óriási betűkkel, meleg fényben áll ki belőle. Komoly, súlyos, megállítja a görgetést.",
+             html=sec("mx4", "miert", "s-deep", f'<div class="wrap szuk">{fej}<div class="egy">{elso}{masodik}{vege}</div></div>'),
+             css=kozos("mx4") + r"""
+.v-mx4 .egy{max-width:680px;margin:0 auto}
+.v-mx4 .lanc{color:var(--c-deep-hl)}
+.v-mx4 .kiemelt{text-align:center;font-size:clamp(2rem,5cqi,3.8rem);color:#fff;text-shadow:0 0 40px color-mix(in srgb,var(--c-primary) 70%,transparent);margin:clamp(44px,6cqi,80px) -6% 30px}
+.v-mx4 .zaro{text-align:center}.v-mx4 .mcta{justify-content:center}
 """),
-        dict(id="mx5", nev="Kérdés-kártyák legyezőben", leiras="A fejben zakatoló öt kérdés egymásra csúszó kártyákon, jobbra a tantra csendes válasza. Játékos, mégis lényegre törő.",
-             html=sec("mx5", "miert", "s-tint", f'<div class="wrap"><div class="grid"><div class="legyezo" data-rv>'
+        dict(id="mx5", nev="Kérdés-kártyák", leiras="Bal hasábban a szöveg, a fejben zakatoló öt kérdés egymásra csúszó kártyákon; jobb hasábban a folytatás: a figyelem kiköltözik, a tantra válasza, majd a kiemelt mondat. Balról jobbra, sorrendben.",
+             html=sec("mx5", "miert", "s-tint", f'<div class="wrap">{fej}<div class="grid"><div class="bal">{p1}{lanc}{fontos}<div class="legyezo" data-rv>'
                       + "".join(f'<div class="lap l{i}">{esc(x)}</div>' for i, x in enumerate(M["kerdesek"]))
-                      + f'</div><div>{sh(M, bal=True)}<p class="lanc">{" → ".join(esc(x) for x in M["lanc"])}</p>{fontos}'
-                      f'<h3>{md(M["tantra_cim"])}</h3><ul class="tl">{tantra}</ul>{zaro}</div></div></div>', masod=True),
-             css=r"""
-.v-mx5 .grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:clamp(30px,5cqi,80px);align-items:center}
-.v-mx5 .legyezo{position:relative;min-height:380px}
-.v-mx5 .lap{position:absolute;left:8%;right:8%;padding:20px 22px;background:var(--c-card);border-radius:14px;box-shadow:var(--sh-2);font-family:var(--f-display);font-weight:var(--w-display);font-size:clamp(1.05rem,1.8cqi,1.35rem);color:var(--c-head)}
-.v-mx5 .l0{top:0;transform:rotate(-6deg)}.v-mx5 .l1{top:17%;transform:rotate(3deg)}.v-mx5 .l2{top:34%;transform:rotate(-2deg)}
-.v-mx5 .l3{top:51%;transform:rotate(5deg)}.v-mx5 .l4{top:68%;transform:rotate(-1deg);background:var(--c-primary);color:var(--c-on-primary)}
-.v-mx5 .shead{margin-bottom:18px}.v-mx5 .lanc{font-weight:700;color:var(--c-ink-2);margin-bottom:22px}
-.v-mx5 h3{font-size:var(--t-h3);margin-bottom:12px}
-.v-mx5 .tl{display:grid;gap:8px;margin-bottom:24px}.v-mx5 .tl li:last-child{font-weight:800;color:var(--hl)}
-.v-mx5 .z1{font-family:var(--f-display);font-weight:var(--w-display);font-size:clamp(1.2rem,2cqi,1.6rem);color:var(--c-head);margin-bottom:6px}
-.v-mx5 .z2{color:var(--c-ink-2);margin-bottom:20px}
-@container elo (max-width:860px){.v-mx5 .grid{grid-template-columns:1fr}.v-mx5 .legyezo{min-height:330px}}
+                      + f'</div></div><div class="jobb">{kik}{masodik}{vege}</div></div></div>', masod=True),
+             css=kozos("mx5") + r"""
+.v-mx5 .grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(30px,5cqi,80px);align-items:start}
+.v-mx5 .legyezo{display:grid;gap:0;margin-top:6px}
+.v-mx5 .lap{padding:14px 18px;background:var(--c-card);border-radius:12px;box-shadow:var(--sh-2);font-family:var(--f-display);font-weight:var(--w-display);font-size:clamp(1rem,1.7cqi,1.25rem);color:var(--c-head);margin-bottom:-6px}
+.v-mx5 .l0{transform:rotate(-2deg)}.v-mx5 .l1{transform:rotate(1.5deg) translateX(14px)}.v-mx5 .l2{transform:rotate(-1deg) translateX(4px)}
+.v-mx5 .l3{transform:rotate(2deg) translateX(18px)}.v-mx5 .l4{transform:rotate(-1.5deg);background:var(--c-primary);color:var(--c-on-primary)}
+.v-mx5 .kiemelt{margin-top:30px}
+@container elo (max-width:860px){.v-mx5 .grid{grid-template-columns:1fr}}
 """),
     ]
     return out
