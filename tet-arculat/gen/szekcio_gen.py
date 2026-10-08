@@ -119,7 +119,7 @@ def rolaszol():
     out = [
         dict(id="rx1", nev="Életkor-lépcső", leiras="A 15+, 25+ és 45 felett három emelkedő lépcsőfok, a legmagasabb a narancs. Mellette a „Talán…” mondatok. Egyszerre mesél és tagol.",
              html=sec("rx1", "rolaszol", "s-paper", f'<div class="wrap">{sh(R)}<div class="grid"><div class="lepcso">{tr()}</div>'
-                      f'<div class="jobb">{szov}{talan}{zaro}</div></div></div>'),
+                      f'<div class="jobb">{zaro}{szov}{talan}</div></div></div>'),
              css=r"""
 .v-rx1 .grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(28px,5cqi,72px);align-items:end}
 .v-rx1 .lepcso{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;align-items:end;min-height:340px}
@@ -134,7 +134,7 @@ def rolaszol():
 """),
         dict(id="rx2", nev="Idővonal három állomással", leiras="Vízszintes idővonal: 15+, 25+, 45 felett, az utolsó pont izzik. Alatta két hasábban a „Talán…” mondatok. Tiszta, mesélős.",
              html=sec("rx2", "rolaszol", "s-white", f'<div class="wrap">{sh(R)}<div class="ido">{tr("all")}</div>'
-                      f'<div class="also">{szov}{talan}</div>{zaro}</div>', masod=True),
+                      f'{zaro}<div class="also">{szov}{talan}</div></div>', masod=True),
              css=r"""
 .v-rx2 .ido{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;position:relative;margin:10px 0 44px;padding-top:34px}
 .v-rx2 .ido::before{content:"";position:absolute;left:0;right:0;top:9px;height:2px;background:linear-gradient(90deg,var(--c-line2),var(--c-primary))}
@@ -144,12 +144,12 @@ def rolaszol():
 .v-rx2 .t2 b{color:var(--hl)}.v-rx2 .all span{color:var(--c-ink-2)}
 .v-rx2 .also{display:grid;grid-template-columns:.9fr 1.1fr;gap:clamp(24px,4cqi,60px)}
 .v-rx2 .talan{display:grid;gap:8px}.v-rx2 .talan li{border-bottom:1px solid var(--c-line);padding:8px 0}
-.v-rx2 .zaro{text-align:center;margin-top:36px;font-family:var(--f-display);font-weight:var(--w-display);font-size:var(--t-h3);color:var(--hl)}
+.v-rx2 .zaro{text-align:center;margin:0 0 30px;font-family:var(--f-display);font-weight:var(--w-display);font-size:var(--t-h3);color:var(--hl)}
 @container elo (max-width:760px){.v-rx2 .ido,.v-rx2 .also{grid-template-columns:1fr}.v-rx2 .ido::before{display:none}.v-rx2 .ido{padding-top:0}.v-rx2 .all{padding-left:34px}.v-rx2 .all::before{top:4px}}
 """),
         dict(id="rx3", nev="Óriás számok", leiras="A három életkor óriási, körvonalas számként, a 45 telt narancsban. Alatta a mondatok címkékként. Plakátos, merész.",
-             html=sec("rx3", "rolaszol", "s-tint", f'<div class="wrap">{sh(R)}<div class="nagy">{tr("sz")}</div>{szov}'
-                      f'<ul class="chiplist">{li(R["talan"], "chip")}</ul>{zaro}</div>'),
+             html=sec("rx3", "rolaszol", "s-tint", f'<div class="wrap">{sh(R)}<div class="nagy">{tr("sz")}</div>{zaro}{szov}'
+                      f'<ul class="chiplist">{li(R["talan"], "chip")}</ul></div>'),
              css=r"""
 .v-rx3 .nagy{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-bottom:30px}
 .v-rx3 .sz b{display:block;font-family:var(--f-display);font-weight:800;font-size:clamp(3.2rem,9cqi,7.5rem);line-height:.9;color:transparent;-webkit-text-stroke:2px var(--c-ink-3)}
@@ -158,13 +158,13 @@ def rolaszol():
 .v-rx3 .szov{max-width:62ch;margin:0 auto 22px;text-align:center}
 .v-rx3 .chiplist{display:flex;flex-wrap:wrap;gap:10px;justify-content:center}
 .v-rx3 .chiplist .chip{font-weight:600;white-space:normal}
-.v-rx3 .zaro{text-align:center;margin-top:28px;font-family:var(--f-display);font-weight:var(--w-display);font-size:var(--t-h3);color:var(--hl)}
+.v-rx3 .zaro{text-align:center;margin:0 0 22px;font-family:var(--f-display);font-weight:var(--w-display);font-size:var(--t-h3);color:var(--hl)}
 @container elo (max-width:700px){.v-rx3 .nagy{grid-template-columns:1fr}}
 """),
         dict(id="rx4", nev="Levél, középre zárva", leiras="Egy keskeny, levélszerű hasáb: a három életkor egy kiemelt mondatsorként, a „Talán…” sorok kézírásos pipákkal. Személyes, mintha Kirana írná.",
-             html=sec("rx4", "rolaszol", "s-sand", f'<div class="wrap szuk">{sh(R)}<div class="level" data-rv>{szov}<p class="trio">'
-                      + " ".join(f'<b>{esc(a)}</b> {md(b)}' for a, b in trio) + f'</p><ul class="talan">{li(R["talan"])}</ul>'
-                      f'<p class="kezi">{md(R["zaro"])}</p></div></div>'),
+             html=sec("rx4", "rolaszol", "s-sand", f'<div class="wrap szuk">{sh(R)}<div class="level" data-rv><p class="trio">'
+                      + " ".join(f'<b>{esc(a)}</b> {md(b)}' for a, b in trio) + f'</p><p class="kezi">{md(R["zaro"])}</p>{szov}'
+                      f'<ul class="talan">{li(R["talan"])}</ul></div></div>'),
              css=r"""
 .v-rx4 .level{background:var(--c-card);padding:clamp(26px,4.4cqi,56px);border-radius:6px;box-shadow:var(--sh-2);position:relative}
 .v-rx4 .trio{font-family:var(--f-display);font-weight:var(--w-display);font-size:clamp(1.15rem,2cqi,1.5rem);line-height:1.35;color:var(--c-head);border-left:3px solid var(--c-primary);padding-left:18px;margin:22px 0}
@@ -172,11 +172,11 @@ def rolaszol():
 .v-rx4 .talan{display:grid;gap:10px;margin:18px 0 22px}
 .v-rx4 .talan li{padding-left:32px;position:relative}
 .v-rx4 .talan li::before{content:"✓";position:absolute;left:4px;top:-2px;font-family:var(--f-hand);font-size:1.3rem;color:var(--c-primary)}
-.v-rx4 .kezi{font-size:calc(var(--fs-hand)*1.5rem);text-align:right;margin:0}
+.v-rx4 .kezi{font-size:calc(var(--fs-hand)*1.5rem);margin:0 0 20px}
 """),
         dict(id="rx5", nev="Sötét kártyasor", leiras="Sötét szekció, a három életkor három kártyán, a 45 felett narancsban izzik. Jobbra a mondatok. Drámai, férfias.",
              html=sec("rx5", "rolaszol", "s-deep", f'<div class="wrap">{sh(R, bal=True)}<div class="grid"><div class="kartyak">{tr("krt")}</div>'
-                      f'<div>{szov}{talan}{zaro}</div></div></div>'),
+                      f'<div>{zaro}{szov}{talan}</div></div></div>'),
              css=r"""
 .v-rx5 .grid{display:grid;grid-template-columns:1.1fr .9fr;gap:clamp(26px,4.6cqi,70px);align-items:start}
 .v-rx5 .kartyak{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
