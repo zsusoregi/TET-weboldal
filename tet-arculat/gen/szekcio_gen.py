@@ -82,7 +82,7 @@ def hero_html():
     h = c["hero"]
     b = f'<div class="chips">{chips(h["badgek"])}</div>' if h.get("badgek") else ""
     return (f'<section class="sec v-hx1 s-deep" id="top">{dk(c, "hero")}<div class="feny" aria-hidden="true"></div>'
-            f'<div class="wrap grid"><div class="txt" data-rv>{kick(h["kicker"])}<h1 class="hcim">{md(h["cim"])}</h1>'
+            f'<div class="wrap grid"><div class="txt" data-rv>{kick(h.get("kicker"))}<h1 class="hcim">{md(h["cim"])}</h1>'
             f'<p class="lead">{md(h["lead"])}</p>{gombsor(h)}{b}</div>'
             f'<div class="kep" data-rv><div class="ph f-szivfekete" role="img" aria-label="{esc(c["fotok"]["szivfekete"]["alt"])}"></div>'
             f'{statok(h["statok"])}</div></div></section>')

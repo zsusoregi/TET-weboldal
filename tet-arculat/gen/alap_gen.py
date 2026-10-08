@@ -344,11 +344,12 @@ PREMIUM = {
 _h = TARTALOM["hero"]
 _h.pop("badgek", None)
 _h.pop("jegyzet", None)
+_h.pop("kicker", None)   # a termék neve a lead elejére került, kiemelve
 _h.pop("kiemelt", None)   # ez is a régi oldal egyik ígérete volt
 _h.update({
-    "kicker": "Tantraszex Edzésterv · Online gyakorlóprogram 45+ férfiaknak",
     "cim": "Legyél ==magabiztos szerető==, és fedezz fel különleges élményeket, tökéletes kapcsolódásokat a szexben, néhány új képesség megszerzése révén!",
-    "lead": "**12 hét. 12 gyakorlat. Egy új szint a szexualitásodban.** | Nem kell hinned a Tantrában, csak próbáld ki, mit csinál a testeddel!",
+    # §TERMEK§: a termék neve kiemelt blokként (a gen/utofeldolgozas.py cseréli le a kész HTML-ben)
+    "lead": "§TERMEK§ | **12 hét, 12 gyakorlat. Egy új szint a szexualitásodban.** | Nem kell hinned a Tantrában, csak próbáld ki, mit csinál a testeddel!",
 })
 
 ROLASZOL.update({
