@@ -118,6 +118,7 @@ kat("lablec", ["lbx", "lb1", "lb2", "lb3", "lb4"], "lbx", {
 
 spec["egyedi_css"] = (""
                      ".kiem{color:var(--hl);font-weight:800}"
+                     ".elo-root .sec:not(#top) h2.cim{font-size:var(--t-h2)}"
                      "#top .hcim{font-size:calc(clamp(1.9rem,3.4cqi,3.1rem)*var(--hero-scale,1));line-height:1.1}"
                      "#folyamat .wrap>:not(.shead),#folyamat .wrap>:not(.shead) *{text-align:left!important}"
                      ".v-f3 .ns p b{display:inline;font:inherit;font-weight:800;line-height:inherit;color:var(--c-head);-webkit-text-stroke:0;margin:0}"

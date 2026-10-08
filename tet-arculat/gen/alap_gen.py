@@ -550,3 +550,26 @@ MIERT.update({
                    "**Ezt azonban nem lehet pusztán megérteni.**", "Gyakorolni kell.",
                    "Ezért született meg a **Tantraszex Edzésterv.**"],
 })
+
+# ----------------------------------------------------------------------------------------------------
+# Egységes blokkcímek (2026-10-08): minden blokk nagy címe a dokumentum fejezetcíme (azonos méret),
+# az alcím-mondatok a cím alá kerülnek (lead); a kis felső feliratok (kicker) kikerülnek.
+# ----------------------------------------------------------------------------------------------------
+ROLASZOL.update({"kicker": None, "cim": "Miről szól a ==tantraszex edzésterv==?",
+                 "lead": "**Nem azt tanulod újra, amit már harminc (vagy több) éve csinálsz. Olyan képességeket edzünk, "
+                         "amelyeket valószínűleg soha senki nem tanított meg neked.**"})
+MIERT.update({"cim": "Miért pont ==tantra==?"})
+MIA.update({"kicker": None})
+TARTALOM["folyamat"].update({"kicker": None})
+TARTALOM["tenyek"].update({"kicker": None})
+TARTALOM["tortenet"].update({"kicker": None, "cim": "A Tantraszex Edzésterv ==megalkotójáról=="})
+TARTALOM["tortenet"]["bekezdesek"] = (["**Sőregi Zsuzsa (Kirana) vagyok, tantraoktató és szexuális önismereti tréner.**"]
+                                      + [b for b in TARTALOM["tortenet"]["bekezdesek"] if not b.startswith("**Sőregi")])
+KINEK.update({"kicker": None, "cim": "Kinek szól a ==Tantraszex Edzésterv==?", "lead": "Neked szól, ha 45 feletti férfiként:"})
+VELEMENYEK.update({"kicker": None, "cim": "Mások ==így élték meg=="})
+TARTALOM["kinalat"].update({"kicker": None, "cim": "Ajándékok"})
+GARANCIA.update({"kicker": None, "cim": "Garanciák"})
+TARTALOM["latogatas"].update({"kicker": None, "cim": "Miért ==most==?",
+                              "lead": "**12 hét múlva mindenképpen 12 héttel idősebb leszel.** | " + TARTALOM["latogatas"]["lead"]})
+TARTALOM["ajanlat"].update({"kicker": None, "cim": "Csomagok"})
+GYIK.update({"kicker": None, "cim": "Gyakran Intézett ==Kérdések=="})
