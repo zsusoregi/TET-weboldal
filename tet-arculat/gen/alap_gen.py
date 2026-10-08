@@ -79,7 +79,7 @@ FOTOK = {
 }
 
 TARTALOM = {
-    "marka": {"nev": "Tantraszex Edzésterv", "szlogen": "12 hét. 12 gyakorlat. Egy új szint a szexualitásodban.",
+    "marka": {"nev": "Tantraszex Edzésterv", "szlogen": "12 hét, 12 gyakorlat. Egy új szint a szexualitásodban.",
               "slug": "tantraszex-edzesterv", "url": "https://tet.tantraiskola.com"},
     "seo": {"title": "Tantraszex Edzésterv · Online gyakorlóprogram 45+ férfiaknak",
             "description": "12 hetes online gyakorló program férfiaknak, a tantrikus szexualitás alapjainak elsajátításához."},
@@ -119,7 +119,7 @@ TARTALOM = {
         "badgek": [{"ikon": "szem", "szoveg": "Figyelem, légzés, tudatos érintés"},
                    {"ikon": "pipa", "szoveg": "Az izgalom tudatos irányítása"},
                    {"ikon": "ora", "szoveg": "Saját tempóban, visszanézhető anyagokkal"}],
-        "cim": "12 hét. 12 gyakorlat. Egy ==új szint== a szexualitásodban.",
+        "cim": "12 hét, 12 gyakorlat. Egy ==új szint== a szexualitásodban.",
         "lead": "Nem kell hinned a Tantrában, csak próbáld ki, mit csinál a testeddel!",
         "cta1": {"szoveg": "Megnézem, hogy működik", "href": CSOMAGOK},
         "cta2": {"szoveg": "Csomagok és árak", "href": "#etlap", "ikon": "nyil"},
@@ -385,7 +385,7 @@ MIA = {
     "kicker": "A program", "cim": "Mi a ==Tantraszex Edzésterv==?",
     "lead": "Egy **12 hetes online gyakorlóprogram 45+ férfiaknak.**",
     "nem": ["Nem 40 órányi videó.", "Nem tantrikus filozófiák gyűjteménye.", "És nem száz új póz vagy szex-kütyü."],
-    "ritmus": "12 gyakorlat. 12 hét.",
+    "ritmus": "12 gyakorlat, 12 hét.",
     "het": "Minden héten kapsz egy új gyakorlatot, amely az előzőre épül.",
     "sport": "Ahogy egy sportedzésben sem attól leszel erősebb, hogy elolvasod a gyakorlatokat, itt sem az információ mennyisége számít. "
              "Hanem az, amit a tested megtanul.",

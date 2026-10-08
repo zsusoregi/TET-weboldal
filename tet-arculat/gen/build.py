@@ -70,7 +70,7 @@ kat("nav", ["nx2", "nx1", "n1", "n3", "n6"], "nx2", {
     "n3": "Középre zárt logó, a menü két oldalt: klasszikus, rendezett.",
     "n6": "Kétszintes fejléc nagy logóval: ünnepélyes, kicsit magazinos."})
 kat("hero", ["hx1", "h5", "h3", "h4", "h6"], "hx1", {
-    "hx1": "A legerősebb fotótok (a fekete háttér előtt meditáló férfi) úgy emelkedik ki a sötétből, mintha gyertyafény világítaná meg. Rögtön látszik: felnőtt, intim, komoly program. A cím a ti mondatotok: „12 hét. 12 gyakorlat. Egy új szint a szexualitásodban.”",
+    "hx1": "A legerősebb fotótok (a fekete háttér előtt meditáló férfi) úgy emelkedik ki a sötétből, mintha gyertyafény világítaná meg. Rögtön látszik: felnőtt, intim, komoly program. A cím a ti mondatotok: „12 hét, 12 gyakorlat. Egy új szint a szexualitásodban.”",
     "h5": "Kettéosztott kép a jantrás fotóval: letisztult, világos, magazinos. Kevésbé drámai, barátságosabb belépő.",
     "h3": "A teljes képernyős fotón egy világos kártya a címmel: hangulatos, „itt vagy” érzés.",
     "h4": "Óriás, plakátszerű cím, alatta fotósor: a legmerészebb, edzésterv-hangulat.",
