@@ -117,7 +117,8 @@ kat("lablec", ["lbx", "lb1", "lb2", "lb3", "lb4"], "lbx", {
 spec["egyedi_css"] = ("@container elo (min-width:901px){.v-p1 .racs{--oszlop:3!important}}"
                      ".kiem{color:var(--hl);font-weight:800}"
                      "#top .hcim{font-size:calc(clamp(1.9rem,3.4cqi,3.1rem)*var(--hero-scale,1));line-height:1.1}"
-                     ".v-f2 .krt,.v-f2 .krt *{text-align:left!important}"
+                     "#folyamat .wrap>:not(.shead),#folyamat .wrap>:not(.shead) *{text-align:left!important}"
+                     ".v-f3 .ns p b{display:inline;font:inherit;font-weight:800;line-height:inherit;color:var(--c-head);-webkit-text-stroke:0;margin:0}"
                      "#kinalat .krt>.krt-kep .ph,#kinalat .ft .ph{--ar:16/9}")
 # ikon-spec (OpenAI-kulcs nélkül: a motor a márka formáiból épít tartalék ikonokat)
 (MUNKA / "arculat.json").write_text(json.dumps(spec, ensure_ascii=False, indent=1), encoding="utf-8")
