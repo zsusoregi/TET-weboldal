@@ -87,12 +87,12 @@ kat("tortenet", ["t1", "t4", "t2", "t3", "t5"], "t1", {
     "t1": "Kirana portréja, mellette a története, kiemelve a mondata („A Tantra nem csupán hivatás számomra, hanem az életem.”) és kézírásos aláírás. Személyes, bizalmat épít: ez kell egy ilyen kényes témánál.",
     "t4": "Nagy idézet kerek portréval: erős, emberi.", "t2": "Szórt fotókollázs: emlékalbumos, meleg.",
     "t3": "Mérföldkövek (évtized, ISTA, saját út): tárgyilagos, hiteles.", "t5": "Levélpapír, felragasztott fotóval: nagyon személyes."})
-kat("tenyek", ["tx1", "tx3", "tx2", "tx4", "tx5"], "tx1", {
-    "tx1": "Hat kártya hármasával, mind a hat előny teljes szöveggel, balra zárva. Gyorsan átfutható, és a kártyastílus az egész oldalon egységes.",
-    "tx3": "Teljes szélességű, váltakozó hátterű sávok: a hosszabb szövegek itt olvashatók a legkényelmesebben.",
-    "tx2": "Számozott, kártya nélküli lista két hasábban: szerkesztőségi, levegős.",
-    "tx4": "Sötét háttér, nagy kulcsszavak: erős, férfias hangulat.",
-    "tx5": "Oldalcím és egymás alatti ikonos lista: rendezett, mint egy jól szerkesztett cikk."})
+kat("tenyek", ["p1", "p3", "p5", "p4", "p6"], "p1", {
+    "p1": "Hat kártya hármasával, mind a hat előny teljes szöveggel, balra zárva. Gyorsan átfutható, és a kártyastílus az egész oldalon egységes.",
+    "p3": "Teljes szélességű, váltakozó hátterű sávok: a hosszabb szövegek itt olvashatók a legkényelmesebben.",
+    "p5": "Számozott, kártya nélküli lista két hasábban: szerkesztőségi, levegős.",
+    "p4": "Sötét háttér, nagy kulcsszavak: erős, férfias hangulat.",
+    "p6": "Oldalcím és egymás alatti ikonos lista: rendezett, mint egy jól szerkesztett cikk."})
 kat("kinek", ["kx1", "kx2", "kx3", "kx4", "kx5"], "kx1", {"kx1": "Igen és nem egymás mellett: a 45+ férfi egy pillantással eldönti, róla szól-e. Az őszinte „kinek nem” növeli a bizalmat."})
 kat("velemenyek", ["vx3", "vx1", "vx2", "vx4", "vx5"], "vx3", {"vx3": "Ezek a beszámolók intimek. A sötét, gyertyafényes háttér előtt úgy olvashatók, mint egy esti, bizalmas beszélgetés, a kiemelt mondatok meleg fényben."})
 kat("kinalat", ["k2", "k5", "k3", "k1", "k6"], "k2", {
@@ -116,7 +116,7 @@ kat("lablec", ["lbx", "lb1", "lb2", "lb3", "lb4"], "lbx", {
     "lbx": "Sötét, csendes lezárás a fehér logóval egy halvány jantra előtt, egy mondattal („Adj a testednek 12 hetet.”) és egy utolsó gombbal.",
     "lb1": "Klasszikus négyhasábos sötét lábléc.", "lb2": "Óriás márkanév: magabiztos.", "lb3": "Középre zárt, minimál.", "lb4": "Színes, lekerekített: lendületes."})
 
-spec["egyedi_css"] = ("@container elo (min-width:901px){.v-p1 .racs{--oszlop:3!important}}"
+spec["egyedi_css"] = (""
                      ".kiem{color:var(--hl);font-weight:800}"
                      "#top .hcim{font-size:calc(clamp(1.9rem,3.4cqi,3.1rem)*var(--hero-scale,1));line-height:1.1}"
                      "#folyamat .wrap>:not(.shead),#folyamat .wrap>:not(.shead) *{text-align:left!important}"

@@ -318,11 +318,11 @@ def tenyek():
     def bal(v):
         return BAL.replace("%s", v)
     return [
-        dict(id="tx1", nev="Kártyarács, 3 × 2", leiras="Hat kártya két sorban, hármasával: ikon, kulcsszó, cím és a teljes szöveg balra zárva. A kártyák a választott kártyastílust kapják.",
+        dict(id="p1", nev="Kártyarács, 3 × 2", leiras="Hat kártya két sorban, hármasával: ikon, kulcsszó, cím és a teljes szöveg balra zárva. A kártyák a választott kártyastílust kapják.",
              html=sec("tx1", "tenyek", "s-white", f'<div class="wrap">{sh(t)}<div class="racs" style="--oszlop:3">'
                       + "".join(kartya(e, i) for i, e in enumerate(el)) + "</div></div>"),
              css=bal("tx1") + ".v-tx1 .shead{text-align:center}.v-tx1 .racs{align-items:stretch}"),
-        dict(id="tx2", nev="Számozott, két hasábban", leiras="Szerkesztőségi lista: nagy sorszám (01–06), mellette a cím és a szöveg, két hasábban, vékony elválasztó vonalakkal. Kártya nélkül, levegős.",
+        dict(id="p5", nev="Számozott, két hasábban", leiras="Szerkesztőségi lista: nagy sorszám (01–06), mellette a cím és a szöveg, két hasábban, vékony elválasztó vonalakkal. Kártya nélkül, levegős.",
              html=sec("tx2", "tenyek", "s-paper", f'<div class="wrap">{sh(t, bal=True)}<ol class="lista">'
                       + "".join(f'<li data-rv style="--i:{i}"><b class="n">{i + 1:02d}</b><div><span class="kulcs">{esc(e["szam"])}</span>'
                                 f'<h3 class="krt-h">{md(e["cim"])}</h3><p class="krt-p">{md(e["szoveg"])}</p></div></li>' for i, e in enumerate(el))
@@ -334,7 +334,7 @@ def tenyek():
 .v-tx2 .krt-p{color:var(--c-ink-2);margin:0}
 @container elo (max-width:760px){.v-tx2 .lista{grid-template-columns:1fr}}
 """),
-        dict(id="tx3", nev="Váltakozó sávok", leiras="Minden előny egy teljes szélességű sáv: balra nagy ikon és kulcsszó, jobbra a cím és a szöveg; a sávok háttere váltakozik. Nyugodt, jól olvasható hosszú szövegnél is.",
+        dict(id="p3", nev="Váltakozó sávok", leiras="Minden előny egy teljes szélességű sáv: balra nagy ikon és kulcsszó, jobbra a cím és a szöveg; a sávok háttere váltakozik. Nyugodt, jól olvasható hosszú szövegnél is.",
              html=sec("tx3", "tenyek", "s-paper", f'<div class="wrap">{sh(t)}<div class="savok">'
                       + "".join(f'<div class="sav" data-rv><div class="bal">{ik(e.get("ikon"))}<span class="kulcs">{esc(e["szam"])}</span></div>'
                                 f'<div class="jobb"><h3 class="krt-h">{md(e["cim"])}</h3><p class="krt-p">{md(e["szoveg"])}</p></div></div>' for e in el)
@@ -348,7 +348,7 @@ def tenyek():
 .v-tx3 .krt-p{color:var(--c-ink-2);margin:0}
 @container elo (max-width:640px){.v-tx3 .sav{grid-template-columns:1fr}.v-tx3 .bal{flex-direction:row;align-items:center}}
 """),
-        dict(id="tx4", nev="Sötét, kulcsszavas", leiras="Sötét szekció, a kártyák fölött nagy kulcsszavak (Izgalom, Figyelem, Biztonság…) a kiemelő színnel, alattuk a cím és a szöveg. Erős, férfias.",
+        dict(id="p4", nev="Sötét, kulcsszavas", leiras="Sötét szekció, a kártyák fölött nagy kulcsszavak (Izgalom, Figyelem, Biztonság…) a kiemelő színnel, alattuk a cím és a szöveg. Erős, férfias.",
              html=sec("tx4", "tenyek", "s-deep", f'<div class="wrap">{sh(t)}<div class="racs" style="--oszlop:3">'
                       + "".join(f'<article class="elem" data-rv style="--i:{i}"><div class="fej">{ik(e.get("ikon"))}<b class="nagy">{esc(e["szam"])}</b></div>'
                                 f'<h3 class="krt-h">{md(e["cim"])}</h3><p class="krt-p">{md(e["szoveg"])}</p></article>' for i, e in enumerate(el))
@@ -360,7 +360,7 @@ def tenyek():
 .v-tx4 .nagy{font-family:var(--f-display);font-weight:var(--w-display);font-size:clamp(1.6rem,2.6cqi,2.1rem);line-height:1;color:var(--c-deep-hl)}
 .v-tx4 .krt-h{color:var(--c-on-deep)}.v-tx4 .krt-p{color:var(--c-on-deep-2);margin:0}
 """),
-        dict(id="tx5", nev="Ikonos lista oldalcímmel", leiras="Balra a szakasz címe (görgetéskor a helyén marad), jobbra egymás alatt a hat előny: ikon, cím, szöveg, vékony vonalakkal elválasztva. Rendezett, szerkesztőségi.",
+        dict(id="p6", nev="Ikonos lista oldalcímmel", leiras="Balra a szakasz címe (görgetéskor a helyén marad), jobbra egymás alatt a hat előny: ikon, cím, szöveg, vékony vonalakkal elválasztva. Rendezett, szerkesztőségi.",
              html=sec("tx5", "tenyek", "s-sand", f'<div class="wrap grid"><div class="oldal">{sh(t, bal=True)}</div><div class="lista">'
                       + "".join(f'<div class="sor" data-rv>{ik(e.get("ikon"))}<div><span class="kulcs">{esc(e["szam"])}</span>'
                                 f'<h3 class="krt-h">{md(e["cim"])}</h3><p class="krt-p">{md(e["szoveg"])}</p></div></div>' for e in el)
