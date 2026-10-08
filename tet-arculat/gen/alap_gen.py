@@ -171,7 +171,7 @@ TARTALOM = {
         "cim": "Sőregi Zsuzsa (==Kirana==), tantraoktató és szexuális önismereti tréner",
         "bekezdesek": [
             "Az elmúlt évtizedben több ezer férfi és nő bízta rám magát, hogy új dolgokat fedezzen fel a szexualitásában, "
-            "tantrát, tantrikus szexualitást tanuljon. Közülük sokakat kifejezetten a lingam masszázs elméletére és gyakorlatára oktattam.",
+            "tantrát, tantrikus szexualitást tanuljon.",
             "Elvégeztem az International School of Temple Arts Szexuális önismeret 1-2 és Szexuális Gyógyító kurzusait, "
             "de talán a legfontosabb a saját út, a saját tapasztalás: én magam is a Tantra útját járom. Így élek, így szeretek.",
         ],
@@ -179,8 +179,7 @@ TARTALOM = {
         "alairas": {"nev": "Kirana", "szerep": "Sőregi Zsuzsa · tantraoktató"},
         "fotok": ["zsuzsa", "jantra", "kovek"], "fotok_felirat": ["Kirana", "Jelenlét", "Lépésről lépésre"],
         "foto_felirat": "Sőregi Zsuzsa (Kirana)",
-        "merfoldkovek": [["Évtized", "Több ezer férfi és nő tanult tőle tantrát"], ["Lingam", "Sokakat a lingam masszázs elméletére és gyakorlatára oktatott"],
-                         ["ISTA", "Szexuális önismeret 1-2 és Szexuális Gyógyító kurzus"], ["Ma", "Maga is a Tantra útját járja"]],
+        "merfoldkovek": [["Évtized", "Több ezer férfi és nő tanult tőle tantrát"], ["ISTA", "Szexuális önismeret 1-2 és Szexuális Gyógyító kurzus"], ["Ma", "Maga is a Tantra útját járja"]],
     },
     "kinalat": {
         "kicker": "Ajándékok", "cim": "Az edzésterv mellé ==ajándékba== adjuk",
@@ -483,7 +482,7 @@ TARTALOM["tortenet"].update({
     "cim": "Sőregi Zsuzsa (==Kirana==) vagyok, tantraoktató és szexuális önismereti tréner.",
     "bekezdesek": [
         "Az elmúlt évtizedben több ezer férfi és nő bízta rám magát, hogy új dolgokat fedezzen fel a szexualitásában, tantrát, "
-        "tantrikus szexualitást tanuljon. Közülük sokakat kifejezetten a lingam masszázs elméletére és gyakorlatára oktattam.",
+        "tantrikus szexualitást tanuljon.",
         "Ezt megelőzően és eközben persze én is tanultam több tantra iskolában, elmentem rengeteg workshopra, jártam szakrális női "
         "körökbe, együtt dolgoztam (a tanulás céljából) szinte valamennyi magyar és több külföldi tantra oktatóval.",
         "Elvégeztem az International School of Temple Arts (nemzetközi szinten a legelismertebb és felkészültebb szexuális "

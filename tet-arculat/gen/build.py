@@ -86,7 +86,7 @@ kat("folyamat", ["f2", "f1", "f3", "f4", "f5"], "f2", {
 kat("tortenet", ["t1", "t4", "t2", "t3", "t5"], "t1", {
     "t1": "Kirana portréja, mellette a története, kiemelve a mondata („A Tantra nem csupán hivatás számomra, hanem az életem.”) és kézírásos aláírás. Személyes, bizalmat épít: ez kell egy ilyen kényes témánál.",
     "t4": "Nagy idézet kerek portréval: erős, emberi.", "t2": "Szórt fotókollázs: emlékalbumos, meleg.",
-    "t3": "Mérföldkövek (évtized, ISTA, lingam masszázs): tárgyilagos, hiteles.", "t5": "Levélpapír, felragasztott fotóval: nagyon személyes."})
+    "t3": "Mérföldkövek (évtized, ISTA, saját út): tárgyilagos, hiteles.", "t5": "Levélpapír, felragasztott fotóval: nagyon személyes."})
 kat("tenyek", ["p1", "p5", "p4", "p3", "p6"], "p1", {
     "p1": "Hat kártya a hat előnnyel, mindegyik élén egy kulcsszó (Izgalom, Figyelem, Biztonság, Önbizalom, Élmény, Erő). Gyorsan átfutható.",
     "p5": "Szerkesztőségi rács nagy kulcsszavakkal: magabiztos, magazinos.", "p4": "Kerek pecsétek: „garancia” hatás.",
