@@ -1,7 +1,7 @@
 {
  "marka": "tantraszex-edzesterv",
  "verzio": 2,
- "datum": "2026-10-09 18:18",
+ "datum": "2026-10-09 18:29",
  "valasztas": {
   "paletta": {
    "vegleges": "p3",
@@ -116,10 +116,12 @@
    ]
   },
   "felulet": {
-   "vegleges": "tH",
-   "elonezet": "tH",
+   "vegleges": "tR",
+   "elonezet": "tR",
    "ajanlott": "tO",
-   "megjegyzesek": {},
+   "megjegyzesek": {
+    "tR": "a minta színe legyen csak nagyon-nagyon kicsit erősebb árnyalat, mint a háttér Éppen, hogy csak látszódjon"
+   },
    "ujakat": false,
    "opciok": [
     "tO",

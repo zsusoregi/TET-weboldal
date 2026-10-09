@@ -296,9 +296,9 @@ FELULET += [
          css="%S .tx::before{background-color:var(--c-primary);-webkit-mask:" + lotusz_csempe() + " 0 0/260px 225px repeat;mask:" + lotusz_csempe() + " 0 0/260px 225px repeat;opacity:.06}"
              "%S .s-deep.tx::before{background-color:var(--c-deep-hl);opacity:.09}%S .s-primary.tx::before{background-color:var(--c-on-primary);opacity:.1}"),
     dict(id="tR", nev="Mandala a sarokban", leiras="Egyetlen nagy, finom vonalas mandala a szekció sarkában, váltakozva jobbra és balra. Elegáns, nem ismétlődik.",
-         css="%S .tx::before{background-color:var(--c-primary);-webkit-mask:" + MANDALA + " calc(100% + 140px) -140px/520px 520px no-repeat;mask:" + MANDALA + " calc(100% + 140px) -140px/520px 520px no-repeat;opacity:.14}"
+         css="%S .tx::before{background-color:var(--c-primary);-webkit-mask:" + MANDALA + " calc(100% + 140px) -140px/520px 520px no-repeat;mask:" + MANDALA + " calc(100% + 140px) -140px/520px 520px no-repeat;opacity:.05}"
              "%S .sec:nth-of-type(even).tx::before{-webkit-mask-position:-140px calc(100% + 140px);mask-position:-140px calc(100% + 140px)}"
-             "%S .s-deep.tx::before{background-color:var(--c-deep-hl);opacity:.16}%S .s-primary.tx::before{background-color:var(--c-on-primary);opacity:.16}"),
+             "%S .s-deep.tx::before{background-color:var(--c-deep-hl);opacity:.06}%S .s-primary.tx::before{background-color:var(--c-on-primary);opacity:.06}"),
     dict(id="tH", nev="Meleg papírszemcse", leiras="Minta nélküli, finom, meleg szemcse, mint egy jó minőségű, merített papír. A legcsendesebb, mégsem üres.",
          css="%S .tx::before{background-image:" + u(ZAJ) + ",radial-gradient(ellipse at 50% 40%,transparent 55%,color-mix(in srgb,var(--c-primary) 9%,transparent));background-size:180px 180px,100% 100%;mix-blend-mode:multiply}"
              "%S .s-deep.tx::before,%S .s-primary.tx::before{mix-blend-mode:screen;opacity:.45}"),
