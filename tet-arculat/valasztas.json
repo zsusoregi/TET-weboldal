@@ -1,0 +1,414 @@
+{
+ "marka": "tantraszex-edzesterv",
+ "verzio": 1,
+ "datum": "2026-10-09 17:41",
+ "valasztas": {
+  "paletta": {
+   "vegleges": "p3",
+   "elonezet": "p3",
+   "ajanlott": "p1",
+   "megjegyzesek": {
+    "p3": "A narancs legyen  (#B54E02), mert ez fontos arculati elem\nA meleg tört fehér legyen az eredeti arculat #FFFBF4\nés a sötétszürke #4c4c4c"
+   },
+   "ujakat": false,
+   "opciok": [
+    "p1",
+    "p2",
+    "p3",
+    "p4",
+    "p5"
+   ]
+  },
+  "betu": {
+   "vegleges": "b4",
+   "elonezet": "b4",
+   "ajanlott": "b1",
+   "megjegyzesek": {},
+   "ujakat": false,
+   "opciok": [
+    "b1",
+    "b2",
+    "b3",
+    "b4",
+    "b5"
+   ]
+  },
+  "ikon": {
+   "vegleges": "i2",
+   "elonezet": "i2",
+   "ajanlott": "i1",
+   "megjegyzesek": {},
+   "ujakat": true,
+   "opciok": [
+    "i1",
+    "i2",
+    "i3",
+    "i4",
+    "i5"
+   ]
+  },
+  "cim": {
+   "vegleges": "cM",
+   "elonezet": "cM",
+   "ajanlott": "cE",
+   "megjegyzesek": {},
+   "ujakat": false,
+   "opciok": [
+    "cE",
+    "cM",
+    "cB",
+    "cF",
+    "cK"
+   ]
+  },
+  "alcim": {
+   "vegleges": "kE",
+   "elonezet": "kE",
+   "ajanlott": "kE",
+   "megjegyzesek": {},
+   "ujakat": false,
+   "opciok": [
+    "kE",
+    "kM",
+    "kB",
+    "kF",
+    "kK"
+   ]
+  },
+  "gomb": {
+   "vegleges": "gB",
+   "elonezet": "gB",
+   "ajanlott": "gB",
+   "megjegyzesek": {},
+   "ujakat": false,
+   "opciok": [
+    "gE",
+    "gM",
+    "gB",
+    "gF",
+    "gK"
+   ]
+  },
+  "kartya": {
+   "vegleges": "rM",
+   "elonezet": "rM",
+   "ajanlott": "rE",
+   "megjegyzesek": {},
+   "ujakat": false,
+   "opciok": [
+    "rE",
+    "rM",
+    "rB",
+    "rF",
+    "rK"
+   ]
+  },
+  "foto": {
+   "vegleges": null,
+   "elonezet": "fM",
+   "ajanlott": "fE",
+   "megjegyzesek": {},
+   "ujakat": false,
+   "opciok": [
+    "fE",
+    "fM",
+    "fB",
+    "fF",
+    "fK"
+   ]
+  },
+  "felulet": {
+   "vegleges": "tO",
+   "elonezet": "tO",
+   "ajanlott": "tJ",
+   "megjegyzesek": {},
+   "ujakat": true,
+   "opciok": [
+    "tJ",
+    "tL",
+    "tN",
+    "tK",
+    "tO"
+   ]
+  },
+  "dekor": {
+   "vegleges": null,
+   "elonezet": "dH",
+   "ajanlott": "dL",
+   "megjegyzesek": {},
+   "ujakat": true,
+   "opciok": [
+    "dJ",
+    "dL",
+    "dP",
+    "dS",
+    "dH"
+   ]
+  },
+  "hatar": {
+   "vegleges": null,
+   "elonezet": null,
+   "ajanlott": "sL",
+   "megjegyzesek": {},
+   "ujakat": true,
+   "opciok": [
+    "sL",
+    "sI",
+    "sO",
+    "sT",
+    "sM"
+   ]
+  },
+  "mozgas": {
+   "vegleges": "mE",
+   "elonezet": "mE",
+   "ajanlott": "mE",
+   "megjegyzesek": {},
+   "ujakat": false,
+   "opciok": [
+    "mE",
+    "mM",
+    "mB",
+    "mF",
+    "mK"
+   ]
+  },
+  "nav": {
+   "vegleges": "nx2",
+   "elonezet": "nx2",
+   "ajanlott": "nx2",
+   "megjegyzesek": {},
+   "ujakat": false,
+   "opciok": [
+    "nx2",
+    "nx1",
+    "n1",
+    "n3",
+    "n6"
+   ]
+  },
+  "hero": {
+   "vegleges": "h3",
+   "elonezet": "h3",
+   "ajanlott": "hx1",
+   "megjegyzesek": {
+    "h3": "a kártya a szöveggel legyen kisebb, hgy a férfiból a képen több látszódjon.\na kisebb kártyán csak ez legyen a szöveg:\nLegyél magabiztos szerető, és fedezz fel különleges élményeket, tökéletes kapcsolódásokat a szexben, néhány új képesség megszerzése révén!\nTantraszex Edzésterv\n\na többi szöveg kerüljön a hero alá egy külön blokkba"
+   },
+   "ujakat": false,
+   "opciok": [
+    "hx1",
+    "h5",
+    "h3",
+    "h4",
+    "h6"
+   ]
+  },
+  "rolaszol": {
+   "vegleges": "rx2",
+   "elonezet": "rx2",
+   "ajanlott": "rx1",
+   "megjegyzesek": {},
+   "ujakat": false,
+   "opciok": [
+    "rx1",
+    "rx2",
+    "rx3",
+    "rx4",
+    "rx5"
+   ]
+  },
+  "miert": {
+   "vegleges": "mx4",
+   "elonezet": "mx4",
+   "ajanlott": "mx4",
+   "megjegyzesek": {},
+   "ujakat": false,
+   "opciok": [
+    "mx1",
+    "mx2",
+    "mx3",
+    "mx4",
+    "mx5"
+   ]
+  },
+  "mia": {
+   "vegleges": "mi5",
+   "elonezet": "mi5",
+   "ajanlott": "mi1",
+   "megjegyzesek": {
+    "mi5": "A kép lehet jóval kisebb, hogy elférjen egymás mellett a szöveg meg a kép, ahogy itt a választóban látható"
+   },
+   "ujakat": false,
+   "opciok": [
+    "mi1",
+    "mi2",
+    "mi3",
+    "mi4",
+    "mi5"
+   ]
+  },
+  "folyamat": {
+   "vegleges": "f1",
+   "elonezet": "f1",
+   "ajanlott": "f2",
+   "megjegyzesek": {
+    "f1": "nem kellenek az ikonok"
+   },
+   "ujakat": false,
+   "opciok": [
+    "f2",
+    "f1",
+    "f3",
+    "f4",
+    "f5"
+   ]
+  },
+  "tortenet": {
+   "vegleges": "t5",
+   "elonezet": "t5",
+   "ajanlott": "t1",
+   "megjegyzesek": {
+    "t5": "A lap, amin a kép és a szöveg van, ne legyen csíkos, csak sima, egyszínű. A \"ragasztószalagok\" maradhatnak"
+   },
+   "ujakat": false,
+   "opciok": [
+    "t1",
+    "t4",
+    "t2",
+    "t3",
+    "t5"
+   ]
+  },
+  "tenyek": {
+   "vegleges": "p4",
+   "elonezet": "p4",
+   "ajanlott": "p1",
+   "megjegyzesek": {},
+   "ujakat": false,
+   "opciok": [
+    "p1",
+    "p3",
+    "p5",
+    "p4",
+    "p6"
+   ]
+  },
+  "kinek": {
+   "vegleges": "kx1",
+   "elonezet": "kx1",
+   "ajanlott": "kx1",
+   "megjegyzesek": {},
+   "ujakat": false,
+   "opciok": [
+    "kx1",
+    "kx2",
+    "kx3",
+    "kx4",
+    "kx5"
+   ]
+  },
+  "velemenyek": {
+   "vegleges": "vx2",
+   "elonezet": "vx2",
+   "ajanlott": "vx3",
+   "megjegyzesek": {},
+   "ujakat": false,
+   "opciok": [
+    "vx3",
+    "vx1",
+    "vx2",
+    "vx4",
+    "vx5"
+   ]
+  },
+  "kinalat": {
+   "vegleges": "k2",
+   "elonezet": "k2",
+   "ajanlott": "k2",
+   "megjegyzesek": {
+    "k2": "a kártyákról vedd le az ikonokat!"
+   },
+   "ujakat": false,
+   "opciok": [
+    "k2",
+    "k5",
+    "k3",
+    "k1",
+    "k6"
+   ]
+  },
+  "garancia": {
+   "vegleges": "gx1",
+   "elonezet": "gx1",
+   "ajanlott": "gx4",
+   "megjegyzesek": {},
+   "ujakat": false,
+   "opciok": [
+    "gx4",
+    "gx1",
+    "gx2",
+    "gx3",
+    "gx5"
+   ]
+  },
+  "latogatas": {
+   "vegleges": "lx1",
+   "elonezet": "lx1",
+   "ajanlott": "lx1",
+   "megjegyzesek": {
+    "lx1": "a grafika ötlete tetszik! De elsőre olyan, mint egy pezsgős pohár. Finomíts a színeken, a két homok mezőt ugyanolyan színű vonal kösse össze!"
+   },
+   "ujakat": false,
+   "opciok": [
+    "lx1",
+    "lx2",
+    "l1",
+    "l5",
+    "l3"
+   ]
+  },
+  "ajanlat": {
+   "vegleges": "ax2",
+   "elonezet": "ax2",
+   "ajanlott": "ax2",
+   "megjegyzesek": {},
+   "ujakat": false,
+   "opciok": [
+    "ax2",
+    "ax1",
+    "ax3",
+    "ax4",
+    "ax5"
+   ]
+  },
+  "gyik": {
+   "vegleges": "qx2",
+   "elonezet": "qx2",
+   "ajanlott": "qx1",
+   "megjegyzesek": {},
+   "ujakat": false,
+   "opciok": [
+    "qx1",
+    "qx4",
+    "qx3",
+    "qx2",
+    "qx5"
+   ]
+  },
+  "lablec": {
+   "vegleges": "lbx",
+   "elonezet": "lbx",
+   "ajanlott": "lbx",
+   "megjegyzesek": {},
+   "ujakat": false,
+   "opciok": [
+    "lbx",
+    "lb1",
+    "lb2",
+    "lb3",
+    "lb4"
+   ]
+  }
+ },
+ "altalanos": ""
+}

@@ -9,33 +9,33 @@
  },
  "stilusok": [
   {
-   "id": "i1",
-   "nev": "Az eredeti: vastag narancs vonal",
-   "miert": "Pontosan a mostani tet.tantraiskola.com ikonjainak stílusa: vastag, lekerekített végű narancs vonalrajz, kitöltés nélkül.",
-   "elotag": "(kézzel rajzolt, az eredeti oldal ikonstílusában)"
-  },
-  {
    "id": "i2",
    "nev": "Az eredeti, vékonyabb vonallal",
    "miert": "Ugyanaz az eredeti rajzstílus, csak finomabb vonallal: elegánsabb, levegősebb.",
    "elotag": "(kézzel rajzolt, az eredeti oldal ikonstílusában)"
   },
   {
-   "id": "i3",
-   "nev": "Az eredeti, körben",
-   "miert": "Az eredeti vonalas ikon egy vékony körben, ahogy az eredeti oldalon a számozott (1-5) ikonok is állnak.",
+   "id": "i6",
+   "nev": "Az eredeti, közepes vonallal",
+   "miert": "Az eredeti rajz a vastag és a vékony között: jól látszik kis méretben is, mégis könnyed.",
    "elotag": "(kézzel rajzolt, az eredeti oldal ikonstílusában)"
   },
   {
-   "id": "i4",
-   "nev": "Az eredeti, narancs korongon",
-   "miert": "Az eredeti vonalrajz fehérrel, telt narancs korongon: ugyanaz a rajz, de erősebben kiemelkedik a háttérből.",
+   "id": "i7",
+   "nev": "Az eredeti, lekerekített négyzetben",
+   "miert": "Vékony vonalú ikon egy finom, lekerekített négyzet keretben: rendezett, mint egy alkalmazás ikonja.",
    "elotag": "(kézzel rajzolt, az eredeti oldal ikonstílusában)"
   },
   {
-   "id": "i5",
-   "nev": "Az eredeti, sötétbarnában",
-   "miert": "Az eredeti rajz és vonalvastagság, mélybarna színben: visszafogottabb, a narancs csak a gombokon és kiemeléseken marad.",
+   "id": "i8",
+   "nev": "Az eredeti, halvány korongon",
+   "miert": "Vékony narancs vonalrajz halvány barack korongon: lágyabb, melegebb, a narancs nem tolakodó.",
+   "elotag": "(kézzel rajzolt, az eredeti oldal ikonstílusában)"
+  },
+  {
+   "id": "i9",
+   "nev": "Az eredeti, zsályazöldben",
+   "miert": "Az eredeti vékony rajz a választott paletta zsályazöld kísérőszínében: a narancs így a gombokra és a kiemelésekre marad.",
    "elotag": "(kézzel rajzolt, az eredeti oldal ikonstílusában)"
   }
  ],

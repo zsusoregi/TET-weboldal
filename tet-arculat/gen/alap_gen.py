@@ -25,9 +25,9 @@ PALETTAK = [
                "sötét, intim felületek, gyertyaláng-narancs és mézszínű fény. Prémium, felnőtt, diszkrét.",
          primary="#D2691E", accent="#E9B872", accent2="#B5562A", paper="#17110D", ink="#F3E9DD", deep="#0D0907", card="#221913", mod="sotet"),
     dict(id="p3", nev="Égetett narancs és zsálya",
-         miert="A márka eredeti égetett narancsa (#B54E02) marad a fő szín, mellé egy nyugodt zsályazöld kerül, meleg tört fehér "
-               "háttéren. Modern wellness-hangulat, kevésbé „ezoterikus”: a szkeptikusabb 45+ férfinak is komolyan vehető.",
-         primary="#B54E02", accent="#8A9A78", accent2="#3E4A3A", paper="#F6F2EC", ink="#23201C", deep="#2A2E26"),
+         miert="A márka eredeti színei: égetett narancs (#B54E02), meleg tört fehér háttér (#FFFBF4) és sötétszürke szöveg (#4C4C4C), "
+               "mellé egy nyugodt zsályazöld kísérőszín. Modern wellness-hangulat, kevésbé „ezoterikus”: a szkeptikusabb 45+ férfinak is komolyan vehető.",
+         primary="#B54E02", accent="#8A9A78", accent2="#3E4A3A", paper="#FFFBF4", ink="#4C4C4C", head="#3A3A3A", deep="#2A2E26"),
     dict(id="p4", nev="Sáfrány és éjkék",
          miert="Élénk sáfránynarancs és mély éjkék: sportos, edzésterv-hangulat, erős kontraszt. A legmerészebb út, "
                "a „12 hét, 12 gyakorlat” fegyelmét hangsúlyozza a spirituális rész helyett.",

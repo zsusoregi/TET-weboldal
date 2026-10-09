@@ -12,7 +12,7 @@ from motor import epito
 MUNKA = HERE.parent
 
 spec = copy.deepcopy(A.TARTALOM)
-spec.update({"verzio": 1, "ikonok": {"spec": "ikon-spec.json"}})
+spec.update({"verzio": 2, "ikonok": {"spec": "ikon-spec.json"}})
 spec["opciok"] = {}
 spec["egyedi_szekciok"] = {
     "rolaszol": {"nev": "Miről szól?", "leiras": "A program lényege: 15+, 25+, 45 felett, és a „Talán…” helyzetek."},
@@ -44,7 +44,7 @@ spec["egyedi_opciok"] = eo
 O = spec["opciok"]
 O["paletta"] = {"ajanlott": "p1", "lista": A.PALETTAK}
 O["betu"] = {"ajanlott": "b1", "lista": A.BETUK}
-O["ikon"] = {"ajanlott": "i1"}
+O["ikon"] = {"ajanlott": "i2"}
 
 
 def kat(nev, ids, aj, miert=None):
@@ -58,9 +58,21 @@ kat("alcim", ["kE", "kM", "kB", "kF", "kK"], "kE", {"kE": "Rendezett, elegáns f
 kat("gomb", ["gE", "gM", "gB", "gF", "gK"], "gB", {"gB": "Értékesítési oldalon a gomb a legfontosabb elem. A lángoló narancs kapszula a sötét és a világos szekciókon is azonnal látszik, és rámutatva „felizzik”: kattintásra hív."})
 kat("kartya", ["rE", "rM", "rB", "rF", "rK"], "rE", {"rE": "Fehér lap vékony belső kerettel és halvány jantrával a sarokban: nyugodt, prémium, a sok szöveget is rendben tartja."})
 kat("foto", ["fE", "fM", "fB", "fF", "fK"], "fE", {"fE": "A fotóitok sötét, meleg tónusúak. A narancs derengés a kép mögött úgy hat, mintha gyertya világítaná: intim, de nem kihívó."})
-kat("felulet", ["tJ", "tL", "tN", "tK", "tO"], "tJ", {"tJ": "A jantra a tantra legismertebb jele (a fotóitokon is ott van). Szinte észrevétlen ismétlődő mintaként mélységet ad, és csak ennél a márkánál van értelme."})
-kat("dekor", ["dJ", "dL", "dP", "dS", "dH"], "dL", {"dL": "A légzés a program egyik alapja. A sarokban lassan táguló-szűkülő fénykör szó nélkül mondja: lassíts, lélegezz. Nyugodt, és mégis él az oldal."})
-kat("hatar", ["sL", "sI", "sO", "sT", "sM"], "sL", {"sL": "Két lágy hullám, mint egy mély be- és kilégzés. A szekciók folyékonyan érnek egymásba, ami illik a „nem a csúcsra rohanunk” üzenethez."})
+kat("felulet", ["tO", "tO2", "tR", "tH", "tV"], "tO", {"tO": "A választott lótuszminta: barátságos, meleg, a téma finom jele.",
+    "tO2": "Ugyanaz a lótusz, ritkábban és halványabban: ha a mostani túl sűrűnek hat.",
+    "tR": "Egyetlen nagy mandala a sarokban: elegáns, és nem ismétlődik.",
+    "tH": "Minta nélküli meleg szemcse: a legcsendesebb, ha a háttérben semmi ne legyen felismerhető.",
+    "tV": "Lótuszsor csak a szekciók tetején: díszít, de a szöveg mögött tiszta a felület."})
+kat("dekor", ["dH", "dM", "dO", "dF", "d0"], "dH", {"dH": "Az előnézetben lévő homokóra és matrica.",
+    "dM": "Álló, finom mandala a sarokban: nyugodt, méltóságteljes.",
+    "dO": "Lebegő lótuszok: a lótuszmintás háttérrel együtt egységes.",
+    "dF": "Vonalas láng a sarokban: a szexuális energia finom jele.",
+    "d0": "Nincs dekor: ha a háttér-textúra és a fotók elegendőek."})
+kat("hatar", ["sV", "sG", "sK", "sP", "sN"], "sV", {"sV": "Rövid, vékony narancs vonal középen: tiszta, a márkaszín finoman visszatér.",
+    "sG": "Egyetlen lágy ív: nyugodt, mint egy belégzés.",
+    "sK": "Egy lótuszszirom középen: csendes, mégis egyedi.",
+    "sP": "Három apró pont: a legdiszkrétebb jelzés.",
+    "sN": "Nincs határjel, csak színváltás: a legtisztább."})
 kat("mozgas", ["mE", "mM", "mB", "mF", "mK"], "mE", {"mE": "Lassú, nyugodt beúszás, mint egy hosszú kilégzés. A 45+ közönségnek ez kellemes, nem kapkodó, és a téma tempójához illik."})
 
 kat("nav", ["nx2", "nx1", "n1", "n3", "n6"], "nx2", {
@@ -72,7 +84,7 @@ kat("nav", ["nx2", "nx1", "n1", "n3", "n6"], "nx2", {
 kat("hero", ["hx1", "h5", "h3", "h4", "h6"], "hx1", {
     "hx1": "A legerősebb fotótok (a fekete háttér előtt meditáló férfi) úgy emelkedik ki a sötétből, mintha gyertyafény világítaná meg. Rögtön látszik: felnőtt, intim, komoly program. A cím a ti mondatotok: „12 hét, 12 gyakorlat. Egy új szint a szexualitásodban.”",
     "h5": "Kettéosztott kép a jantrás fotóval: letisztult, világos, magazinos. Kevésbé drámai, barátságosabb belépő.",
-    "h3": "A teljes képernyős fotón egy világos kártya a címmel: hangulatos, „itt vagy” érzés.",
+    "h3": "A teljes képernyős fotón egy kisebb kártya csak a címmel és a terméknévvel, így a férfiból több látszik; a többi szöveg és a gombok alatta, külön sávban.",
     "h4": "Óriás, plakátszerű cím, alatta fotósor: a legmerészebb, edzésterv-hangulat.",
     "h6": "Középre zárt cím, körülötte négy lebegő fotó: nyitott, könnyed."})
 kat("rolaszol", ["rx1", "rx2", "rx3", "rx4", "rx5"], "rx1", {"rx1": "A 15+ → 25+ → 45 felett lépcső szó szerint megmutatja, hogy a legmagasabb fok most jön. Erős, egyszerű kép a fő gondolatra."})
@@ -118,6 +130,14 @@ kat("lablec", ["lbx", "lb1", "lb2", "lb3", "lb4"], "lbx", {
 
 spec["egyedi_css"] = (""
                      ".kiem{color:var(--hl);font-weight:800}"
+                     # 2. kör, az ügyfél megjegyzései szerint
+                     ".v-mi5 .grid{grid-template-columns:minmax(160px,.42fr) 1.58fr!important;gap:clamp(24px,4cqi,56px)!important}"
+                     ".v-mi5 .kep{max-width:300px}"
+                     "@container elo (max-width:560px){.v-mi5 .grid{grid-template-columns:1fr!important}.v-mi5 .kep{max-width:240px}}"
+                     ".v-f1 .ik{display:none!important}"
+                     ".v-t5 .level{background-image:none!important}.v-t5 .level::before{display:none!important}"
+                     ".v-t5 .lszov p{line-height:1.65!important;margin-bottom:.8em!important}"
+                     ".v-k2 .krt .ik{display:none!important}"
                      "#gyik a.tel{color:var(--hl);font-weight:800;white-space:nowrap}"
                      ".elo-root .sec:not(#top) h2.cim{font-size:var(--t-h2)}"
                      "#top .hcim{font-size:calc(clamp(1.9rem,3.4cqi,3.1rem)*var(--hero-scale,1));line-height:1.1}"

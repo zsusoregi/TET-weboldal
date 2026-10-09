@@ -3,6 +3,7 @@
 import math, sys
 sys.path.insert(0, "/root/.claude/skills/synced/2ef019ad-994b-4a29-ba20-0f4f0fc9c379_12065cb9-5571-428e-a25a-37502384cf98/webdesign-arculat-generator/scripts")
 from motor.alap import svg_uri
+from motor.stilusok import ZAJ, u
 
 
 def U(svg):
@@ -260,4 +261,82 @@ MOZGAS = [
          css="%S.js-rv [data-rv]{opacity:0;transform:scale(.95);filter:blur(4px);transition:opacity 1s ease,transform 1.2s var(--ease-out),filter 1s ease;transition-delay:calc(var(--i)*90ms)}%S.js-rv [data-rv].in{opacity:1;transform:none;filter:none}"),
     dict(id="mK", nev="Csendes", leiras="Nincs beúszás és lebegés, csak apró visszajelzések rámutatáskor. Gyors, akadálymentes, komoly.",
          css="%S .dk>i{animation:none!important}"),
+]
+
+
+# =====================================================================================================
+# 2. KÖR: új opciók (az ügyfél új textúrát, dekort és szekcióhatárt kért)
+# =====================================================================================================
+def mandala_svg(r_kulso=46):
+    g = ["<g fill='none' stroke='#000' stroke-width='1.2'>"]
+    for r in (8, 16, 26, 36, r_kulso):
+        g.append(f"<circle cx='50' cy='50' r='{r}'/>")
+    for i in range(12):
+        a = i * math.pi / 6
+        x1, y1 = 50 + 26 * math.cos(a), 50 + 26 * math.sin(a)
+        x2, y2 = 50 + 36 * math.cos(a), 50 + 36 * math.sin(a)
+        b1, b2 = a - math.pi / 12, a + math.pi / 12
+        c1 = (50 + 33 * math.cos(b1), 50 + 33 * math.sin(b1))
+        c2 = (50 + 33 * math.cos(b2), 50 + 33 * math.sin(b2))
+        g.append(f"<path d='M{x1:.1f} {y1:.1f}Q{c1[0]:.1f} {c1[1]:.1f} {x2:.1f} {y2:.1f}Q{c2[0]:.1f} {c2[1]:.1f} {x1:.1f} {y1:.1f}Z'/>")
+        g.append(f"<circle cx='{50 + 41 * math.cos(a):.1f}' cy='{50 + 41 * math.sin(a):.1f}' r='2'/>")
+    g.append("</g><circle cx='50' cy='50' r='3'/>")
+    return U(S("".join(g)))
+
+
+MANDALA = mandala_svg()
+LANG_VONAL = U(S("<path d='M50 6C58 26 78 38 78 62A28 28 0 0 1 22 62C22 46 32 38 37 25 41 37 45 42 50 44 55 33 55 20 50 6Z' fill='none' stroke='#000' stroke-width='4' stroke-linejoin='round'/>"
+                 "<path d='M50 54C55 61 61 65 61 72A11 11 0 0 1 39 72C39 65 45 61 50 54Z' fill='none' stroke='#000' stroke-width='4' stroke-linejoin='round'/>"))
+LOTUSZ_SOR = U(S("<g transform='translate(30 6) scale(.32) translate(-50 -10)'><path d='M50 14C63 32 63 56 50 74 37 56 37 32 50 14Z'/>"
+                 "<path d='M47 74C38 58 22 50 6 50 12 68 30 78 47 74Z'/><path d='M53 74C62 58 78 50 94 50 88 68 70 78 53 74Z'/></g>", "0 0 60 34"))
+SZIROM_NAGY = U(S("<path d='M0 40 C60 40 80 2 100 2 C120 2 140 40 200 40Z'/>", "0 0 200 40", "preserveAspectRatio='none'"))
+
+FELULET += [
+    dict(id="tO2", nev="Lótusz, ritkábban", leiras="Ugyanaz a lótuszminta, de nagyobb, ritkább virágokkal és halványabban: levegősebb, nyugodtabb.",
+         css="%S .tx::before{background-color:var(--c-primary);-webkit-mask:" + lotusz_csempe() + " 0 0/260px 225px repeat;mask:" + lotusz_csempe() + " 0 0/260px 225px repeat;opacity:.06}"
+             "%S .s-deep.tx::before{background-color:var(--c-deep-hl);opacity:.09}%S .s-primary.tx::before{background-color:var(--c-on-primary);opacity:.1}"),
+    dict(id="tR", nev="Mandala a sarokban", leiras="Egyetlen nagy, finom vonalas mandala a szekció sarkában, váltakozva jobbra és balra. Elegáns, nem ismétlődik.",
+         css="%S .tx::before{background-color:var(--c-primary);-webkit-mask:" + MANDALA + " calc(100% + 140px) -140px/520px 520px no-repeat;mask:" + MANDALA + " calc(100% + 140px) -140px/520px 520px no-repeat;opacity:.14}"
+             "%S .sec:nth-of-type(even).tx::before{-webkit-mask-position:-140px calc(100% + 140px);mask-position:-140px calc(100% + 140px)}"
+             "%S .s-deep.tx::before{background-color:var(--c-deep-hl);opacity:.16}%S .s-primary.tx::before{background-color:var(--c-on-primary);opacity:.16}"),
+    dict(id="tH", nev="Meleg papírszemcse", leiras="Minta nélküli, finom, meleg szemcse, mint egy jó minőségű, merített papír. A legcsendesebb, mégsem üres.",
+         css="%S .tx::before{background-image:" + u(ZAJ) + ",radial-gradient(ellipse at 50% 40%,transparent 55%,color-mix(in srgb,var(--c-primary) 9%,transparent));background-size:180px 180px,100% 100%;mix-blend-mode:multiply}"
+             "%S .s-deep.tx::before,%S .s-primary.tx::before{mix-blend-mode:screen;opacity:.45}"),
+    dict(id="tV", nev="Lótusz-szegély", leiras="Apró lótuszok sora csak a szekciók felső szélén, mint egy hímzett szegély. A tartalom mögött tiszta marad a felület.",
+         css="%S .tx::before{background-color:var(--c-primary);-webkit-mask:" + LOTUSZ_SOR + " 0 22px/60px 34px repeat-x;mask:" + LOTUSZ_SOR + " 0 22px/60px 34px repeat-x;opacity:.22}"
+             "%S .s-deep.tx::before{background-color:var(--c-deep-hl);opacity:.25}%S .s-primary.tx::before{background-color:var(--c-on-primary);opacity:.25}"),
+]
+
+DEKOR += [
+    dict(id="dM", nev="Álló mandala", leiras="Egy nagy, finom vonalas mandala a szekció sarkában, mozdulatlanul. Elegáns, méltóságteljes, nem tereli el a figyelmet.",
+         css="%S .dk-jel{display:block;width:clamp(240px,36cqi,460px);aspect-ratio:1;right:-8%;top:-10%;background:var(--c-primary);-webkit-mask:" + MANDALA + " center/contain no-repeat;mask:" + MANDALA + " center/contain no-repeat;opacity:.13}"
+             "%S .sec:nth-of-type(even) .dk-jel{right:auto;left:-9%;top:auto;bottom:-12%}"
+             "%S .s-deep .dk-jel{background:var(--c-deep-hl);opacity:.16}%S .s-primary .dk-jel{background:var(--c-on-primary);opacity:.16}"),
+    dict(id="dO", nev="Lebegő lótuszok", leiras="Két-három apró lótusz lassan lebeg a szekciók szélén. Finom, élő, a lótuszmintás háttérhez illik.",
+         css="%S .dk-a,%S .dk-b,%S .dk-c{display:block;background:var(--c-primary);-webkit-mask:" + LOTUSZ + " center/contain no-repeat;mask:" + LOTUSZ + " center/contain no-repeat;opacity:.28;animation:%Klebeg 11s ease-in-out infinite alternate}"
+             "%S .dk-a{width:46px;height:46px;left:4%;top:12%}%S .dk-b{width:30px;height:30px;right:6%;top:20%;animation-duration:9s}"
+             "%S .dk-c{width:38px;height:38px;right:10%;bottom:10%;animation-duration:13s}"
+             "%S .s-deep .dk-a,%S .s-deep .dk-b,%S .s-deep .dk-c{background:var(--c-deep-hl)}"
+             "@keyframes %Klebeg{from{transform:translateY(0) rotate(-6deg)}to{transform:translateY(-14px) rotate(6deg)}}"
+             "@container elo (max-width:600px){%S .dk-c{display:none}}"),
+    dict(id="dF", nev="Láng a sarokban", leiras="Egy vonalas láng (a szexuális energia jele) a szekciók alsó sarkában, alig láthatóan „lobog”. Finom utalás a program lényegére.",
+         css="%S .dk-a{display:block;width:clamp(70px,9cqi,120px);height:clamp(70px,9cqi,120px);left:3%;bottom:6%;background:var(--c-primary);-webkit-mask:" + LANG_VONAL + " center/contain no-repeat;mask:" + LANG_VONAL + " center/contain no-repeat;opacity:.22;transform-origin:50% 100%;animation:%Klobog 4s ease-in-out infinite}"
+             "%S .sec:nth-of-type(even) .dk-a{left:auto;right:3%}"
+             "%S .s-deep .dk-a{background:var(--c-deep-hl);opacity:.3}"
+             "@keyframes %Klobog{0%,100%{transform:scale(1,1)}50%{transform:scale(.96,1.05)}}"),
+    dict(id="d0", nev="Letisztult (nincs dekor)", leiras="Nincs díszítő réteg: csak a háttér-textúra, a tartalom és a fotók. A legnyugodtabb, legtisztább megoldás.",
+         css="%S .dk>i{display:none!important}"),
+]
+
+HATAR += [
+    dict(id="sV", nev="Vékony narancs vonal", leiras="A szekciók között egy rövid, vékony narancs vonal középen. Tiszta, elegáns, a márkaszín finoman visszatér.",
+         css="%S .hat{top:-1px;height:2px;left:50%;right:auto;width:min(220px,40%);margin-left:max(-110px,-20%);background:var(--c-primary);opacity:.75;border-radius:2px}"),
+    dict(id="sG", nev="Lágy ív", leiras="Minden szekció egyetlen nagy, lágy domborulattal kezdődik, mint egy belégzés íve. Nyugodt, folyékony, nem hullámzik.",
+         css="%S .hat{top:-34px;height:35px;background:var(--sec-bg);-webkit-mask:radial-gradient(ellipse 62% 100% at 50% 100%,#000 98.5%,#0000 100%);mask:radial-gradient(ellipse 62% 100% at 50% 100%,#000 98.5%,#0000 100%)}"),
+    dict(id="sK", nev="Lótuszszirom középen", leiras="Egyenes határ, a közepén egyetlen nagy, csúcsos szirom emelkedik ki. Csendes, mégis egyedi és a témához illő.",
+         css="%S .hat{top:-30px;height:31px;left:50%;right:auto;width:240px;margin-left:-120px;background:var(--sec-bg);-webkit-mask:" + SZIROM_NAGY + " center bottom/100% 100% no-repeat;mask:" + SZIROM_NAGY + " center bottom/100% 100% no-repeat}"),
+    dict(id="sP", nev="Pontsor", leiras="Három apró narancs pont középen jelzi a szekció kezdetét, mint egy lélegzetvételnyi szünet. A legdiszkrétebb jelzés.",
+         css="%S .hat{top:-4px;height:8px;left:50%;right:auto;width:52px;margin-left:-26px;background:radial-gradient(circle,var(--c-primary) 3.4px,transparent 4px) 0 0/18px 8px repeat-x;opacity:.85}"),
+    dict(id="sN", nev="Nincs határjel", leiras="A szekciók egyszerűen színváltással érnek egymásba, külön határjel nélkül. A legtisztább, szerkesztőségi megoldás.",
+         css="%S .hat{display:none}"),
 ]

@@ -55,6 +55,24 @@ STILUSOK = {
                "visszafogottabb, a narancs csak a gombokon és kiemeléseken marad.", fn=lambda ik: svg(vonal(ik, szin=SOTET))),
 }
 
+# 2. kör: az ügyfél új ikonopciókat kért; a választott i2 marad, mellé 4 új, ugyanabból a családból
+ZSALYA = "#7E8F6C"
+HALVANY = "#F6E1CF"
+STILUSOK.update({
+    "i6": dict(nev="Az eredeti, közepes vonallal", miert="Az eredeti rajz a vastag és a vékony között: jól látszik kis méretben is, "
+               "mégis könnyed.", fn=lambda ik: svg(vonal(ik, w=4.6))),
+    "i7": dict(nev="Az eredeti, lekerekített négyzetben", miert="Vékony vonalú ikon egy finom, lekerekített négyzet keretben: "
+               "rendezett, mint egy alkalmazás ikonja.",
+               fn=lambda ik: svg(f"<rect x='3' y='3' width='94' height='94' rx='24' fill='none' stroke='{EREDETI}' stroke-width='3.2'/>"
+                                 + vonal(ik, w=6.4, extra="transform='translate(21 21) scale(.58)'"))),
+    "i8": dict(nev="Az eredeti, halvány korongon", miert="Vékony narancs vonalrajz halvány barack korongon: lágyabb, melegebb, "
+               "a narancs nem tolakodó.",
+               fn=lambda ik: svg(f"<circle cx='50' cy='50' r='50' fill='{HALVANY}'/>" + vonal(ik, w=6.4, extra="transform='translate(19 19) scale(.62)'"))),
+    "i9": dict(nev="Az eredeti, zsályazöldben", miert="Az eredeti vékony rajz a választott paletta zsályazöld kísérőszínében: "
+               "a narancs így a gombokra és a kiemelésekre marad.", fn=lambda ik: svg(vonal(ik, szin=ZSALYA, w=3.6))),
+})
+VALASZTO = ["i2", "i6", "i7", "i8", "i9"]
+
 
 def render():
     nevek = list(IKONOK)
@@ -82,8 +100,8 @@ def render():
     # az ikon-spec stílusai (a választó ezekből veszi a nevet és az indoklást)
     sp = MUNKA / "ikon-spec.json"
     spec = json.loads(sp.read_text(encoding="utf-8"))
-    spec["stilusok"] = [{"id": k, "nev": v["nev"], "miert": v["miert"], "elotag": "(kézzel rajzolt, az eredeti oldal ikonstílusában)"}
-                        for k, v in STILUSOK.items()]
+    spec["stilusok"] = [{"id": k, "nev": STILUSOK[k]["nev"], "miert": STILUSOK[k]["miert"],
+                         "elotag": "(kézzel rajzolt, az eredeti oldal ikonstílusában)"} for k in VALASZTO]
     sp.write_text(json.dumps(spec, ensure_ascii=False, indent=1), encoding="utf-8")
     print("kész:", len(STILUSOK), "stílus ×", len(nevek), "ikon")
 

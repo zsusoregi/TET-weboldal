@@ -113,6 +113,38 @@ HERO = [dict(id="hx1", nev="Gyertyafény-színpad", leiras="Sötét, szinte feke
 """)]
 
 
+def hero_h3():
+    """A 3-as hero az ügyfél kérése szerint: kisebb kártya csak a címmel és a terméknévvel, a többi szöveg alatta külön blokkban."""
+    c = ctx()
+    h = c["hero"]
+    f = c["fotok"]["szivsotet"]
+    return (f'<section class="sec v-h3 s-paper" id="top"><div class="ph f-szivsotet bg" role="img" aria-label="{esc(f["alt"])}" style="--pos:60% 12%"></div>'
+            f'<div class="shade"></div><div class="wrap"><div class="card s-vilagos" data-rv><h1 class="hcim">{md(h["cim"])}</h1>'
+            f'<p class="nev">Tantraszex Edzésterv</p></div></div></section>'
+            f'<section class="sec v-h3b s-paper" id="bevezeto"><div class="wrap szuk" data-rv>'
+            f'<p class="alcim">Online gyakorlóprogram 45+ férfiaknak</p>'
+            f'<p class="sor"><b>12 hét, 12 gyakorlat. Egy új szint a szexualitásodban.</b></p>'
+            f'<p class="nem">Nem kell hinned a Tantrában, csak próbáld ki, mit csinál a testeddel!</p>{gombsor(h)}</div></section>')
+
+
+H3_CSS = r"""
+.v-h3{padding:clamp(110px,11cqi,160px) 0 clamp(50px,6cqi,90px);min-height:clamp(540px,58cqi,720px);display:flex;align-items:flex-end}
+.v-h3 .bg{position:absolute;inset:0;aspect-ratio:auto;height:100%;z-index:-2;background-position:var(--pos)}
+.v-h3 .shade{position:absolute;inset:0;background:linear-gradient(90deg,rgba(0,0,0,.35),rgba(0,0,0,.05) 50%,transparent);z-index:-1}
+.v-h3 .wrap{width:100%}
+.v-h3 .card{max-width:430px;background:color-mix(in srgb,var(--c0-card) 94%,transparent);border-radius:20px;padding:clamp(20px,2.6cqi,32px);box-shadow:var(--sh-3)}
+.v-h3 .hcim{font-size:calc(clamp(1.35rem,2.3cqi,2rem)*var(--hero-scale,1))!important;line-height:1.18}
+.v-h3 .nev{margin:16px 0 0;padding-top:14px;border-top:2px solid var(--c-primary);font-family:var(--f-display);font-weight:var(--w-display);font-size:clamp(1.15rem,1.9cqi,1.5rem);letter-spacing:.06em;text-transform:uppercase;color:var(--c0-primary-text,var(--c-primary))}
+.v-h3b{padding:clamp(40px,5cqi,70px) 0;text-align:center}
+.v-h3b .alcim{font-family:var(--f-label);font-size:.82rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--hl);margin:0 0 12px}
+.v-h3b .sor{font-family:var(--f-display);font-weight:var(--w-display);font-size:clamp(1.3rem,2.4cqi,1.9rem);color:var(--c-head);margin:0 0 10px}
+.v-h3b .sor b{font-weight:inherit}
+.v-h3b .nem{color:var(--c-ink-2);margin:0 0 24px}
+.v-h3b .gombsor{justify-content:center}
+@container elo (max-width:760px){.v-h3{min-height:0;padding-top:70cqi;align-items:flex-end}.v-h3 .bg{height:78cqi;bottom:auto}.v-h3 .shade{display:none}.v-h3 .card{max-width:none}}
+"""
+
+
 # ================================================================ MIRŐL SZÓL (egyedi)
 def rolaszol():
     trio = R["trio"]
@@ -887,20 +919,31 @@ def latogatas():
     c = ctx()
     l = c["latogatas"]
     out = [
-        dict(id="lx1", nev="Homokóra", leiras="Sötét záró blokk egy nagy, lassan peregő homokórával és a „12 hét múlva…” mondattal. Az idő múlása mint döntés. Drámai, emlékezetes.",
+        dict(id="lx1", nev="Homokóra", leiras="Sötét záró blokk egy rajzolt homokórával (keret, üvegkontúr, peregő homok) és a „12 hét múlva…” mondattal. Az idő múlása mint döntés.",
              html=(f'<section class="sec v-lx1 s-deep" id="kapcsolat">{hat(c)}{dk(c, "latogatas")}<div class="wrap grid">'
-                   f'<div class="ora" data-rv aria-hidden="true"><i class="felso"></i><i class="also"></i><i class="pereg"></i></div>'
-                   f'<div class="txt" data-rv>{kick(l["kicker"])}<h2 class="cim">{md(l["cim"])}</h2><p class="lead">{md(l["lead"])}</p>{gombsor(l)}</div></div></section>'),
+                   '<div class="ora" data-rv aria-hidden="true"><svg viewBox="0 0 120 200">'
+                   '<rect class="keret" x="12" y="10" width="96" height="10" rx="3"/><rect class="keret" x="12" y="180" width="96" height="10" rx="3"/>'
+                   '<path class="rud" d="M18 20V180M102 20V180"/>'
+                   '<path class="uveg" d="M26 20C26 68 54 84 56 100C54 116 26 132 26 180M94 20C94 68 66 84 64 100C66 116 94 132 94 180"/>'
+                   '<path class="homok fent" d="M32 34C33 58 52 76 58 92H62C68 76 87 58 88 34Z"/>'
+                   '<path class="homok lent" d="M32 178C36 150 52 136 60 132C68 136 84 150 88 178Z"/>'
+                   '<path class="sugar" d="M60 92V176"/></svg></div>'
+                   f'<div class="txt" data-rv>{kick(l.get("kicker"))}<h2 class="cim">{md(l["cim"])}</h2><p class="lead">{md(l["lead"])}</p>{gombsor(l)}</div></div></section>'),
              css=r"""
 .v-lx1 .grid{display:grid;grid-template-columns:.6fr 1.4fr;gap:clamp(30px,6cqi,90px);align-items:center}
 .v-lx1 .lead{margin:20px 0 30px}
-.v-lx1 .ora{position:relative;width:min(220px,100%);aspect-ratio:3/5;margin:0 auto;border-top:6px solid var(--c-deep-hl);border-bottom:6px solid var(--c-deep-hl)}
-.v-lx1 .ora::before{content:"";position:absolute;inset:6px 10%;background:rgba(255,255,255,.08);clip-path:polygon(0 0,100% 0,100% 6%,56% 48%,56% 52%,100% 94%,100% 100%,0 100%,0 94%,44% 52%,44% 48%,0 6%)}
-.v-lx1 .felso{position:absolute;left:10%;right:10%;top:6px;height:46%;background:var(--c-primary);clip-path:polygon(18% 30%,82% 30%,54% 100%,46% 100%);animation:lx1fel 12s linear infinite}
-.v-lx1 .also{position:absolute;left:10%;right:10%;bottom:6px;height:46%;background:var(--c-primary);clip-path:polygon(50% 40%,100% 100%,0 100%);animation:lx1al 12s linear infinite}
-.v-lx1 .pereg{position:absolute;left:50%;top:48%;width:2px;height:42%;margin-left:-1px;background:var(--c-accent)}
-@keyframes lx1fel{from{clip-path:polygon(4% 8%,96% 8%,54% 100%,46% 100%)}to{clip-path:polygon(48% 92%,52% 92%,52% 100%,48% 100%)}}
-@keyframes lx1al{from{clip-path:polygon(50% 94%,54% 100%,46% 100%)}to{clip-path:polygon(50% 24%,100% 100%,0 100%)}}
+.v-lx1 .ora{width:min(200px,100%);margin:0 auto}
+.v-lx1 .ora svg{display:block;width:100%;height:auto;overflow:visible}
+.v-lx1 .keret{fill:var(--c-deep-hl)}
+.v-lx1 .rud{stroke:var(--c-deep-hl);stroke-width:3;stroke-linecap:round;opacity:.7}
+.v-lx1 .uveg{fill:none;stroke:color-mix(in srgb,var(--c-on-deep) 70%,transparent);stroke-width:2.5;stroke-linecap:round}
+.v-lx1 .homok{fill:var(--c-primary);transform-box:fill-box;transform-origin:50% 100%}
+.v-lx1 .fent{animation:lx1fent 14s linear infinite}
+.v-lx1 .lent{animation:lx1lent 14s linear infinite}
+.v-lx1 .sugar{stroke:var(--c-primary);stroke-width:3;stroke-linecap:round;stroke-dasharray:4 5;animation:lx1sug 1s linear infinite}
+@keyframes lx1fent{from{transform:scaleY(1)}to{transform:scaleY(.04)}}
+@keyframes lx1lent{from{transform:scaleY(.12)}to{transform:scaleY(1)}}
+@keyframes lx1sug{to{stroke-dashoffset:-9}}
 @container elo (max-width:760px){.v-lx1 .grid{grid-template-columns:1fr}.v-lx1 .ora{width:120px}}
 """),
         dict(id="lx2", nev="12 hét, 12 pötty", leiras="Világos záró blokk: 12 pötty egy sorban (a 12 hét), ami görgetésre egyenként kigyullad; alatta a mondat és a gombok. Az edzésterv ritmusa egy pillantásra.",
@@ -948,6 +991,11 @@ def mind(context):
     CTX = context
     nav_html()
     HERO[0]["html"] = hero_html()
+    if not any(x["id"] == "h3" for x in HERO):
+        HERO.append(dict(id="h3", nev="Teljes képes, kártyával",
+                         leiras="A teljes képernyős fotón egy kisebb kártya csak a címmel és a terméknévvel, így a férfiból több látszik; a többi szöveg és a gombok alatta, egy külön sávban.",
+                         html=None, css=H3_CSS))
+    next(x for x in HERO if x["id"] == "h3")["html"] = hero_h3()
     return {"nav": NAV, "hero": HERO, "rolaszol": rolaszol(), "miert": miert(), "kinek": kinek(),
             "velemenyek": velemenyek(), "garancia": garancia(), "gyik": gyik(), "ajanlat": ajanlat(), "mia": mia(), "tenyek": tenyek(),
             "latogatas": latogatas(), "lablec": lablec()}
