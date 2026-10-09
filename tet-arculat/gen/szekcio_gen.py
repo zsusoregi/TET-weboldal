@@ -121,7 +121,7 @@ def hero_h3():
     return (f'<section class="sec v-h3 s-paper" id="top"><div class="ph f-szivsotet bg" role="img" aria-label="{esc(f["alt"])}" style="--pos:60% 12%"></div>'
             f'<div class="shade"></div><div class="wrap"><div class="card s-vilagos" data-rv><h1 class="hcim">{md(h["cim"])}</h1>'
             f'<p class="nev">Tantraszex Edzésterv</p></div></div></section>'
-            f'<section class="sec v-h3b s-paper" id="bevezeto"><div class="wrap szuk" data-rv>'
+            f'<section class="sec v-h3b s-deep" id="bevezeto"><div class="wrap szuk" data-rv>'
             f'<p class="alcim">Online gyakorlóprogram 45+ férfiaknak</p>'
             f'<p class="sor"><b>12 hét, 12 gyakorlat. Egy új szint a szexualitásodban.</b></p>'
             f'<p class="nem">Nem kell hinned a Tantrában, csak próbáld ki, mit csinál a testeddel!</p>{gombsor(h)}</div></section>')
