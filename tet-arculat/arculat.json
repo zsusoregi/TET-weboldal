@@ -415,6 +415,16 @@
     "GYIK",
     "#gyik"
    ]
+  ],
+  "jogi": [
+   [
+    "Impresszum",
+    "#impresszum"
+   ],
+   [
+    "Adatkezelési tájékoztató",
+    "https://www.tantraiskola.hu/privacy-policy"
+   ]
   ]
  },
  "verzio": 1,
@@ -1642,8 +1652,8 @@
     "id": "lbx",
     "nev": "Sötét, jantra-jellel",
     "leiras": "Sötét, csendes lábléc: középen a logó egy halvány jantra előtt, alatta egy mondat, a menü és a gomb. Méltóságteljes lezárás.",
-    "html": "<footer class=\"sec v-lbx s-deep\" id=\"lablec\"><div class=\"wrap\"><div class=\"jel\" aria-hidden=\"true\"></div><a class=\"brand\" href=\"#top\"><span class=\"logo lg-feher ko\" role=\"img\" aria-label=\"Tantraszex Edzésterv logó\" style=\"--logo-h:64px;--logo-ar:365/341\"></span></a><p class=\"mondat\">Adj a testednek 12 hetet.</p><p class=\"sz\">12 hetes online gyakorló program férfiaknak, a tantrikus szexualitás alapjainak elsajátításához.</p><nav class=\"links\"><a href=\"#folyamat\">A program</a><a href=\"#rolunk\">Kirana</a><a href=\"#garancia\">Garanciák</a><a href=\"#etlap\">Csomagok</a><a href=\"#gyik\">GYIK</a></nav><div class=\"gombsor\"><a class=\"btn\" href=\"#etlap\">Belevágok<svg class=\"ui\" viewBox=\"0 0 24 24\" width=\"20\" height=\"20\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M5 12h14M13 6l6 6-6 6\"/></svg></a></div><p class=\"apro\">© Tantraszex Edzésterv · Sőregi Zsuzsa (Kirana)</p></div></footer>",
-    "css": "\n.v-lbx{text-align:center;padding:clamp(60px,7cqi,100px) 0 30px;overflow:hidden}\n.v-lbx .jel{position:absolute;left:50%;top:-80px;width:420px;height:420px;margin-left:-210px;background:var(--c-deep-hl);opacity:.07;-webkit-mask:var(--mjel) center/contain no-repeat;mask:var(--mjel) center/contain no-repeat;z-index:0}\n.v-lbx .brand{display:inline-block;position:relative}.v-lbx .logo{margin:0 auto}\n.v-lbx .mondat{font-family:var(--f-display);font-weight:var(--w-display);font-size:clamp(1.5rem,3cqi,2.3rem);color:var(--c-on-deep);margin:18px 0 6px;position:relative}\n.v-lbx .sz{color:var(--c-on-deep-2);max-width:56ch;margin:0 auto 22px;font-size:.95rem}\n.v-lbx .links{display:flex;flex-wrap:wrap;justify-content:center;gap:8px 22px;margin-bottom:24px;position:relative}\n.v-lbx .links a{text-decoration:none;color:var(--c-on-deep-2);font-size:.92rem}.v-lbx .links a:hover{color:var(--c-deep-hl)}\n.v-lbx .gombsor{justify-content:center;margin-bottom:40px}\n.v-lbx .apro{font-family:var(--f-label);font-size:.7rem;letter-spacing:.1em;color:var(--c-on-deep-2);border-top:1px solid var(--c-line);padding-top:20px;margin:0}\n"
+    "html": "<footer class=\"sec v-lbx s-deep\" id=\"lablec\"><div class=\"wrap\"><div class=\"jel\" aria-hidden=\"true\"></div><a class=\"brand\" href=\"#top\"><span class=\"logo lg-feher ko\" role=\"img\" aria-label=\"Tantraszex Edzésterv logó\" style=\"--logo-h:64px;--logo-ar:365/341\"></span></a><p class=\"mondat\">Adj a testednek 12 hetet.</p><p class=\"sz\">12 hetes online gyakorló program férfiaknak, a tantrikus szexualitás alapjainak elsajátításához.</p><nav class=\"links\"><a href=\"#folyamat\">A program</a><a href=\"#rolunk\">Kirana</a><a href=\"#garancia\">Garanciák</a><a href=\"#etlap\">Csomagok</a><a href=\"#gyik\">GYIK</a></nav><div class=\"gombsor\"><a class=\"btn\" href=\"#etlap\">Belevágok<svg class=\"ui\" viewBox=\"0 0 24 24\" width=\"20\" height=\"20\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M5 12h14M13 6l6 6-6 6\"/></svg></a></div><p class=\"apro\">© Tantraszex Edzésterv · Sőregi Zsuzsa (Kirana) · <a href=\"#impresszum\">Impresszum</a> · <a href=\"https://www.tantraiskola.hu/privacy-policy\" target=\"_blank\" rel=\"noopener\">Adatkezelési tájékoztató</a></p></div></footer>",
+    "css": "\n.v-lbx{text-align:center;padding:clamp(60px,7cqi,100px) 0 30px;overflow:hidden}\n.v-lbx .jel{position:absolute;left:50%;top:-80px;width:420px;height:420px;margin-left:-210px;background:var(--c-deep-hl);opacity:.07;-webkit-mask:var(--mjel) center/contain no-repeat;mask:var(--mjel) center/contain no-repeat;z-index:0}\n.v-lbx .brand{display:inline-block;position:relative}.v-lbx .logo{margin:0 auto}\n.v-lbx .mondat{font-family:var(--f-display);font-weight:var(--w-display);font-size:clamp(1.5rem,3cqi,2.3rem);color:var(--c-on-deep);margin:18px 0 6px;position:relative}\n.v-lbx .sz{color:var(--c-on-deep-2);max-width:56ch;margin:0 auto 22px;font-size:.95rem}\n.v-lbx .links{display:flex;flex-wrap:wrap;justify-content:center;gap:8px 22px;margin-bottom:24px;position:relative}\n.v-lbx .links a{text-decoration:none;color:var(--c-on-deep-2);font-size:.92rem}.v-lbx .links a:hover{color:var(--c-deep-hl)}\n.v-lbx .gombsor{justify-content:center;margin-bottom:40px}\n.v-lbx .apro{font-family:var(--f-label);font-size:.7rem;letter-spacing:.1em;color:var(--c-on-deep-2);border-top:1px solid var(--c-line);padding-top:20px;margin:0}.v-lbx .apro a{color:inherit}\n"
    }
   ]
  },

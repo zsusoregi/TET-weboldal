@@ -927,7 +927,8 @@ def lablec():
                  html=(f'<footer class="sec v-lbx s-deep" id="lablec"><div class="wrap"><div class="jel" aria-hidden="true"></div>'
                        f'<a class="brand" href="#top">{logo(c, 64, "ko", feher=True)}</a><p class="mondat">{esc(lb["felhivas"])}</p>'
                        f'<p class="sz">{esc(lb["szoveg"])}</p><nav class="links">{links}</nav>'
-                       f'<div class="gombsor">{btn({"szoveg": "Belevágok", "href": CSOMAGOK})}</div><p class="apro">© {esc(lb["cegnev"])}</p></div></footer>'),
+                       f'<div class="gombsor">{btn({"szoveg": "Belevágok", "href": CSOMAGOK})}</div><p class="apro">© {esc(lb["cegnev"])}'
+                       f' · <a href="#impresszum">Impresszum</a> · <a href="https://www.tantraiskola.hu/privacy-policy" target="_blank" rel="noopener">Adatkezelési tájékoztató</a></p></div></footer>'),
                  css=r"""
 .v-lbx{text-align:center;padding:clamp(60px,7cqi,100px) 0 30px;overflow:hidden}
 .v-lbx .jel{position:absolute;left:50%;top:-80px;width:420px;height:420px;margin-left:-210px;background:var(--c-deep-hl);opacity:.07;-webkit-mask:var(--mjel) center/contain no-repeat;mask:var(--mjel) center/contain no-repeat;z-index:0}
@@ -937,7 +938,7 @@ def lablec():
 .v-lbx .links{display:flex;flex-wrap:wrap;justify-content:center;gap:8px 22px;margin-bottom:24px;position:relative}
 .v-lbx .links a{text-decoration:none;color:var(--c-on-deep-2);font-size:.92rem}.v-lbx .links a:hover{color:var(--c-deep-hl)}
 .v-lbx .gombsor{justify-content:center;margin-bottom:40px}
-.v-lbx .apro{font-family:var(--f-label);font-size:.7rem;letter-spacing:.1em;color:var(--c-on-deep-2);border-top:1px solid var(--c-line);padding-top:20px;margin:0}
+.v-lbx .apro{font-family:var(--f-label);font-size:.7rem;letter-spacing:.1em;color:var(--c-on-deep-2);border-top:1px solid var(--c-line);padding-top:20px;margin:0}.v-lbx .apro a{color:inherit}
 """)]
 
 

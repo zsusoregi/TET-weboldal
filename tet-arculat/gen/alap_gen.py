@@ -612,3 +612,20 @@ TARTALOM["kapcsolat"]["telefon"] = TELEFON
 TARTALOM["kapcsolat"]["email"] = "tantraiskola@gmail.com"
 # az ügyfél kérése: az oldal elérhetősége az e-mail legyen (a telefonszám csak a GYIK 1. válaszában marad)
 TARTALOM["kapcsolat"].pop("telefon", None)
+
+# Impresszum (az ügyfél adatai, 2026-10-09). A felugró ablakot a gen/utofeldolgozas.py teszi az oldalra.
+IMPRESSZUM = {
+    "szolgaltato": [["Szolgáltató", "Sőregi Zsuzsanna egyéni vállalkozó"],
+                    ["Székhely", "2051 Biatorbágy, Szabadság út 61."],
+                    ["Adószám", "48375746-1-33"],
+                    ["Nyilvántartási szám", "[pótolandó: egyéni vállalkozói nyilvántartási szám]"],
+                    ["E-mail", "tantraiskola@gmail.com"],
+                    ["Telefon", "+36 70 245 4969"]],
+    "tarhely": [["Tárhelyszolgáltató", "Hostinger International Ltd."],
+                ["Cím", "61 Lordou Vironos Street, 6023 Larnaca, Ciprus"],
+                ["E-mail", "domains@hostinger.com"],
+                ["Web", "www.hostinger.com"]],
+}
+TARTALOM["lablec"]["jogi"] = [["Impresszum", "#impresszum"]]
+ADATKEZELES = "https://www.tantraiskola.hu/privacy-policy"
+TARTALOM["lablec"]["jogi"] = [["Impresszum", "#impresszum"], ["Adatkezelési tájékoztató", ADATKEZELES]]
