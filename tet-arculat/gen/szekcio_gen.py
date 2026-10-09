@@ -928,7 +928,8 @@ def lablec():
                        f'<a class="brand" href="#top">{logo(c, 64, "ko", feher=True)}</a><p class="mondat">{esc(lb["felhivas"])}</p>'
                        f'<p class="sz">{esc(lb["szoveg"])}</p><nav class="links">{links}</nav>'
                        f'<div class="gombsor">{btn({"szoveg": "Belevágok", "href": CSOMAGOK})}</div><p class="apro">© {esc(lb["cegnev"])}'
-                       f' · <a href="#impresszum">Impresszum</a> · <a href="https://www.tantraiskola.hu/privacy-policy" target="_blank" rel="noopener">Adatkezelési tájékoztató</a></p></div></footer>'),
+                       f' · <a href="#impresszum">Impresszum</a> · <a href="https://www.tantraiskola.hu/aszf" target="_blank" rel="noopener">ÁSZF</a>'
+                       f' · <a href="https://www.tantraiskola.hu/privacy-policy" target="_blank" rel="noopener">Adatkezelési tájékoztató</a></p></div></footer>'),
                  css=r"""
 .v-lbx{text-align:center;padding:clamp(60px,7cqi,100px) 0 30px;overflow:hidden}
 .v-lbx .jel{position:absolute;left:50%;top:-80px;width:420px;height:420px;margin-left:-210px;background:var(--c-deep-hl);opacity:.07;-webkit-mask:var(--mjel) center/contain no-repeat;mask:var(--mjel) center/contain no-repeat;z-index:0}

@@ -629,3 +629,5 @@ IMPRESSZUM = {
 TARTALOM["lablec"]["jogi"] = [["Impresszum", "#impresszum"]]
 ADATKEZELES = "https://www.tantraiskola.hu/privacy-policy"
 TARTALOM["lablec"]["jogi"] = [["Impresszum", "#impresszum"], ["Adatkezelési tájékoztató", ADATKEZELES]]
+ASZF = "https://www.tantraiskola.hu/aszf"
+TARTALOM["lablec"]["jogi"] = [["Impresszum", "#impresszum"], ["ÁSZF", ASZF], ["Adatkezelési tájékoztató", ADATKEZELES]]
