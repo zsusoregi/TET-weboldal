@@ -608,7 +608,7 @@ GYIK["k"] = [
 # az oldal elérhetősége: a GYIK-ben megadott telefonszám (a hiányzó e-mail helyett)
 TARTALOM["kapcsolat"].pop("email", None)
 TARTALOM["kapcsolat"]["telefon"] = TELEFON
-# e-mail (az ügyfél: „tantraiskola@gamil.com” – feltételezett elírás, gmail.com-mal vettem fel, megerősítésre vár)
+# e-mail (az ügyfél megerősítette)
 TARTALOM["kapcsolat"]["email"] = "tantraiskola@gmail.com"
 # az ügyfél kérése: az oldal elérhetősége az e-mail legyen (a telefonszám csak a GYIK 1. válaszában marad)
 TARTALOM["kapcsolat"].pop("telefon", None)
@@ -631,3 +631,12 @@ ADATKEZELES = "https://www.tantraiskola.hu/privacy-policy"
 TARTALOM["lablec"]["jogi"] = [["Impresszum", "#impresszum"], ["Adatkezelési tájékoztató", ADATKEZELES]]
 ASZF = "https://www.tantraiskola.hu/aszf"
 TARTALOM["lablec"]["jogi"] = [["Impresszum", "#impresszum"], ["ÁSZF", ASZF], ["Adatkezelési tájékoztató", ADATKEZELES]]
+
+# 2026-10-09: az ügyfél adószámos magánszemély (nincs EV-nyilvántartási szám); e-mail megerősítve;
+# a hero „Megnézem, hogy működik” gombja a „Mit edzünk 12 héten keresztül?” blokkra visz.
+IMPRESSZUM["szolgaltato"] = [["Szolgáltató", "Sőregi Zsuzsanna (adószámos magánszemély)"],
+                             ["Székhely", "2051 Biatorbágy, Szabadság út 61."],
+                             ["Adószám", "48375746-1-33"],
+                             ["E-mail", "tantraiskola@gmail.com"],
+                             ["Telefon", "+36 70 245 4969"]]
+TARTALOM["hero"]["cta1"] = {"szoveg": "Megnézem, hogy működik", "href": "#folyamat"}
