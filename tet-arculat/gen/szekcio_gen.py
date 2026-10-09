@@ -35,6 +35,12 @@ def mdk(t):
     return _re.sub(r"!!(.+?)!!", r'<strong class="kiem">\1</strong>', md(t))
 
 
+def mdg(t):
+    """GYIK-válasz: md (sortörés, félkövér) + kattintható telefonszám."""
+    from alap_gen import TELEFON
+    return md(t).replace(TELEFON, f'<a class="tel" href="tel:{TELEFON.replace(" ", "")}">{TELEFON}</a>')
+
+
 def li(lst, cls=""):
     return "".join(f'<li class="{cls}" data-rv>{md(x)}</li>' for x in lst)
 
@@ -596,7 +602,7 @@ def gyik():
 
     def acc(cls=""):
         return "".join(f'<details class="{cls}" data-rv style="--i:{i}"{" open" if i == 2 else ""}><summary><span class="n">{i + 1:02d}</span>'
-                       f'<span class="q">{esc(a)}</span><i></i></summary><div class="v"><p>{esc(b)}</p></div></details>' for i, (a, b) in enumerate(k))
+                       f'<span class="q">{esc(a)}</span><i></i></summary><div class="v"><p>{mdg(b)}</p></div></details>' for i, (a, b) in enumerate(k))
     ACC = r"""
 .v-%s details{border-bottom:1px solid var(--c-line2)}
 .v-%s summary{list-style:none;cursor:pointer;display:flex;gap:16px;align-items:center;padding:18px 0;font-weight:700;font-size:1.05rem;color:var(--c-head)}
@@ -614,12 +620,12 @@ def gyik():
              css=ACC.replace("%s", "qx1")),
         dict(id="qx2", nev="Kártyarács", leiras="Minden kérdés egy kártya, a válasz rögtön látszik. Két hasáb, gyorsan átfutható, nincs mit kinyitni.",
              html=sec("qx2", "gyik", "s-tint", f'<div class="wrap">{sh(Q)}<div class="racs" style="--oszlop:2">'
-                      + "".join(f'<article class="krt" data-rv style="--i:{i}"><h3 class="krt-h">{esc(a)}</h3><p class="krt-p">{esc(b)}</p></article>' for i, (a, b) in enumerate(k))
+                      + "".join(f'<article class="krt" data-rv style="--i:{i}"><h3 class="krt-h">{esc(a)}</h3><p class="krt-p">{mdg(b)}</p></article>' for i, (a, b) in enumerate(k))
                       + f'</div>{cta}</div>', masod=True),
              css=".v-qx2 .krt-h{font-size:1.08rem}.v-qx2 .lab{display:flex;justify-content:center;margin-top:36px}"),
         dict(id="qx3", nev="Beszélgetés-buborékok", leiras="Kérdés és válasz chat-buborékokban, mintha Kiranának írnál, és ő válaszolna. Közvetlen, oldja a téma feszültségét.",
              html=sec("qx3", "gyik", "s-white", f'<div class="wrap szuk">{sh(Q)}<div class="chat">'
-                      + "".join(f'<div class="k" data-rv>{esc(a)}</div><div class="v" data-rv>{esc(b)}</div>' for a, b in k)
+                      + "".join(f'<div class="k" data-rv>{esc(a)}</div><div class="v" data-rv>{mdg(b)}</div>' for a, b in k)
                       + f'</div>{cta}</div>'),
              css=r"""
 .v-qx3 .chat{display:flex;flex-direction:column;gap:10px}
@@ -636,13 +642,13 @@ def gyik():
 """),
         dict(id="qx5", nev="Számozott, nyitott", leiras="Nagy, serif sorszámok, minden válasz nyitva, két hasábban, mint egy tájékoztató füzet. Klasszikus, átlátható.",
              html=sec("qx5", "gyik", "s-paper", f'<div class="wrap">{sh(Q)}<ol class="sz">'
-                      + "".join(f'<li data-rv style="--i:{i}"><b>{i + 1:02d}</b><div><h3>{esc(a)}</h3><p>{esc(b)}</p></div></li>' for i, (a, b) in enumerate(k))
+                      + "".join(f'<li data-rv style="--i:{i}"><b>{i + 1:02d}</b><div><h3>{esc(a)}</h3><p>{mdg(b)}</p></div></li>' for i, (a, b) in enumerate(k))
                       + f'</ol>{cta}</div>'),
              css=r"""
 .v-qx5 .sz{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:28px clamp(30px,5cqi,70px)}
 .v-qx5 li{display:flex;gap:18px;padding-top:16px;border-top:1px solid var(--c-line2)}
-.v-qx5 li b{font-family:var(--f-display);font-weight:var(--w-display);font-size:2rem;line-height:1;color:var(--hl);font-style:italic}
-.v-qx5 h3{font-size:1.08rem;margin-bottom:6px}.v-qx5 p{margin:0;color:var(--c-ink-2)}
+.v-qx5 li>b{font-family:var(--f-display);font-weight:var(--w-display);font-size:2rem;line-height:1;color:var(--hl);font-style:italic}
+.v-qx5 h3{font-size:1.08rem;margin-bottom:6px}.v-qx5 p{margin:0;color:var(--c-ink-2)}.v-qx5 p b{color:var(--c-head)}
 .v-qx5 .lab{display:flex;justify-content:center;margin-top:40px}
 @container elo (max-width:760px){.v-qx5 .sz{grid-template-columns:1fr}}
 """),

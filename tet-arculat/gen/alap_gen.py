@@ -573,3 +573,42 @@ TARTALOM["latogatas"].update({"kicker": None, "cim": "Miért ==most==?",
                               "lead": "**12 hét múlva mindenképpen 12 héttel idősebb leszel.** | " + TARTALOM["latogatas"]["lead"]})
 TARTALOM["ajanlat"].update({"kicker": None, "cim": "Csomagok"})
 GYIK.update({"kicker": None, "cim": "Gyakran Intézett ==Kérdések=="})
+
+# GYIK (az ügyfél szövege, 2026-10-09), elírás-javítással. A " | " sortörés.
+TELEFON = "+36 70 245 4969"
+GYIK["k"] = [
+    ["Mi történik, miután kitöltöttem a megrendelőlapot?",
+     "Töltsd ki a megrendelőlapot, és küldd el! | Azonnal kapsz egy e-mailt a bankszámla-adatokkal, ahova el tudod utalni a "
+     "kurzus árát. | Ha nem találod az e-mailt, nézd meg a SPAM és PROMÓCIÓK mappában is! | Amikor beérkezik a bankszámlánkra "
+     "az átutalt összeg, egy-két órán belül elküldöm neked a kurzushoz való hozzáférés adatait, a kurzusfiókod felhasználónevét "
+     "és jelszavát. | A fiókodba belépve megtalálod a Tantraszex Edzéstervet, és a bónuszt is. | Ha Prémium csomagot rendeltél, "
+     "telefonon kereslek a személyes alkalmak időpontjának egyeztetése céljából. (Ezért ebben az esetben kötelező a telefonszám "
+     "megadása a megrendelőlapon.) | **Ha bármi nem így történik, bátran hívj!** " + TELEFON],
+    ["Kapok számlát?",
+     "A megrendelőűrlap elküldése után kapsz egy díjbekérőt, az átutalás után pedig számlát (a szamlazz.hu rendszerén keresztül). | "
+     "Számlát csak magánszemélyek részére tudunk kiállítani, ezért csak magánszemélyként tudod a kurzust megrendelni."],
+    ["Mit tud nekem újat mondani a szexről ennyi idős koromban?",
+     "Ebben a kurzusban nem azt tanulod újra, amit már harminc (vagy több) éve csinálsz. Olyan képességeket edzünk, amelyeket "
+     "valószínűleg soha senki nem tanított meg neked. | Nem a „régi” szexről tanulsz új dolgokat, hanem egy teljesen új "
+     "szexualitásba kapsz bevezetést."],
+    ["Akkor is működik, ha nem vagyok „spiri”?",
+     "Az eredmény kizárólag azon múlik, hogy végigcsinálod-e a gyakorlatokat. | Az persze fontos, hogy nyitottan és lelkesen állj "
+     "hozzá. És legyél nyitott arra is, hogy ha valami különleges dolgot tapasztalsz meg, ne utasítsd el rögtön, csak azért, mert "
+     "nem logikus, nem racionális… Légy nyitott az új dolgok felfedezésére!"],
+    ["Egyedül hogyan gyakoroljak szexet?",
+     "Nem kell megvárnod a következő kapcsolatodat ahhoz, hogy más férfiként érkezz bele. Egy olyan tudással, mely a legtöbb nő "
+     "számára „kincset ér”. | A Tantraszex Edzés kifejezetten egyedül végezhető gyakorlatokat tartalmaz. | A gyakorlás során nagy "
+     "valószínűséggel sokszorosára nő a szexuális vonzerőd, ami segíteni fog abban, hogy találj egy csodálatos partnert új "
+     "szexualitásod megéléséhez."],
+    ["Mi van, ha elkezdem, aztán nem csinálom?",
+     "Nem kell megtanulnod a tantrát. Egy héten csak egy gyakorlatot kell elvégezned. Ami már megy, azt nem fogod elfelejteni, "
+     "olyan, mint a biciklizés… | A kurzusfiókod hónapok múlva is elérhető: ha valami miatt szünetelteted az edzést, később "
+     "újra előveheted."],
+]
+# az oldal elérhetősége: a GYIK-ben megadott telefonszám (a hiányzó e-mail helyett)
+TARTALOM["kapcsolat"].pop("email", None)
+TARTALOM["kapcsolat"]["telefon"] = TELEFON
+# e-mail (az ügyfél: „tantraiskola@gamil.com” – feltételezett elírás, gmail.com-mal vettem fel, megerősítésre vár)
+TARTALOM["kapcsolat"]["email"] = "tantraiskola@gmail.com"
+# az ügyfél kérése: az oldal elérhetősége az e-mail legyen (a telefonszám csak a GYIK 1. válaszában marad)
+TARTALOM["kapcsolat"].pop("telefon", None)
