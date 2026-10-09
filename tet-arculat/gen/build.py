@@ -140,6 +140,7 @@ spec["egyedi_css"] = (""
                      ".v-k2 .krt .ik{display:none!important}"
                      # 3. kör: a háttér az eredeti krém (#FFFBF4 = --c-paper) ezekben a blokkokban
                      "#rolaszol,#folyamat,#kinek,#kinalat,#gyik{--sec-bg:var(--c-paper)!important}"
+                     "#rolaszol.tx::before,#folyamat.tx::before,#kinek.tx::before,#kinalat.tx::before,#gyik.tx::before,#rolaszol .tx::before,#folyamat .tx::before,#kinek .tx::before,#kinalat .tx::before,#gyik .tx::before{display:none!important}"
                      "#gyik a.tel{color:var(--hl);font-weight:800;white-space:nowrap}"
                      ".elo-root .sec:not(#top) h2.cim{font-size:var(--t-h2)}"
                      "#top .hcim{font-size:calc(clamp(1.9rem,3.4cqi,3.1rem)*var(--hero-scale,1));line-height:1.1}"
