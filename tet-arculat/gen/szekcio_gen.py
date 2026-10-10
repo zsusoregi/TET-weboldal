@@ -925,9 +925,10 @@ def latogatas():
                    '<rect class="keret" x="12" y="10" width="96" height="10" rx="3"/><rect class="keret" x="12" y="180" width="96" height="10" rx="3"/>'
                    '<path class="rud" d="M18 20V180M102 20V180"/>'
                    '<path class="uveg" d="M26 20C26 68 54 84 56 100C54 116 26 132 26 180M94 20C94 68 66 84 64 100C66 116 94 132 94 180"/>'
-                   '<path class="homok fent" d="M32 34C33 58 52 76 58 92H62C68 76 87 58 88 34Z"/>'
-                   '<path class="homok lent" d="M32 178C36 150 52 136 60 132C68 136 84 150 88 178Z"/>'
-                   '<path class="sugar" d="M60 92V176"/></svg></div>'
+                   '<clipPath id="lx1-uveg"><path d="M28.6 20C28.6 67 55 83 57.6 100C55 117 28.6 133 28.6 180H91.4C91.4 133 65 117 62.4 100C65 83 91.4 67 91.4 20Z"/></clipPath>'
+                   '<g clip-path="url(#lx1-uveg)"><rect class="homok fent" x="20" y="42" width="80" height="58"/>'
+                   '<path class="homok lent" d="M20 180V152C40 142 50 136 60 134C70 136 80 142 100 152V180Z"/>'
+                   '<path class="sugar" d="M60 100V178"/></g></svg></div>'
                    f'<div class="txt" data-rv>{kick(l.get("kicker"))}<h2 class="cim">{md(l["cim"])}</h2><p class="lead">{md(l["lead"])}</p>{gombsor(l)}</div></div></section>'),
              css=r"""
 .v-lx1 .grid{display:grid;grid-template-columns:.6fr 1.4fr;gap:clamp(30px,6cqi,90px);align-items:center}
@@ -937,10 +938,10 @@ def latogatas():
 .v-lx1 .keret{fill:var(--c-deep-hl)}
 .v-lx1 .rud{stroke:var(--c-deep-hl);stroke-width:3;stroke-linecap:round;opacity:.7}
 .v-lx1 .uveg{fill:none;stroke:color-mix(in srgb,var(--c-on-deep) 70%,transparent);stroke-width:2.5;stroke-linecap:round}
-.v-lx1 .homok{fill:var(--c-primary);transform-box:fill-box;transform-origin:50% 100%}
+.v-lx1 .homok{fill:var(--c-primary);fill-opacity:.8;transform-box:fill-box;transform-origin:50% 100%}
 .v-lx1 .fent{animation:lx1fent 14s linear infinite}
 .v-lx1 .lent{animation:lx1lent 14s linear infinite}
-.v-lx1 .sugar{stroke:var(--c-primary);stroke-width:3;stroke-linecap:round;stroke-dasharray:4 5;animation:lx1sug 1s linear infinite}
+.v-lx1 .sugar{stroke:var(--c-primary);stroke-opacity:.8;stroke-width:3;stroke-linecap:round;stroke-dasharray:4 5;animation:lx1sug 1s linear infinite}
 @keyframes lx1fent{from{transform:scaleY(1)}to{transform:scaleY(.04)}}
 @keyframes lx1lent{from{transform:scaleY(.12)}to{transform:scaleY(1)}}
 @keyframes lx1sug{to{stroke-dashoffset:-9}}
