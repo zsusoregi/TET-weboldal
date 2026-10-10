@@ -1,6 +1,6 @@
 # Tantraszex Edzésterv · designrendszer
 
-Készült: 2026-10-10 · forrás: https://tet.tantraiskola.com · az arculat-választó v2 döntései alapján.
+Készült: 2026-10-10 · forrás: https://tantraszexedzesterv.com · az arculat-választó v2 döntései alapján.
 
 Ez a dokumentum a márka webes arculatának összefoglalója: bármely AI vagy fejlesztő ebből tud új oldalt,
 aloldalt vagy anyagot készíteni, ami ugyanúgy néz ki. A pontos értékek a `tokenek.css`-ben vannak.

@@ -80,7 +80,7 @@ FOTOK = {
 
 TARTALOM = {
     "marka": {"nev": "Tantraszex Edzésterv", "szlogen": "12 hét, 12 gyakorlat. Egy új szint a szexualitásodban.",
-              "slug": "tantraszex-edzesterv", "url": "https://tet.tantraiskola.com"},
+              "slug": "tantraszex-edzesterv", "url": "https://tantraszexedzesterv.com"},
     "seo": {"title": "Tantraszex Edzésterv · Online gyakorlóprogram 45+ férfiaknak",
             "description": "12 hetes online gyakorló program férfiaknak, a tantrikus szexualitás alapjainak elsajátításához."},
     "logo": {"fajl": "kepek/logo.png"},

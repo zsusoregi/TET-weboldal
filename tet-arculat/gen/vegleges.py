@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""A végleges oldal feltöltésre kész mappája (kesz/): index.html + og.jpg.
+"""A végleges oldal (tantraszexedzesterv.com) feltöltésre kész mappája (kesz/): index.html + og.jpg.
 Hozzáadja a böngészőfül-ikont (logóból), a megosztási képet (og:image) és a kanonikus URL-t.
 Futtatás a munkamappából, az epit.py oldal + utofeldolgozas.py után: python3 gen/vegleges.py"""
 import base64, io
@@ -7,7 +7,7 @@ from pathlib import Path
 from PIL import Image
 
 MUNKA = Path(__file__).resolve().parent.parent
-URL = "https://tet.tantraiskola.com/"
+URL = "https://tantraszexedzesterv.com/"
 KI = MUNKA / "kesz"
 
 DONTESEK = """
@@ -69,7 +69,6 @@ def main():
     logo = Image.open(MUNKA / "kepek" / "logo.png").convert("RGBA")
     fej = (f'<link rel="icon" type="image/png" href="{png_uri(logo, 64)}">'
            f'<link rel="apple-touch-icon" href="{png_uri(logo, 180)}">'
-           f'<link rel="canonical" href="{URL}">'
            f'<meta property="og:url" content="{URL}">'
            f'<meta property="og:image" content="{URL}og.jpg">'
            '<meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">'
