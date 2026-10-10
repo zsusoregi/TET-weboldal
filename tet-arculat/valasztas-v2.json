@@ -1,7 +1,7 @@
 {
  "marka": "tantraszex-edzesterv",
  "verzio": 2,
- "datum": "2026-10-10 10:40",
+ "datum": "2026-10-10 10:45",
  "valasztas": {
   "paletta": {
    "vegleges": "p3",
@@ -146,13 +146,14 @@
    ]
   },
   "hatar": {
-   "vegleges": "sK",
-   "elonezet": "sK",
+   "vegleges": "sK2",
+   "elonezet": "sK2",
    "ajanlott": "sK",
    "megjegyzesek": {},
    "ujakat": false,
    "opciok": [
     "sK",
+    "sK2",
     "sY",
     "sD",
     "sB",
