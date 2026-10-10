@@ -143,11 +143,11 @@ spec["egyedi_css"] = (""
                      ".v-k2 .krt-meta{display:none!important}"
                      # alapcsomag: ugyanaz a narancs derengés, mint a fotók alatt
                      ".v-ax2 .cs:not(.sotet){box-shadow:0 30px 60px -28px color-mix(in srgb,var(--c-primary) 70%,transparent),var(--sh-3)}"
-                     # 3. kör: a háttér az eredeti krém (#FFFBF4 = --c-paper) ezekben a blokkokban
-                     "#rolaszol,#folyamat,#kinek,#kinalat,#etlap{--sec-bg:var(--c-paper)!important}"
-                     # világos blokkok váltakozva: krém (#FFFBF4) és homok (#F8F3EA)
-                     "#mia,#rolunk,#velemenyek,#garancia,#gyik{--sec-bg:var(--c-sand)!important}"
-                     "#rolaszol.tx::before,#folyamat.tx::before,#kinek.tx::before,#kinalat.tx::before,#gyik.tx::before,#rolaszol .tx::before,#folyamat .tx::before,#kinek .tx::before,#kinalat .tx::before,#gyik .tx::before{display:none!important}"
+                     # világos blokkok az ügyfél kiosztása szerint: krém = #FFFBF4 (--c-paper), homok = #F8F3EA (--c-sand)
+                     "#rolaszol,#mia,#rolunk,#velemenyek,#garancia,#gyik{--sec-bg:var(--c-paper)!important}"
+                     # textúra: az alábbi négy blokkon nincs Srí Jantra (0), a többi világoson van (1)
+                     "#folyamat,#kinek,#kinalat,#etlap{--sec-bg:var(--c-sand)!important}"
+                     "#rolaszol.tx::before,#rolaszol .tx::before,#folyamat.tx::before,#folyamat .tx::before,#velemenyek.tx::before,#velemenyek .tx::before,#kinalat.tx::before,#kinalat .tx::before{display:none!important}"
                      "#gyik a.tel{color:var(--hl);font-weight:800;white-space:nowrap}"
                      ".elo-root .sec:not(#top) h2.cim{font-size:var(--t-h2)}"
                      "#top .hcim{font-size:calc(clamp(1.9rem,3.4cqi,3.1rem)*var(--hero-scale,1));line-height:1.1}"
