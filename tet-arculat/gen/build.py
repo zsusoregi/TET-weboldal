@@ -144,7 +144,9 @@ spec["egyedi_css"] = (""
                      # alapcsomag: ugyanaz a narancs derengés, mint a fotók alatt
                      ".v-ax2 .cs:not(.sotet){box-shadow:0 30px 60px -28px color-mix(in srgb,var(--c-primary) 70%,transparent),var(--sh-3)}"
                      # 3. kör: a háttér az eredeti krém (#FFFBF4 = --c-paper) ezekben a blokkokban
-                     "#rolaszol,#folyamat,#kinek,#kinalat,#gyik{--sec-bg:var(--c-paper)!important}"
+                     "#rolaszol,#folyamat,#kinek,#kinalat,#etlap{--sec-bg:var(--c-paper)!important}"
+                     # világos blokkok váltakozva: krém (#FFFBF4) és homok (#F8F3EA)
+                     "#mia,#rolunk,#velemenyek,#garancia,#gyik{--sec-bg:var(--c-sand)!important}"
                      "#rolaszol.tx::before,#folyamat.tx::before,#kinek.tx::before,#kinalat.tx::before,#gyik.tx::before,#rolaszol .tx::before,#folyamat .tx::before,#kinek .tx::before,#kinalat .tx::before,#gyik .tx::before{display:none!important}"
                      "#gyik a.tel{color:var(--hl);font-weight:800;white-space:nowrap}"
                      ".elo-root .sec:not(#top) h2.cim{font-size:var(--t-h2)}"
