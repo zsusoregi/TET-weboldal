@@ -129,6 +129,8 @@ kat("lablec", ["lbx", "lb1", "lb2", "lb3", "lb4"], "lbx", {
     "lb1": "Klasszikus négyhasábos sötét lábléc.", "lb2": "Óriás márkanév: magabiztos.", "lb3": "Középre zárt, minimál.", "lb4": "Színes, lekerekített: lendületes."})
 
 spec["egyedi_css"] = (""
+                     # a láblécben is a textúra Srí Jantrája
+                     ".v-lbx .jel{-webkit-mask:" + S.SRI + " center/contain no-repeat!important;mask:" + S.SRI + " center/contain no-repeat!important}"
                      ".kiem{color:var(--hl);font-weight:800}"
                      # 2. kör, az ügyfél megjegyzései szerint
                      ".v-mi5 .grid{grid-template-columns:1fr 1fr!important;gap:clamp(24px,4cqi,56px)!important}"
