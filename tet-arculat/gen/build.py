@@ -68,7 +68,7 @@ kat("dekor", ["dH", "dM", "dO", "dF", "d0"], "dH", {"dH": "Az előnézetben lév
     "dO": "Lebegő lótuszok: a lótuszmintás háttérrel együtt egységes.",
     "dF": "Vonalas láng a sarokban: a szexuális energia finom jele.",
     "d0": "Nincs dekor: ha a háttér-textúra és a fotók elegendőek."})
-kat("hatar", ["sK", "sY", "sD", "sB", "sW"], "sK", {"sY": "A Srí Jantra kis medálként: a háttér motívuma köszön vissza.", "sB": "Háromszirmú lótuszbimbó: organikusabb, nőiesebb.", "sD": "A szirom körvonalként: könnyedebb, rajzosabb.", "sW": "Egy lágy, hullámzó lélegzet-vonal: diszkrét, mégis élő.","sV": "Rövid, vékony narancs vonal középen: tiszta, a márkaszín finoman visszatér.",
+kat("hatar", ["sK", "sK2", "sY", "sD", "sB", "sW"], "sK", {"sK2": "Ugyanaz a szirom, 20%-kal alacsonyabban.", "sY": "A Srí Jantra kis medálként: a háttér motívuma köszön vissza.", "sB": "Háromszirmú lótuszbimbó: organikusabb, nőiesebb.", "sD": "A szirom körvonalként: könnyedebb, rajzosabb.", "sW": "Egy lágy, hullámzó lélegzet-vonal: diszkrét, mégis élő.","sV": "Rövid, vékony narancs vonal középen: tiszta, a márkaszín finoman visszatér.",
     "sG": "Egyetlen lágy ív: nyugodt, mint egy belégzés.",
     "sK": "Egy lótuszszirom középen: csendes, mégis egyedi.",
     "sP": "Három apró pont: a legdiszkrétebb jelzés.",

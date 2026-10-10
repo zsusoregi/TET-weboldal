@@ -1,7 +1,7 @@
 {
  "marka": "tantraszex-edzesterv",
  "verzio": 2,
- "datum": "2026-10-09 18:29",
+ "datum": "2026-10-10 10:40",
  "valasztas": {
   "paletta": {
    "vegleges": "p3",
@@ -18,8 +18,8 @@
    ]
   },
   "betu": {
-   "vegleges": "b4",
-   "elonezet": "b4",
+   "vegleges": "b2",
+   "elonezet": "b2",
    "ajanlott": "b1",
    "megjegyzesek": {},
    "ujakat": false,
@@ -148,15 +148,15 @@
   "hatar": {
    "vegleges": "sK",
    "elonezet": "sK",
-   "ajanlott": "sV",
+   "ajanlott": "sK",
    "megjegyzesek": {},
    "ujakat": false,
    "opciok": [
-    "sV",
-    "sG",
     "sK",
-    "sP",
-    "sN"
+    "sY",
+    "sD",
+    "sB",
+    "sW"
    ]
   },
   "mozgas": {

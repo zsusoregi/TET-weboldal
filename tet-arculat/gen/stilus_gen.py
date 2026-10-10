@@ -396,3 +396,9 @@ HATAR += [
          css="%S .hat{top:-7px;height:14px;left:50%;right:auto;width:220px;margin-left:-110px;background:var(--c-primary);opacity:.75;-webkit-mask:" + LEGZES_VONAL + " center/100% 100% no-repeat;mask:" + LEGZES_VONAL + " center/100% 100% no-repeat}"
              "%S .s-deep>.hat{background:var(--c-deep-hl)}"),
 ]
+
+# 5. kör: a választott szirom-határ 20%-kal alacsonyabb változata (31px -> 25px)
+HATAR += [
+    dict(id="sK2", nev="Lótuszszirom középen, alacsonyabb", leiras="Ugyanaz a középső lótuszszirom, de 20%-kal alacsonyabb domborulattal. Még csendesebb átmenet.",
+         css="%S .hat{top:-24px;height:25px;left:50%;right:auto;width:240px;margin-left:-120px;background:var(--sec-bg);-webkit-mask:" + SZIROM_NAGY + " center bottom/100% 100% no-repeat;mask:" + SZIROM_NAGY + " center bottom/100% 100% no-repeat}"),
+]
