@@ -855,8 +855,8 @@ def ajanlat():
         dict(id="ax2", nev="A Prémium sötétben", leiras="Az alapcsomag világos lapon, a Prémium sötét, gyertyafényes kártyán, narancs árral és a „Mit tartalmaz?” linkkel. A drágább csomag magától kiemelkedik.",
              html=sec("ax2", "ajanlat", "s-paper", f'<div class="wrap">{sh(a)}<div class="ket">{csomag(0, "cs")}{csomag(1, "cs sotet s-deep")}</div></div>{ablak}', anchor="etlap"),
              css=PREM_CSS + r"""
-.v-ax2 .ket{display:grid;grid-template-columns:.9fr 1.1fr;gap:0;max-width:960px;margin:0 auto;align-items:stretch;border-radius:var(--r);overflow:hidden;box-shadow:var(--sh-3)}
-.v-ax2 .cs{background:var(--c-card);padding:clamp(28px,4cqi,48px);display:flex;flex-direction:column;gap:6px}
+.v-ax2 .ket{display:grid;grid-template-columns:.9fr 1.1fr;gap:clamp(18px,2.6cqi,32px);max-width:1000px;margin:0 auto;align-items:stretch}
+.v-ax2 .cs{background:var(--c-card);padding:clamp(28px,4cqi,48px);display:flex;flex-direction:column;gap:6px;border-radius:var(--r);overflow:hidden;box-shadow:var(--sh-3)}
 .v-ax2 .sotet{color:var(--c-ink);background:radial-gradient(circle at 85% 0%,color-mix(in srgb,var(--c-primary) 38%,transparent),transparent 55%),var(--c-deep)}
 .v-ax2 .al{font-family:var(--f-label);font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--c-ink-3);margin:0}
 .v-ax2 h3{font-size:var(--t-h3)}.v-ax2 .ar{font-family:var(--f-display);font-weight:var(--w-display);font-size:clamp(2rem,3.8cqi,3rem);color:var(--hl);margin:6px 0 12px;line-height:1}
