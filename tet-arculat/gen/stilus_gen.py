@@ -346,30 +346,30 @@ HATAR += [
 # 4. KÖR: Srí Jantra vonalas textúra (az ügyfél képe alapján) és új szekcióhatárok
 # =====================================================================================================
 def sri_belso(w=1.0):
-    C, R = 50, 29.0          # középpont, a háromszögek köre
+    # A feltöltött Srí Jantra képről lemért arányok (egységkör, y felfelé)
+    C, R = 50, 34.0
     P = lambda x, y: f"{C + x*R:.2f} {C - y*R:.2f}"
-    # (alap y, alap fél-szélesség, csúcs y) egységkörben; lefelé: Sakti (5), felfelé: Siva (4)
     c = lambda y: math.sqrt(1 - y*y)
-    le = [(0.665, c(0.665), -1.0), (0.488, c(0.488), -0.665), (0.314, 0.72, -0.452), (0.143, 0.50, -0.259), (0.06, 0.24, -0.16)]
-    fel = [(-0.665, c(0.665), 1.0), (-0.452, c(0.452), 0.665), (-0.259, 0.70, 0.488), (-0.089, 0.48, 0.314)]
+    a, b, e = 0.262, 0.473, 0.723
+    le = [(a, c(a), -0.98), (b, 0.689, -e), (e, 0.570, -a), (0.141, 0.333, -b), (0.041, 0.113, -0.140)]
+    fel = [(-a, c(a), 0.98), (-b, 0.689, e), (-e, 0.568, a), (-0.158, 0.320, b)]
     g = [f"<g fill='none' stroke='#000' stroke-width='{w}' stroke-linejoin='round'>"]
     for by, hw, ay in le + fel:
         g.append(f"<path d='M{P(-hw, by)}L{P(hw, by)}L{P(0, ay)}Z'/>")
-    g.append(f"<circle cx='{C}' cy='{C}' r='{R}'/><circle cx='{C}' cy='{C}' r='{R + 2.2}'/>")
-    # 8 csúcsos lótuszszirom
-    r0, r1, n = R + 2.2, 47.0, 8
+    g.append(f"<path d='M{P(-0.22, 0.03)}Q{P(0, 0.075)} {P(0.22, 0.03)}'/>")
+    g.append(f"<circle cx='{C}' cy='{C}' r='{R}'/>")
+    # 8 széles, csúcsban végződő lótuszszirom
+    rv, rt, n = R * 1.07, R * 1.32, 8
+    pt = lambda r, t: f"{C + r*math.cos(t):.2f} {C + r*math.sin(t):.2f}"
     for i in range(n):
-        a = -math.pi/2 + i * 2*math.pi/n
+        t = -math.pi/2 + i * 2*math.pi/n
         h = math.pi/n
-        pt = lambda r, b: (C + r*math.cos(b), C + r*math.sin(b))
-        s1, s2, tip = pt(r0, a - h), pt(r0, a + h), pt(r1, a)
-        c1, c2 = pt(r1 - 3, a - h*0.95), pt(r1 - 3, a + h*0.95)
-        k1, k2 = pt(r1 - 6, a - h*0.25), pt(r1 - 6, a + h*0.25)
-        g.append(f"<path d='M{s1[0]:.2f} {s1[1]:.2f}C{c1[0]:.2f} {c1[1]:.2f} {k1[0]:.2f} {k1[1]:.2f} {tip[0]:.2f} {tip[1]:.2f}"
-                 f"C{k2[0]:.2f} {k2[1]:.2f} {c2[0]:.2f} {c2[1]:.2f} {s2[0]:.2f} {s2[1]:.2f}'/>")
-    g.append(f"</g><circle cx='{C}' cy='{C}' r='{w*0.9:.2f}'/>")
+        g.append(f"<path d='M{pt(rv, t-h)}C{pt(rt*0.98, t-h*0.9)} {pt(rt*0.95, t-h*0.3)} {pt(rt*0.93, t-h*0.12)}"
+                 f"Q{pt(rt*0.95, t-h*0.04)} {pt(rt, t)}Q{pt(rt*0.95, t+h*0.04)} {pt(rt*0.93, t+h*0.12)}"
+                 f"C{pt(rt*0.95, t+h*0.3)} {pt(rt*0.98, t+h*0.9)} {pt(rv, t+h)}'/>")
+    g.append(f"<path d='M{P(-1.32, 0)}H{C + rt:.2f}' stroke-dasharray='{w*2.2:.2f} {w*2.2:.2f}'/>")
+    g.append(f"</g><circle cx='{P(0, 0.10).split()[0]}' cy='{P(0, 0.10).split()[1]}' r='{w*0.9:.2f}'/>")
     return "".join(g)
-
 SRI = U(S(sri_belso(1.1)))
 SRI_KICSI = U(S(sri_belso(2.4)))
 for _o in FELULET:
