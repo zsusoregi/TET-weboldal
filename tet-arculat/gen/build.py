@@ -135,7 +135,7 @@ spec["egyedi_css"] = (""
                      # 2. kör, az ügyfél megjegyzései szerint
                      ".v-mi5 .grid{grid-template-columns:1fr 1fr!important;gap:clamp(24px,4cqi,56px)!important}"
                      ".v-mi5 .kep{max-width:none;width:100%}"
-                     "@container elo (max-width:560px){.v-mi5 .grid{grid-template-columns:1fr!important}.v-mi5 .kep{max-width:240px}}"
+                     "@container elo (max-width:560px){.v-mi5 .grid{grid-template-columns:1fr!important}.v-mi5 .kep{max-width:none;width:100%}}"
                      ".v-f1 .ik{display:none!important}"
                      ".v-t5 .level{background-image:none!important}.v-t5 .level::before{display:none!important}"
                      ".v-t5 .lszov p{line-height:1.65!important;margin-bottom:.8em!important}"
