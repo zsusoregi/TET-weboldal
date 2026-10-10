@@ -131,8 +131,8 @@ kat("lablec", ["lbx", "lb1", "lb2", "lb3", "lb4"], "lbx", {
 spec["egyedi_css"] = (""
                      ".kiem{color:var(--hl);font-weight:800}"
                      # 2. kör, az ügyfél megjegyzései szerint
-                     ".v-mi5 .grid{grid-template-columns:minmax(160px,.42fr) 1.58fr!important;gap:clamp(24px,4cqi,56px)!important}"
-                     ".v-mi5 .kep{max-width:300px}"
+                     ".v-mi5 .grid{grid-template-columns:1fr 1fr!important;gap:clamp(24px,4cqi,56px)!important}"
+                     ".v-mi5 .kep{max-width:none;width:100%}"
                      "@container elo (max-width:560px){.v-mi5 .grid{grid-template-columns:1fr!important}.v-mi5 .kep{max-width:240px}}"
                      ".v-f1 .ik{display:none!important}"
                      ".v-t5 .level{background-image:none!important}.v-t5 .level::before{display:none!important}"
