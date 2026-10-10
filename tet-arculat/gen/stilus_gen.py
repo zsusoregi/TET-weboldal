@@ -340,3 +340,59 @@ HATAR += [
     dict(id="sN", nev="Nincs határjel", leiras="A szekciók egyszerűen színváltással érnek egymásba, külön határjel nélkül. A legtisztább, szerkesztőségi megoldás.",
          css="%S .hat{display:none}"),
 ]
+
+
+# =====================================================================================================
+# 4. KÖR: Srí Jantra vonalas textúra (az ügyfél képe alapján) és új szekcióhatárok
+# =====================================================================================================
+def sri_belso(w=1.0):
+    C, R = 50, 29.0          # középpont, a háromszögek köre
+    P = lambda x, y: f"{C + x*R:.2f} {C - y*R:.2f}"
+    # (alap y, alap fél-szélesség, csúcs y) egységkörben; lefelé: Sakti (5), felfelé: Siva (4)
+    c = lambda y: math.sqrt(1 - y*y)
+    le = [(0.665, c(0.665), -1.0), (0.488, c(0.488), -0.665), (0.314, 0.72, -0.452), (0.143, 0.50, -0.259), (0.06, 0.24, -0.16)]
+    fel = [(-0.665, c(0.665), 1.0), (-0.452, c(0.452), 0.665), (-0.259, 0.70, 0.488), (-0.089, 0.48, 0.314)]
+    g = [f"<g fill='none' stroke='#000' stroke-width='{w}' stroke-linejoin='round'>"]
+    for by, hw, ay in le + fel:
+        g.append(f"<path d='M{P(-hw, by)}L{P(hw, by)}L{P(0, ay)}Z'/>")
+    g.append(f"<circle cx='{C}' cy='{C}' r='{R}'/><circle cx='{C}' cy='{C}' r='{R + 2.2}'/>")
+    # 8 csúcsos lótuszszirom
+    r0, r1, n = R + 2.2, 47.0, 8
+    for i in range(n):
+        a = -math.pi/2 + i * 2*math.pi/n
+        h = math.pi/n
+        pt = lambda r, b: (C + r*math.cos(b), C + r*math.sin(b))
+        s1, s2, tip = pt(r0, a - h), pt(r0, a + h), pt(r1, a)
+        c1, c2 = pt(r1 - 3, a - h*0.95), pt(r1 - 3, a + h*0.95)
+        k1, k2 = pt(r1 - 6, a - h*0.25), pt(r1 - 6, a + h*0.25)
+        g.append(f"<path d='M{s1[0]:.2f} {s1[1]:.2f}C{c1[0]:.2f} {c1[1]:.2f} {k1[0]:.2f} {k1[1]:.2f} {tip[0]:.2f} {tip[1]:.2f}"
+                 f"C{k2[0]:.2f} {k2[1]:.2f} {c2[0]:.2f} {c2[1]:.2f} {s2[0]:.2f} {s2[1]:.2f}'/>")
+    g.append(f"</g><circle cx='{C}' cy='{C}' r='{w*0.9:.2f}'/>")
+    return "".join(g)
+
+SRI = U(S(sri_belso(1.1)))
+SRI_KICSI = U(S(sri_belso(2.4)))
+for _o in FELULET:
+    if _o["id"] == "tR":
+        _o["nev"] = "Srí Jantra a sarokban"
+        _o["leiras"] = "Egyetlen nagy, vonalas Srí Jantra lótuszszirmokkal a szekció sarkában, váltakozva jobbra és balra. Alig látható, csak egy árnyalattal erősebb a háttérnél."
+        _o["css"] = _o["css"].replace(MANDALA, SRI)
+SZIROM_VONAL = U(S("<path d='M4 38 C50 38 70 4 100 4 C130 4 150 38 196 38' fill='none' stroke='#000' stroke-width='2.4' stroke-linecap='round'/>"
+                   "<path d='M100 16 C90 26 90 32 100 36 C110 32 110 26 100 16Z' fill='none' stroke='#000' stroke-width='2'/>", "0 0 200 42"))
+BIMBO = U(S("<path d='M0 60 C40 60 52 40 62 30 C68 44 74 52 80 56 C86 34 92 14 100 2 C108 14 114 34 120 56 C126 52 132 44 138 30 C148 40 160 60 200 60Z'/>",
+            "0 0 200 60", "preserveAspectRatio='none'"))
+LEGZES_VONAL = U(S("<path d='M2 14 C30 14 40 4 60 4 S90 24 110 24 S140 4 160 4 S190 14 218 14' fill='none' stroke='#000' stroke-width='2.2' stroke-linecap='round'/>", "0 0 220 28"))
+HATAR += [
+    dict(id="sY", nev="Srí Jantra-pecsét", leiras="A határ közepén egy kerek medál, benne a vonalas Srí Jantra. A háttér-textúra motívuma köszön vissza: egységes, szakrális, emlékezetes.",
+         css="%S .hat{top:-34px;height:68px;left:50%;right:auto;width:68px;margin-left:-34px;border-radius:50%;background:var(--sec-bg);box-shadow:0 0 0 1px color-mix(in srgb,var(--c-primary) 35%,transparent)}"
+             "%S .hat::after{content:\"\";position:absolute;inset:7px;background:var(--c-primary);-webkit-mask:" + SRI_KICSI + " center/contain no-repeat;mask:" + SRI_KICSI + " center/contain no-repeat;opacity:.8}"
+             "%S .s-deep .hat::after,%S .s-deep>.hat::after{background:var(--c-deep-hl)}"),
+    dict(id="sD", nev="Szirom-körvonal", leiras="A lótuszszirom csak vékony narancs körvonalként rajzolódik ki, közepén egy apró csepp. Könnyedebb, rajzosabb párja a választott szirom-határnak.",
+         css="%S .hat{top:-21px;height:21px;left:50%;right:auto;width:300px;margin-left:-150px;background:var(--c-primary);opacity:.7;-webkit-mask:" + SZIROM_VONAL + " center bottom/100% 100% no-repeat;mask:" + SZIROM_VONAL + " center bottom/100% 100% no-repeat}"
+             "%S .s-deep>.hat{background:var(--c-deep-hl)}"),
+    dict(id="sB", nev="Lótuszbimbó", leiras="A szekció fölé egy háromszirmú lótuszbimbó emelkedik: középen a magas, két oldalt két kisebb szirom. Nőiesebb, organikusabb, mint az egyetlen szirom.",
+         css="%S .hat{top:-44px;height:45px;left:50%;right:auto;width:260px;margin-left:-130px;background:var(--sec-bg);-webkit-mask:" + BIMBO + " center bottom/100% 100% no-repeat;mask:" + BIMBO + " center bottom/100% 100% no-repeat}"),
+    dict(id="sW", nev="Lélegzet-vonal", leiras="Egy vékony, lágyan hullámzó narancs vonal a határ közepén, mint egy nyugodt be- és kilégzés. Diszkrét, mégis élő.",
+         css="%S .hat{top:-7px;height:14px;left:50%;right:auto;width:220px;margin-left:-110px;background:var(--c-primary);opacity:.75;-webkit-mask:" + LEGZES_VONAL + " center/100% 100% no-repeat;mask:" + LEGZES_VONAL + " center/100% 100% no-repeat}"
+             "%S .s-deep>.hat{background:var(--c-deep-hl)}"),
+]
