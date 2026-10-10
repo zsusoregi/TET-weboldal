@@ -434,7 +434,7 @@ def kinek():
 .v-kx1 .nem ul{display:grid;gap:12px}.v-kx1 .nem li{padding-left:28px;position:relative;color:var(--c-ink-2)}
 .v-kx1 .nem li::before{content:"×";position:absolute;left:4px;top:-.1em;font-size:1.3rem;color:var(--c-ink-3)}
 .v-kx1 .zaro{text-align:center;margin-top:34px;font-family:var(--f-display);font-weight:var(--w-display);font-size:clamp(1.3rem,2.4cqi,1.9rem);color:var(--hl)}
-@container elo (max-width:820px){.v-kx1 .grid{grid-template-columns:1fr}}
+@container elo (max-width:600px){.v-kx1 .grid{grid-template-columns:1fr}}
 """),
         dict(id="kx2", nev="Fotó a tengerparton", leiras="Balra a tengert néző férfi (új életszakasz), jobbra a „Neked szól, ha…” lista. Csendes, elgondolkodtató, azonosulni hív.",
              html=sec("kx2", "kinek", "s-white", f'<div class="wrap grid"><div class="kep" data-rv>{foto(c, "tenger", "4/5")}</div><div>{sh(K, bal=True)}'
@@ -520,7 +520,7 @@ def velemenyek():
 .v-vx2 .nagy p{font-family:var(--f-display);font-weight:var(--w-display);font-size:clamp(1.15rem,2cqi,1.5rem);line-height:1.35;margin:0}
 .v-vx2 .nagy mark{color:inherit;text-decoration:underline;text-decoration-color:var(--c-accent);text-underline-offset:.2em}
 .v-vx2 .kicsik{display:grid;gap:var(--gap)}.v-vx2 .krt{margin:0}.v-vx2 .krt p{margin:0;font-size:.97rem}.v-vx2 .krt mark{font-weight:800;color:var(--hl)}
-@container elo (max-width:820px){.v-vx2 .grid{grid-template-columns:1fr}.v-vx2 .nagy{position:relative;top:0}}
+@container elo (max-width:600px){.v-vx2 .grid{grid-template-columns:1fr}.v-vx2 .nagy{position:relative;top:0}}
 """),
         dict(id="vx3", nev="Gyertyafényes, sötét", leiras="Sötét szekció, a beszámolók narancs idézőjelekkel, két hasábban; a kiemelt mondatok meleg fényben. Intim, személyes, mint egy esti beszélgetés.",
              html=sec("vx3", "velemenyek", "s-deep", f'<div class="wrap">{sh(V)}<div class="grid">'
