@@ -140,6 +140,7 @@ spec["egyedi_css"] = (""
                      ".v-t5 .level{background-image:none!important}.v-t5 .level::before{display:none!important}"
                      ".v-t5 .lszov p{line-height:1.65!important;margin-bottom:.8em!important}"
                      ".v-k2 .krt .ik{display:none!important}"
+                     ".v-k2 .krt-meta{display:none!important}"
                      # 3. kör: a háttér az eredeti krém (#FFFBF4 = --c-paper) ezekben a blokkokban
                      "#rolaszol,#folyamat,#kinek,#kinalat,#gyik{--sec-bg:var(--c-paper)!important}"
                      "#rolaszol.tx::before,#folyamat.tx::before,#kinek.tx::before,#kinalat.tx::before,#gyik.tx::before,#rolaszol .tx::before,#folyamat .tx::before,#kinek .tx::before,#kinalat .tx::before,#gyik .tx::before{display:none!important}"
