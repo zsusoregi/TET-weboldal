@@ -55,6 +55,8 @@ for f in sys.argv[1:]:
     s = p.read_text(encoding="utf-8")
     n = s.count("§TERMEK§")
     s = s.replace("§TERMEK§", TERMEK)
+    # a motor végleges-oldal építője hibásan "hatNone" osztályt ír a sima szekcióhatárra
+    s = s.replace('class="hatNone"', 'class="hat"')
     if "</head>" in s:
         s = s.replace("</head>", CSS + "</head>", 1)
     elif "</title>" in s:
