@@ -132,7 +132,7 @@ H3_CSS = r"""
 .v-h3 .bg{position:absolute;inset:0;aspect-ratio:auto;height:100%;z-index:-2;background-position:var(--pos)}
 .v-h3 .shade{position:absolute;inset:0;background:linear-gradient(90deg,rgba(0,0,0,.35),rgba(0,0,0,.05) 50%,transparent);z-index:-1}
 .v-h3 .wrap{width:100%}
-.v-h3 .card{max-width:430px;background:color-mix(in srgb,var(--c0-card) 94%,transparent);border-radius:20px;padding:clamp(20px,2.6cqi,32px);box-shadow:var(--sh-3)}
+.v-h3 .card{max-width:430px;background:var(--c-paper);border-radius:20px;padding:clamp(20px,2.6cqi,32px);box-shadow:var(--sh-3)}
 .v-h3 .hcim{font-size:calc(clamp(1.35rem,2.3cqi,2rem)*var(--hero-scale,1))!important;line-height:1.18}
 .v-h3 .nev{margin:16px 0 0;padding-top:14px;border-top:2px solid var(--c-primary);font-family:var(--f-display);font-weight:var(--w-display);font-size:clamp(1.15rem,1.9cqi,1.5rem);letter-spacing:.06em;text-transform:uppercase;color:var(--c0-primary-text,var(--c-primary))}
 .v-h3b{padding:clamp(40px,5cqi,70px) 0;text-align:center}
